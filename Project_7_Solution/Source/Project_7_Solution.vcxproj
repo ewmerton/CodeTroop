@@ -84,6 +84,7 @@
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleCT.h" />
     <ClInclude Include="ModuleEnemies.h" />
+    <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleRock.h" />
     <ClInclude Include="ModuleScene.h" />
@@ -110,6 +111,7 @@
     <ClCompile Include="ModuleCollisions.cpp" />
     <ClCompile Include="ModuleCT.cpp" />
     <ClCompile Include="ModuleEnemies.cpp" />
+    <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModuleRock.cpp" />
     <ClCompile Include="ModuleScene.cpp" />

@@ -7,8 +7,10 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleFonts.h"
 #include "ModuleCT.h"
 
+#include <stdio.h>
 #include "SDL/include/SDL_scancode.h"
 
 
@@ -56,6 +58,7 @@ ModulePlayer::ModulePlayer()
 	deadAnim.PushBack({ 102, 74, 19, 21 });
 	deadAnim.PushBack({ 128, 74, 20, 21 });
 	deadAnim.speed = 0.05f;
+	deadAnim.loop = false;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -79,7 +82,13 @@ bool ModulePlayer::Start()
 	position.x = 24;
 	position.y = 41;
 
+	lifes = 3;
+
 	collider = App->collisions->AddCollider({ position.x, position.y + 7, 15, 15 }, Collider::Type::PLAYER, this);
+
+
+	char lookupTable[] = { "0123456789" };
+	hudFont = App->fonts->Load("Assets/hud_font.png", lookupTable, 1);
 
 	return ret;
 }
@@ -171,7 +180,7 @@ update_status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& !lvlComplete && !dead)
+		&& !lvlComplete && !dead && !hit)
 		currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y + 7);
@@ -207,6 +216,12 @@ update_status ModulePlayer::PostUpdate()
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
+
+		sprintf_s(lifesText, 2, "%1d", lifes);
+		App->fonts->BlitText(231, 9, hudFont, lifesText);
+
+		sprintf_s(scoreText, 6, "%5d", score);
+		App->fonts->BlitText(160, 9, hudFont, scoreText);
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -259,9 +274,38 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 			lvlComplete = true; break;
 		case Collider::Type::ENEMY:
-			currentAnimation = &deadAnim;
-			App->audio->PlayFx(deadFx);
-			dead = true; break;
+
+			if (hit == false)
+			{
+				currentAnimation = &deadAnim;
+				currentAnimation->Reset();
+				currentAnimation->loopCount = 0;
+				App->audio->PlayFx(deadFx);
+
+				hit = true;
+			}
+
+			if (currentAnimation->HasFinished() == true && hit == true)
+			{
+				if (lifes >= 0 && lifes <= 3)
+				{
+					lifes--;
+					if (lifes > 3)
+					{
+						dead = true;
+						lifes = 0;
+					}
+					else
+					{
+						currentAnimation = &idleAnim;
+					}
+					position.x = 24;
+					position.y = 41;
+				}
+
+				hit = false;
+			}
+			break;
 		case Collider::Type::PLAYER_SHOT:
 			currentAnimation = &deadAnim;
 			App->audio->PlayFx(deadFx);

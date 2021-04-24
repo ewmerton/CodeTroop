@@ -59,6 +59,8 @@ Enemy_Snail::Enemy_Snail(int x, int y) : Enemy(x, y)
 	
 
 	collider = App->collisions->AddCollider({ 0, 0, 19, 19 }, Collider::Type::ENEMY, (Module*)App->enemies);
+
+	type = EnemyType::SNAIL;
 }
 
 void Enemy_Snail::Update()

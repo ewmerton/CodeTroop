@@ -50,6 +50,8 @@ Enemy_Robot::Enemy_Robot(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.0f, 0.0f }, 40*2, &walkIdle);
 
 	collider = App->collisions->AddCollider({ 0, 0, 19, 19 }, Collider::Type::ENEMY, (Module*)App->enemies);
+
+	type = EnemyType::ROBOT;
 }
 
 void Enemy_Robot::Update()

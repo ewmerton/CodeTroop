@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModulePlayer.h"
 
 #include "Enemy.h"
 #include "Enemy_Robot.h"
@@ -150,7 +151,22 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			switch (c2->type)
 			{
 			case Collider::Type::PLAYER_SHOT:
-				enemies[i]->isDead = true;
+				if (enemies[i]->isDead == false)
+				{
+					switch (enemies[i]->type)
+					{
+					case EnemyType::ROBOT:
+						App->player->score += 400;
+						break;
+					case EnemyType::SNAIL:
+						App->player->score += 100;
+						break;
+					default:
+						break;
+					}
+					enemies[i]->isDead = true;
+				}
+				break;
 			default:
 				break;
 		}

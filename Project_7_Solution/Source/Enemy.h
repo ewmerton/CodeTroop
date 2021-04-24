@@ -7,6 +7,15 @@
 struct SDL_Texture;
 struct Collider;
 
+
+
+enum EnemyType
+{
+	NONE = -1,
+	ROBOT,
+	SNAIL
+};
+
 class Enemy
 {
 public:
@@ -35,7 +44,7 @@ public:
 	// The current position in the world
 	iPoint position;
 
-	
+	EnemyType type;
 
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;

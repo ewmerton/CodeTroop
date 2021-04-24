@@ -71,6 +71,17 @@ public:
 	bool destroyed = false;
 	bool lvlComplete = false;
 
+	// Player's lifes
+	uint lifes = 3;
+	int hudFont = -1;
+	char lifesText[10] = { "\0" };
+	bool hit = false;
+
+	// Player's score
+	uint score = 0;
+	char scoreText[10] = { "\0" };
+
+
 	// A countdown to when the player gets destroyed. After a while, the game exits
 	uint destroyedCountdown = 60;
 
