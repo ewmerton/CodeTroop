@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
 
-ModuleCT::ModuleCT()
+ModuleCT::ModuleCT(bool startEnabled) : Module(startEnabled)
 {
 	// idle
 	idleAnim.PushBack({ 0, 0, 48, 54 });

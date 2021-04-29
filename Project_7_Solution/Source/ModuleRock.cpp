@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
 
-ModuleRock::ModuleRock()
+ModuleRock::ModuleRock(bool startEnabled) : Module(startEnabled)
 {
 
 }

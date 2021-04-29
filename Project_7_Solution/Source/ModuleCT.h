@@ -11,7 +11,7 @@ class ModuleCT : public Module
 {
 public:
 	//Constructor
-	ModuleCT();
+	ModuleCT(bool startEnabled);
 
 	//Destructor
 	~ModuleCT();

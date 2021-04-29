@@ -14,7 +14,7 @@
 #include "SDL/include/SDL_scancode.h"
 
 
-ModulePlayer::ModulePlayer()
+ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 	// idle animation - just one sprite
 	idleAnim.PushBack({ 17, 1, 15, 22 });
@@ -274,6 +274,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 			lvlComplete = true; break;
 		case Collider::Type::ENEMY:
+<<<<<<< HEAD
+			currentAnimation = &deadAnim;
+			App->audio->PlayFx(deadFx);
+			dead = true; break;
+=======
 
 			if (hit == false)
 			{
@@ -305,6 +310,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 				hit = false;
 			}
+>>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645
 			break;
 		case Collider::Type::PLAYER_SHOT:
 			currentAnimation = &deadAnim;

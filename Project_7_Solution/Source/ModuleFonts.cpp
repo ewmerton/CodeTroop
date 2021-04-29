@@ -6,7 +6,11 @@
 
 #include<string.h>
 
+<<<<<<< HEAD
+ModuleFonts::ModuleFonts(bool startEnabled) : Module(startEnabled)
+=======
 ModuleFonts::ModuleFonts() : Module()
+>>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645
 {
 
 }

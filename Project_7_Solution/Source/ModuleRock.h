@@ -12,7 +12,7 @@ class ModuleRock : public Module
 {
 public:
 	//Constructor
-	ModuleRock();
+	ModuleRock(bool startEnabled);
 
 	//Destructor
 	~ModuleRock();
