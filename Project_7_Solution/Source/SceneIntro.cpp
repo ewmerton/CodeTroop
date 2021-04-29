@@ -24,6 +24,7 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
+	nameTexture = App->textures->Load("Assets/NameScreen.png");
 	bgTexture = App->textures->Load("Assets/Main_Menu.png");
 	App->audio->PlayMusic("Assets/TitleScreen.ogg", 1.0f);
 
@@ -33,11 +34,29 @@ bool SceneIntro::Start()
 	return ret;
 }
 
+update_status SceneIntro::PreUpdate()
+{
+	if (!changeTex)
+	{
+		cd++;
+	}
+
+	if (cd >= 400)
+	{
+		changeTex = true;
+	}
+
+	return update_status::UPDATE_CONTINUE;
+}
+
 update_status SceneIntro::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (changeTex)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		}
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -46,7 +65,14 @@ update_status SceneIntro::Update()
 update_status SceneIntro::PostUpdate()
 {
 	// Draw everything
-	App->render->Blit(bgTexture, 0, 0, NULL);
-
+	if (changeTex)
+	{
+		App->render->Blit(bgTexture, 0, 0, NULL);
+	}
+	else
+	{
+		App->render->Blit(nameTexture, 0, 0, NULL);
+	}
+	
 	return update_status::UPDATE_CONTINUE;
 }

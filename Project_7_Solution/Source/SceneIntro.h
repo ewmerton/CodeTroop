@@ -19,6 +19,8 @@ public:
 	//loads the necessary textures for the map background
 	bool Start() override;
 
+	update_status PreUpdate() override;
+
 	//called at the middle of the application loop
 	//updates the scene's background animations
 	update_status Update() override;
@@ -29,7 +31,11 @@ public:
 
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
+	SDL_Texture* nameTexture = nullptr;
 	SDL_Texture* bgTexture = nullptr;
+
+	bool changeTex = false;
+	uint cd = 0;
 };
 
 #endif
