@@ -180,7 +180,7 @@ update_status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& !lvlComplete && !dead && !hit)
+		&& !lvlComplete && !dead)
 		currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y + 7);
@@ -270,48 +270,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		case Collider::Type::MOON:
 			currentAnimation = &winAnim;
 			App->tower->MoonColected();
-			// Pasar a escena de victoria
+			// Pasar de nivel tras la victoria
 
 			lvlComplete = true; break;
 		case Collider::Type::ENEMY:
-<<<<<<< HEAD
 			currentAnimation = &deadAnim;
 			App->audio->PlayFx(deadFx);
 			dead = true; break;
-=======
-
-			if (hit == false)
-			{
-				currentAnimation = &deadAnim;
-				currentAnimation->Reset();
-				currentAnimation->loopCount = 0;
-				App->audio->PlayFx(deadFx);
-
-				hit = true;
-			}
-
-			if (currentAnimation->HasFinished() == true && hit == true)
-			{
-				if (lifes >= 0 && lifes <= 3)
-				{
-					lifes--;
-					if (lifes > 3)
-					{
-						dead = true;
-						lifes = 0;
-					}
-					else
-					{
-						currentAnimation = &idleAnim;
-					}
-					position.x = 24;
-					position.y = 41;
-				}
-
-				hit = false;
-			}
->>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645
-			break;
 		case Collider::Type::PLAYER_SHOT:
 			currentAnimation = &deadAnim;
 			App->audio->PlayFx(deadFx);

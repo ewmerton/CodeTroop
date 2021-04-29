@@ -72,16 +72,9 @@ public:
 	bool lvlComplete = false;
 
 	// Player's lifes
-<<<<<<< HEAD
 	uint lifes = 1;
 	int hudFont = -1;
 	char lifesText[10] = { "\0" };
-=======
-	uint lifes = 3;
-	int hudFont = -1;
-	char lifesText[10] = { "\0" };
-	bool hit = false;
->>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645
 
 	// Player's score
 	uint score = 0;
@@ -106,4 +99,4 @@ public:
 
 };
 
-#endif
+#endif //!__MODULE_PLAYER_H__

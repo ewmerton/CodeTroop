@@ -37,11 +37,11 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 0, 217, 256, 16 }, Collider::Type::WALL); //down
 	App->collisions->AddCollider({ 0, 25, 24, 208 }, Collider::Type::WALL); //left
 	App->collisions->AddCollider({ 232, 25, 24, 208 }, Collider::Type::WALL); //right
-
+	
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 155);
 	App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 181, 125);
-
+	
 	App->player->Enable();
 	App->enemies->Enable();
 	App->rock->Enable();
@@ -63,11 +63,8 @@ update_status SceneLevel1::PostUpdate()
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(hudTexture, 0, 1);
-<<<<<<< HEAD:Project_7_Solution/Source/SceneLevel1.cpp
-=======
 
 
->>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645:Project_7_Solution/Source/ModuleScene.cpp
 
 	return update_status::UPDATE_CONTINUE;
 }

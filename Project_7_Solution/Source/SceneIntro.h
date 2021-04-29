@@ -32,4 +32,4 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 };
 
-#endif	// __SCENEINTRO_H__
+#endif

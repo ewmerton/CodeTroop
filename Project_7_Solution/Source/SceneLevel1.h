@@ -1,5 +1,5 @@
-#ifndef __SCENE_LEVEL1_H__
-#define __SCENE_LEVEL1_H__
+#ifndef __MODULE_SCENE_H__
+#define __MODULE_SCENE_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -31,16 +31,13 @@ public:
 	bool CleanUp();
 
 public:
-
+	
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 
 	// HUD Texture
 	SDL_Texture* hudTexture = nullptr;
-<<<<<<< HEAD:Project_7_Solution/Source/SceneLevel1.h
-=======
 	
->>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645:Project_7_Solution/Source/ModuleScene.h
 };
 
 #endif

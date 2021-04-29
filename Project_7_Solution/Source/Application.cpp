@@ -17,13 +17,11 @@
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
 
-
 Application::Application()
 {
 	// The order in which the modules are added is very important.
 	// It will define the order in which Pre/Update/Post will be called
 	// Render should always be last, as our last action should be updating the screen
-<<<<<<< HEAD
 	modules[0] = window = new ModuleWindow(true);
 	modules[1] = input = new ModuleInput(true);
 	modules[2] = textures = new ModuleTextures(true);
@@ -41,24 +39,6 @@ Application::Application()
 	modules[12] = fonts = new ModuleFonts(true);
 	modules[13] = render = new ModuleRender(true);
 	modules[14] = fade = new ModuleFadeToBlack(true);
-=======
-	modules[0] = window = new ModuleWindow();
-	modules[1] = input = new ModuleInput();
-	modules[2] = textures = new ModuleTextures();
-	modules[3] = audio = new ModuleAudio();
-
-	modules[4] = scene = new ModuleScene();
-	modules[5] = rock = new ModuleRock();
-	modules[6] = tower = new ModuleCT();
-	modules[7] = particles = new ModuleParticles();
-	modules[8] = enemies = new ModuleEnemies();
-	modules[9] = player = new ModulePlayer();
-
-	modules[10] = collisions = new ModuleCollisions();
-	modules[11] = fonts = new ModuleFonts();
-
-	modules[12] = render = new ModuleRender();
->>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645
 }
 
 Application::~Application()

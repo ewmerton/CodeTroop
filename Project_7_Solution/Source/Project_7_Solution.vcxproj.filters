@@ -26,8 +26,8 @@
     <Filter Include="Source Files\Entities\Enemies">
       <UniqueIdentifier>{c465321a-28ed-404a-aa97-e9d0c6f722ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Modules\SceneLevels">
-      <UniqueIdentifier>{e2ccb0eb-21a3-4aeb-be57-e19744a56914}</UniqueIdentifier>
+    <Filter Include="Source Files\Modules\SceneLevel">
+      <UniqueIdentifier>{19817e8a-8849-4e58-9050-4b7ceaae3a35}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -103,18 +103,15 @@
     <ClInclude Include="ModuleFonts.h">
       <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
-<<<<<<< HEAD
+    <ClInclude Include="SceneLevel1.h">
+      <Filter>Source Files\Modules\SceneLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneIntro.h">
+      <Filter>Source Files\Modules\SceneLevel</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleFadeToBlack.h">
       <Filter>Source Files\Modules\Core</Filter>
     </ClInclude>
-    <ClInclude Include="SceneIntro.h">
-      <Filter>Source Files\Modules\SceneLevels</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneLevel1.h">
-      <Filter>Source Files\Modules\SceneLevels</Filter>
-    </ClInclude>
-=======
->>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -183,17 +180,14 @@
     <ClCompile Include="ModuleFonts.cpp">
       <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
-<<<<<<< HEAD
+    <ClCompile Include="SceneLevel1.cpp">
+      <Filter>Source Files\Modules\SceneLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneIntro.cpp">
+      <Filter>Source Files\Modules\SceneLevel</Filter>
+    </ClCompile>
     <ClCompile Include="ModuleFadeToBlack.cpp">
       <Filter>Source Files\Modules\Core</Filter>
     </ClCompile>
-    <ClCompile Include="SceneIntro.cpp">
-      <Filter>Source Files\Modules\SceneLevels</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneLevel1.cpp">
-      <Filter>Source Files\Modules\SceneLevels</Filter>
-    </ClCompile>
-=======
->>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645
   </ItemGroup>
 </Project>

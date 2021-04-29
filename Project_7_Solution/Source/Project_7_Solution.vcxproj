@@ -84,13 +84,12 @@
     <ClInclude Include="ModuleCollisions.h" />
     <ClInclude Include="ModuleCT.h" />
     <ClInclude Include="ModuleEnemies.h" />
-<<<<<<< HEAD
     <ClInclude Include="ModuleFadeToBlack.h" />
-=======
->>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645
     <ClInclude Include="ModuleFonts.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleRock.h" />
+    <ClInclude Include="SceneIntro.h" />
+    <ClInclude Include="SceneLevel1.h" />
     <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModulePlayer.h" />
     <ClInclude Include="ModuleRender.h" />
@@ -102,8 +101,6 @@
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Path.h" />
-    <ClInclude Include="SceneIntro.h" />
-    <ClInclude Include="SceneLevel1.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -116,13 +113,12 @@
     <ClCompile Include="ModuleCollisions.cpp" />
     <ClCompile Include="ModuleCT.cpp" />
     <ClCompile Include="ModuleEnemies.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="ModuleFadeToBlack.cpp" />
-=======
->>>>>>> 8ee0bb5c96326010da4c88b47113baa386c72645
     <ClCompile Include="ModuleFonts.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModuleRock.cpp" />
+    <ClCompile Include="SceneIntro.cpp" />
+    <ClCompile Include="SceneLevel1.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
@@ -132,8 +128,6 @@
     <ClCompile Include="Module.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="Path.cpp" />
-    <ClCompile Include="SceneIntro.cpp" />
-    <ClCompile Include="SceneLevel1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
