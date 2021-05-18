@@ -1,4 +1,5 @@
 #include "SceneIntro.h"
+#include "getScene.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -6,10 +7,11 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleCollisions.h"
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 {
-
+	
 }
 
 SceneIntro::~SceneIntro()
@@ -30,6 +32,12 @@ bool SceneIntro::Start()
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
+
+	changeTex = false;
+	cd = 0;
+
+	App->getScene->Disable();
+	App->collisions->Disable();
 
 	return ret;
 }
@@ -75,4 +83,12 @@ update_status SceneIntro::PostUpdate()
 	}
 	
 	return update_status::UPDATE_CONTINUE;
+}
+
+bool SceneIntro::CleanUp()
+{
+	App->getScene->Enable();
+	App->collisions->Enable();
+
+	return true;
 }

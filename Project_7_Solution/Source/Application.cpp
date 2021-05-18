@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
+#include "GetScene.h"
 #include "SceneIntro.h"
 #include "SceneLevel1.h"
 #include "ModuleRock.h"
@@ -27,18 +28,20 @@ Application::Application()
 	modules[2] = textures = new ModuleTextures(true);
 	modules[3] = audio = new ModuleAudio(true);
 
-	modules[4] = sceneIntro = new SceneIntro(true);
-	modules[5] = sceneLevel_1 = new SceneLevel1(false);
-	modules[6] = rock = new ModuleRock(false);
-	modules[7] = tower = new ModuleCT(false);
-	modules[8] = particles = new ModuleParticles(true);
-	modules[9] = enemies = new ModuleEnemies(false);
-	modules[10] = player = new ModulePlayer(false);
+	modules[4] = getScene = new GetScene(false);
+	modules[5] = sceneIntro = new SceneIntro(true);
+	modules[6] = sceneLevel_1 = new SceneLevel1(false);
 
-	modules[11] = collisions = new ModuleCollisions(true);
-	modules[12] = fonts = new ModuleFonts(true);
-	modules[13] = render = new ModuleRender(true);
-	modules[14] = fade = new ModuleFadeToBlack(true);
+	modules[7] = rock = new ModuleRock(false);
+	modules[8] = tower = new ModuleCT(false);
+	modules[9] = particles = new ModuleParticles(true);
+	modules[10] = player = new ModulePlayer(false);
+	modules[11] = enemies = new ModuleEnemies(false);
+
+	modules[12] = collisions = new ModuleCollisions(false);
+	modules[13] = fonts = new ModuleFonts(true);
+	modules[14] = render = new ModuleRender(true);
+	modules[15] = fade = new ModuleFadeToBlack(true);
 }
 
 Application::~Application()

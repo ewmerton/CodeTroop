@@ -1,4 +1,5 @@
 #include "SceneLevel1.h"
+#include "getScene.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -41,6 +42,21 @@ bool SceneLevel1::Start()
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 155);
 	App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 181, 125);
+
+	// Rocks
+	for (uint i = 0; i < 32 * 6; i += 32)
+	{
+		for (uint j = 0; j < 32 * 5; j += 32)
+		{
+			if ((i == 32 * 2 || i == 32 * 3) && (j == 32 * 1 || j == 32 * 2))
+			{
+
+			}
+			else {
+				App->rock->AddRock(i + 40, j + 57);
+			}
+		}
+	}
 	
 	App->player->Enable();
 	App->enemies->Enable();

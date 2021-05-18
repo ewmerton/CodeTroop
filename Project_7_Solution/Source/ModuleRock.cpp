@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
+#include "SceneLevel1.h"
 
 ModuleRock::ModuleRock(bool startEnabled) : Module(startEnabled)
 {
@@ -25,10 +26,10 @@ bool ModuleRock::Start()
 	rockTexture = App->textures->Load("Assets/roca.png");
 
 	//Object colliders
-	int n = 0;
+	//int n = 0;
 	position.x = 40;
 	position.y = 57;
-	for (int i = 0; i < 32*6; i += 32)
+	/*for (int i = 0; i < 32*6; i += 32)
 	{
 		for (int j = 0; j < 32 * 5; j += 32)
 		{
@@ -41,7 +42,7 @@ bool ModuleRock::Start()
 				n++;
 			}
 		}	
-	}
+	}*/
 
 	return ret;
 }
@@ -50,19 +51,30 @@ bool ModuleRock::Start()
 update_status ModuleRock::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	for (uint i = 0; i < 32*6; i += 32)
+	if (App->sceneLevel_1->IsEnabled() == true)
 	{
-		for (uint j = 0; j < 32*5; j += 32)
+		for (uint i = 0; i < 32 * 6; i += 32)
 		{
-			if ((i == 32*2 || i == 32*3) && (j == 32*1 || j == 32*2))
+			for (uint j = 0; j < 32 * 5; j += 32)
 			{
-				
-			}
-			else {
-				App->render->Blit(rockTexture, position.x + i, position.y + j, NULL);
+				if ((i == 32 * 2 || i == 32 * 3) && (j == 32 * 1 || j == 32 * 2))
+				{
+
+				}
+				else {
+					App->render->Blit(rockTexture, position.x + i, position.y + j, NULL);
+				}
 			}
 		}
 	}
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+void ModuleRock::AddRock(int x, int y)
+{
+	bool ret = true;
+	App->collisions->AddCollider({ x, y, 16, 16 }, Collider::Type::ROCK);
+
+	//App->render->Blit(rockTexture, x, y, NULL);
 }

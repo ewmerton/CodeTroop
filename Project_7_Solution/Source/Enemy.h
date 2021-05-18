@@ -7,8 +7,6 @@
 struct SDL_Texture;
 struct Collider;
 
-
-
 enum EnemyType
 {
 	NONE = -1,

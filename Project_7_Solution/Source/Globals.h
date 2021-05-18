@@ -13,7 +13,7 @@ enum class update_status
 {
 	UPDATE_CONTINUE = 1,
 	UPDATE_STOP,
-	UPDATE_ERROR
+	UPDATE_ERROR,
 };
 
 // Useful typedefs ----------------

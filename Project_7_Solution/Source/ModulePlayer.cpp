@@ -9,6 +9,8 @@
 #include "ModuleCollisions.h"
 #include "ModuleFonts.h"
 #include "ModuleCT.h"
+#include "ModuleFadeToBlack.h"
+#include "GetScene.h"
 
 #include <stdio.h>
 #include "SDL/include/SDL_scancode.h"
@@ -82,20 +84,38 @@ bool ModulePlayer::Start()
 	position.x = 24;
 	position.y = 41;
 
-	lifes = 3;
+	// Standard values
+	lifes = 1;
+	score = 0;
+	stime = 0;
+	mtime = 0;
+
+	dead = false;
+	dCount = 0;
+	destroyed = false;
+	lvlComplete = false;
+	deadAnim.Reset();
+
+	destroyedCountdown = 60;
+	freeze = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y + 7, 15, 15 }, Collider::Type::PLAYER, this);
 
 
 	char lookupTable[] = { "0123456789" };
-	hudFont = App->fonts->Load("Assets/hud_font.png", lookupTable, 1);
+	nFont = App->fonts->Load("Assets/hud_font.png", lookupTable, 1);
 
 	return ret;
 }
 
 update_status ModulePlayer::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && !lvlComplete && !dead)
+	if (lvlComplete || dead)
+	{
+		freeze = true;
+	}
+
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && !freeze)
 	{
 		position.x -= speed;
 		if (currentAnimation != &leftAnim)
@@ -105,7 +125,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && !lvlComplete && !dead)
+	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && !freeze)
 	{
 		position.x += speed;
 		if (currentAnimation != &rightAnim)
@@ -115,7 +135,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && !lvlComplete && !dead)
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && !freeze)
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -125,7 +145,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && !lvlComplete && !dead)
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && !freeze)
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -137,7 +157,7 @@ update_status ModulePlayer::Update()
 
 	// Bomb system
 	uint num = 0;
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && !lvlComplete && !dead)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && !freeze)
 	{
 		for (uint i = 0; i < n_bombs && a_bombs != 0; i++)
 		{
@@ -170,9 +190,28 @@ update_status ModulePlayer::Update()
 		}
 	}
 	// Provisional
-	if (App->input->keys[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN && !lvlComplete && !dead)
+	if (App->input->keys[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN && !freeze)
 	{
 		NewBomb();
+	}
+
+	// GodMode
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+	{
+		if (!godMode)
+		{
+			godMode = true;
+		}
+		else
+		{
+			godMode = false;
+		}
+	}
+
+	// Menu Game
+	if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(App->getScene->GetActualScene(), (Module*)App->sceneIntro, 60);
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
@@ -180,18 +219,25 @@ update_status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& !lvlComplete && !dead)
+		&& !freeze)
 		currentAnimation = &idleAnim;
 
 	collider->SetPos(position.x, position.y + 7);
 
 	currentAnimation->Update();
 
-	if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN)
 	{
 		return update_status::UPDATE_STOP;
 	}
 
+	// Jump next level
+	if (lvlComplete)
+	{
+		App->fade->FadeToBlack(App->getScene->GetActualScene(), App->getScene->GetNextScene(), 60);
+	}
+
+	// Try Again
 	if (dead)
 	{
 		dCount++;
@@ -203,7 +249,9 @@ update_status ModulePlayer::Update()
 		{
 			destroyedCountdown--;
 			if (destroyedCountdown <= 0)
-				return update_status::UPDATE_STOP;
+			{
+				App->fade->FadeToBlack(App->getScene->GetActualScene(), (Module*)App->sceneIntro, 60);
+			}
 		}
 	}
 
@@ -218,10 +266,16 @@ update_status ModulePlayer::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 
 		sprintf_s(lifesText, 2, "%1d", lifes);
-		App->fonts->BlitText(231, 9, hudFont, lifesText);
+		App->fonts->BlitText(231, 9, nFont, lifesText);
 
 		sprintf_s(scoreText, 6, "%5d", score);
-		App->fonts->BlitText(160, 9, hudFont, scoreText);
+		App->fonts->BlitText(160, 9, nFont, scoreText);
+
+		/*sprintf_s(stimeText,2, "%7d", stime);
+		App->fonts->BlitText(16, 9, nFont, stimeText);
+
+		sprintf_s(mtimeText, 1, "%9d", mtime);
+		App->fonts->BlitText(30, 9, nFont, mtimeText);*/
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -270,17 +324,21 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		case Collider::Type::MOON:
 			currentAnimation = &winAnim;
 			App->tower->MoonColected();
-			// Pasar de nivel tras la victoria
-
 			lvlComplete = true; break;
 		case Collider::Type::ENEMY:
-			currentAnimation = &deadAnim;
-			App->audio->PlayFx(deadFx);
-			dead = true; break;
+			if (!godMode)
+			{
+				currentAnimation = &deadAnim;
+				App->audio->PlayFx(deadFx);
+				dead = true;
+			} break;
 		case Collider::Type::PLAYER_SHOT:
-			currentAnimation = &deadAnim;
-			App->audio->PlayFx(deadFx);
-			dead = true; break;
+			if (!godMode)
+			{
+				currentAnimation = &deadAnim;
+				App->audio->PlayFx(deadFx);
+				dead = true;
+			} break;
 		default:
 			break;
 		}

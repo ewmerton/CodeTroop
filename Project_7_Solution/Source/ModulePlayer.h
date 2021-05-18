@@ -71,14 +71,22 @@ public:
 	bool destroyed = false;
 	bool lvlComplete = false;
 
+	// Font
+	int nFont = -1;
+
 	// Player's lifes
 	uint lifes = 1;
-	int hudFont = -1;
 	char lifesText[10] = { "\0" };
 
 	// Player's score
 	uint score = 0;
 	char scoreText[10] = { "\0" };
+
+	// Player's time
+	uint stime = 0;
+	char stimeText[10] = { "\0" };
+	uint mtime = 0;
+	char mtimeText[10] = { "\0" };
 
 
 	// A countdown to when the player gets destroyed. After a while, the game exits
@@ -96,6 +104,10 @@ public:
 
 	bool isCounting[MAX_BOMBS] = { false };
 	uint count[MAX_BOMBS] = { 0 };
+
+	bool godMode = false;
+
+	bool freeze = false;
 
 };
 
