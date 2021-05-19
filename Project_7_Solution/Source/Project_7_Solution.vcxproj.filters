@@ -115,6 +115,9 @@
     <ClInclude Include="GetScene.h">
       <Filter>Source Files\Modules\SceneLevel</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleFlower.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -194,6 +197,9 @@
     </ClCompile>
     <ClCompile Include="GetScene.cpp">
       <Filter>Source Files\Modules\SceneLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFlower.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

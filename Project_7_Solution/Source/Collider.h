@@ -12,6 +12,7 @@ struct Collider
 		NONE = -1,
 		WALL,
 		ROCK,
+		FLOWER,
 		PLAYER,
 		MOON,
 		ENEMY,

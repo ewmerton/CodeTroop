@@ -9,6 +9,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModuleRock.h"
+#include "ModuleFlower.h"
 #include "ModuleCT.h"
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
@@ -54,13 +55,27 @@ bool SceneLevel1::Start()
 			}
 			else {
 				App->rock->AddRock(i + 40, j + 57);
+				//App->flower->AddFlower(40 + 16+i, 57+j);
+
 			}
 		}
 	}
+
+	// Flowers
+	/*for (uint i = 0; i < 32 * 6; i += 32)
+	{
+		for (uint j = 0; j < 32 * 5; j += 32)
+		{
+			App->flower->AddFlower(40+16+i,57+j);
+		}
+	}
+	*/
+	//App->flower->AddFlower(40+16,57);
 	
 	App->player->Enable();
 	App->enemies->Enable();
 	App->rock->Enable();
+	App->flower->Enable();
 	App->tower->Enable();
 
 	return ret;
@@ -90,6 +105,7 @@ bool SceneLevel1::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->rock->Disable();
+	App->flower->Disable();
 	App->tower->Disable();
 
 	return true;
