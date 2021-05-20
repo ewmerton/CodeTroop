@@ -341,6 +341,24 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				position.x += speed;
 			}; break;
 
+		case Collider::Type::RED_FLOWER:
+			if (c1->rect.y < c2->rect.y && c1->rect.y + c1->rect.h - 2 < c2->rect.y) //coming from up
+			{
+				position.y -= speed;
+			}
+			else if (c1->rect.y + 2 > c2->rect.y + c2->rect.h) //coming from down
+			{
+				position.y += speed;
+			}
+			if (c1->rect.x < c2->rect.x && c1->rect.x + c1->rect.w - 2 < c2->rect.x) //coming from left
+			{
+				position.x -= speed;
+			}
+			else if (c1->rect.x + 2 > c2->rect.x + c2->rect.w) //coming from right
+			{
+				position.x += speed;
+			}; break;
+
 		case Collider::Type::MOON:
 			currentAnimation = &winAnim;
 			App->tower->MoonColected();

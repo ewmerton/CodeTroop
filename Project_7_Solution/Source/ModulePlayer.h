@@ -71,6 +71,9 @@ public:
 	bool destroyed = false;
 	bool lvlComplete = false;
 
+	// A countdown to when the player gets destroyed. After a while, the game exits
+	uint destroyedCountdown = 60;
+
 	// Font
 	int nFont = -1;
 
@@ -87,10 +90,6 @@ public:
 	char stimeText[10] = { "\0" };
 	uint mtime = 0;
 	char mtimeText[10] = { "\0" };
-
-
-	// A countdown to when the player gets destroyed. After a while, the game exits
-	uint destroyedCountdown = 60;
 
 	// Sounds
 	uint placeBomb = 0;

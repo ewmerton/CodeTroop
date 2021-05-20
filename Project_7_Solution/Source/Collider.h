@@ -13,6 +13,7 @@ struct Collider
 		WALL,
 		ROCK,
 		FLOWER,
+		RED_FLOWER,
 		PLAYER,
 		MOON,
 		ENEMY,

@@ -14,6 +14,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
 	matrix[Collider::Type::WALL][Collider::Type::ROCK] = false;
 	matrix[Collider::Type::WALL][Collider::Type::FLOWER] = false;
+	matrix[Collider::Type::WALL][Collider::Type::RED_FLOWER] = false;
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::WALL][Collider::Type::MOON] = false;
 	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = false;
@@ -22,6 +23,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ROCK][Collider::Type::WALL] = false;
 	matrix[Collider::Type::ROCK][Collider::Type::ROCK] = false;
 	matrix[Collider::Type::ROCK][Collider::Type::FLOWER] = false;
+	matrix[Collider::Type::ROCK][Collider::Type::RED_FLOWER] = false;
 	matrix[Collider::Type::ROCK][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ROCK][Collider::Type::MOON] = false;
 	matrix[Collider::Type::ROCK][Collider::Type::ENEMY] = false;
@@ -30,14 +32,25 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::FLOWER][Collider::Type::WALL] = false;
 	matrix[Collider::Type::FLOWER][Collider::Type::ROCK] = false;
 	matrix[Collider::Type::FLOWER][Collider::Type::FLOWER] = false;
+	matrix[Collider::Type::FLOWER][Collider::Type::RED_FLOWER] = false;
 	matrix[Collider::Type::FLOWER][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::FLOWER][Collider::Type::MOON] = false;
 	matrix[Collider::Type::FLOWER][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::FLOWER][Collider::Type::PLAYER_SHOT] = true;
 
+	matrix[Collider::Type::RED_FLOWER][Collider::Type::WALL] = false;
+	matrix[Collider::Type::RED_FLOWER][Collider::Type::ROCK] = false;
+	matrix[Collider::Type::RED_FLOWER][Collider::Type::FLOWER] = false;
+	matrix[Collider::Type::RED_FLOWER][Collider::Type::RED_FLOWER] = false;
+	matrix[Collider::Type::RED_FLOWER][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::RED_FLOWER][Collider::Type::MOON] = false;
+	matrix[Collider::Type::RED_FLOWER][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::RED_FLOWER][Collider::Type::PLAYER_SHOT] = true;
+
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ROCK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::FLOWER] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::RED_FLOWER] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::MOON] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
@@ -46,6 +59,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::MOON][Collider::Type::WALL] = false;
 	matrix[Collider::Type::MOON][Collider::Type::ROCK] = false;
 	matrix[Collider::Type::MOON][Collider::Type::FLOWER] = false;
+	matrix[Collider::Type::MOON][Collider::Type::RED_FLOWER] = false;
 	matrix[Collider::Type::MOON][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::MOON][Collider::Type::MOON] = false;
 	matrix[Collider::Type::MOON][Collider::Type::ENEMY] = false;
@@ -54,6 +68,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::ROCK] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::FLOWER] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::RED_FLOWER] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::MOON] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
@@ -62,6 +77,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::WALL] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::ROCK] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::FLOWER] = true;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::RED_FLOWER] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::MOON] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::ENEMY] = false;
@@ -157,6 +173,9 @@ void ModuleCollisions::DebugDraw()
 			break;
 			case Collider::Type::FLOWER: // white
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
+			break;
+			case Collider::Type::RED_FLOWER: // black
+			App->render->DrawQuad(colliders[i]->rect, 0, 0, 0, alpha);
 			break;
 			case Collider::Type::PLAYER: // green
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);

@@ -10,6 +10,7 @@
 #include "ModulePlayer.h"
 #include "ModuleRock.h"
 #include "ModuleFlower.h"
+#include "ModuleRedFlower.h"
 #include "ModuleCT.h"
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
@@ -49,6 +50,7 @@ bool SceneLevel1::Start()
 	App->enemies->Enable();
 	App->rock->Enable();
 	App->flower->Enable();
+	App->red_flower->Enable();
 	App->tower->Enable();
 
 	return ret;
@@ -79,6 +81,7 @@ bool SceneLevel1::CleanUp()
 	App->enemies->Disable();
 	App->rock->Disable();
 	App->flower->Disable();
+	App->red_flower->Disable();
 	App->tower->Disable();
 
 	return true;
