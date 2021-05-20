@@ -8,6 +8,15 @@
 
 struct SDL_Texture;
 
+struct Flower {
+	Collider* colliderT = nullptr;
+	SDL_Texture* flowerT = nullptr;
+
+	int x;
+	int y;
+	bool isDestroyed = false;
+};
+
 class ModuleFlower : public Module
 {
 public:
@@ -25,7 +34,7 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
 
-	virtual void AddFlower(int x, int y);
+	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
 
@@ -35,8 +44,10 @@ public:
 	// The sprite rectangle for the rocks
 	SDL_Texture* flowerTexture = nullptr;
 
-	// Rock collider   no hace falta?
-	//Collider* collider[NUM_FLOWER] = { nullptr };
+	Flower flowers[NUM_FLOWERS] = { nullptr };
+
+	Flower CreateFlower(int x, int y, SDL_Texture* t);
+
 };
 
 #endif

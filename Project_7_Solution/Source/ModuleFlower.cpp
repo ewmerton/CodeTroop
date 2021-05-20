@@ -3,6 +3,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
+
 #include "SceneLevel1.h"
 
 ModuleFlower::ModuleFlower(bool startEnabled) : Module(startEnabled)
@@ -27,6 +28,12 @@ bool ModuleFlower::Start()
 	position.x = 56;
 	position.y = 57;
 
+	if (App->sceneLevel_1->IsEnabled() == true)
+	{
+		flowers[0] = CreateFlower(position.x, position.y, flowerTexture);
+		flowers[1] = CreateFlower(position.x + 16, position.y + 16, flowerTexture);
+	}
+
 	return ret;
 }
 
@@ -34,24 +41,56 @@ bool ModuleFlower::Start()
 update_status ModuleFlower::PostUpdate()
 {
 	// Draw everything --------------------------------------
-	if (App->sceneLevel_1->IsEnabled() == true)
+	for (int i = 0; i < NUM_FLOWERS; i++)
 	{
-		for (uint i = 0; i < 32 * 6; i += 32)
+		if (App->sceneLevel_1->IsEnabled() == true && !flowers[i].isDestroyed)
 		{
-			for (uint j = 0; j < 32 * 5; j += 32)
-			{
-				App->render->Blit(flowerTexture, position.x+i,position.y+j,NULL);
-			}
+			App->render->Blit(flowers[i].flowerT, flowers[i].x, flowers[i].y, NULL);
 		}
 	}
-	//App->render->Blit(flowerTexture, 56, 57, NULL);
+	
+
+	for (int i = 0; i < NUM_FLOWERS; i++)
+	{
+		if (flowers[i].isDestroyed == true)
+		{
+			flowers[i].colliderT->pendingToDelete = true;
+		}
+	}
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
-void ModuleFlower::AddFlower(int x, int y)
+void ModuleFlower::OnCollision(Collider* c1, Collider* c2)
 {
-	bool ret = true;
-	App->collisions->AddCollider({ x, y, 16, 16 }, Collider::Type::FLOWER);
+	for (uint i = 0; i < NUM_FLOWERS; ++i)
+	{
+		if (flowers[i].colliderT == c1 && !flowers[i].isDestroyed)
+		{
+			switch (c2->type)
+			{
+			case Collider::Type::PLAYER_SHOT:
+			{
+				flowers[i].isDestroyed = true;
+			} break;
 
-	//App->render->Blit(rockTexture, x, y, NULL);
+			default:
+				break;
+			}
+			break;
+		}
+	}
+}
+
+Flower ModuleFlower::CreateFlower(int x, int y, SDL_Texture* t)
+{
+	Flower f;
+
+	f.colliderT = App->collisions->AddCollider({ x, y, 16, 16 }, Collider::Type::FLOWER, this);
+	f.flowerT = t;
+	f.x = x;
+	f.y = y;
+	f.isDestroyed = false;
+
+	return f;
 }
