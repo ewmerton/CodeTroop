@@ -25,6 +25,8 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
 
+	
+
 public:
 
 	// Rock position in map

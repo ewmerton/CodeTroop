@@ -51,6 +51,8 @@ bool SceneLevel1::Start()
 	App->flower->Enable();
 	App->red_flower->Enable();
 	App->tower->Enable();
+	App->collisions->Enable();
+
 
 	return ret;
 }
@@ -76,12 +78,18 @@ update_status SceneLevel1::PostUpdate()
 
 bool SceneLevel1::CleanUp()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		//delete collider[i];
+		//collider[i] = nullptr;
+	}
 	App->player->Disable();
 	App->enemies->Disable();
 	App->rock->Disable();
 	App->flower->Disable();
 	App->red_flower->Disable();
 	App->tower->Disable();
+	App->collisions->Disable();
 
 	return true;
 }

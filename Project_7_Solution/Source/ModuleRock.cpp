@@ -6,6 +6,8 @@
 #include "ModuleCollisions.h"
 
 #include "SceneLevel1.h"
+#include "SceneLevel2.h"
+
 
 ModuleRock::ModuleRock(bool startEnabled) : Module(startEnabled)
 {
@@ -50,6 +52,11 @@ bool ModuleRock::Start()
 		n = 0;
 	}
 
+	if (App->sceneLevel_2->IsEnabled() == true)
+	{
+		
+	}
+
 	return ret;
 }
 
@@ -76,3 +83,4 @@ update_status ModuleRock::PostUpdate()
 
 	return update_status::UPDATE_CONTINUE;
 }
+

@@ -5,6 +5,7 @@
 #include "ModuleCollisions.h"
 
 #include "SceneLevel1.h"
+#include "SceneLevel2.h"
 
 ModuleRedFlower::ModuleRedFlower(bool startEnabled) : Module(startEnabled)
 {
@@ -38,8 +39,8 @@ bool ModuleRedFlower::Start()
 
 	flowerTexture = App->textures->Load("Assets/RedFlower_Destroy.png");  
 
-	position.x = 88;
-	position.y = 57;
+	position.x = 24;
+	position.y = 41;
 
 	for (int i = 0; i < NUM_RED_FLOWERS; i++)
 	{
@@ -47,6 +48,15 @@ bool ModuleRedFlower::Start()
 	}
 
 	if (App->sceneLevel_1->IsEnabled() == true)
+	{
+		red_flowers[0] = CreateRedFlower(position.x+64, position.y+32, flowerTexture);
+		red_flowers[1] = CreateRedFlower(position.x + 128, position.y + 32, flowerTexture);
+		
+		red_flowers[2] = CreateRedFlower(position.x + 64, position.y + 128, flowerTexture);
+		red_flowers[3] = CreateRedFlower(position.x + 128, position.y + 128, flowerTexture);
+
+	}
+	if (App->sceneLevel_2->IsEnabled() == true)
 	{
 		red_flowers[0] = CreateRedFlower(position.x, position.y, flowerTexture);
 		red_flowers[1] = CreateRedFlower(position.x + 16, position.y + 16, flowerTexture);
@@ -79,6 +89,7 @@ update_status ModuleRedFlower::Update()
 	return update_status::UPDATE_CONTINUE;
 }
 
+
 // Update: draw background
 update_status ModuleRedFlower::PostUpdate()
 {
@@ -89,10 +100,17 @@ update_status ModuleRedFlower::PostUpdate()
 		{
 			App->render->Blit(red_flowers[i].flowerT, red_flowers[i].x, red_flowers[i].y, &(currentAnimation[i]->GetCurrentFrame()));
 		}
+		
+		if (App->sceneLevel_2->IsEnabled() == true && !red_flowers[i].destroyed)
+		{
+			App->render->Blit(red_flowers[i].flowerT, red_flowers[i].x, red_flowers[i].y, &(currentAnimation[i]->GetCurrentFrame()));
+		}
 	}
 
 	return update_status::UPDATE_CONTINUE;
 }
+
+
 
 void ModuleRedFlower::OnCollision(Collider* c1, Collider* c2)
 {

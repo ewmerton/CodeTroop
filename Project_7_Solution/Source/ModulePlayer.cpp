@@ -250,7 +250,7 @@ update_status ModulePlayer::Update()
 			destroyedCountdown--;
 			if (destroyedCountdown <= 0)
 			{
-				App->fade->FadeToBlack(App->getScene->GetActualScene(), (Module*)App->sceneIntro, 60);
+				App->fade->FadeToBlack(App->getScene->GetActualScene(), App->getScene->GetActualScene(), 60);
 			}
 		}
 	}

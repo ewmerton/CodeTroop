@@ -36,9 +36,6 @@ bool SceneIntro::Start()
 	changeTex = false;
 	cd = 0;
 
-	App->getScene->Disable();
-	App->collisions->Disable();
-
 	return ret;
 }
 
@@ -97,7 +94,6 @@ update_status SceneIntro::PostUpdate()
 bool SceneIntro::CleanUp()
 {
 	App->getScene->Enable();
-	App->collisions->Enable();
 
 	return true;
 }

@@ -59,13 +59,15 @@ bool SceneLevel2::Start()
 	App->flower->Enable();
 	App->red_flower->Enable();
 	App->tower->Enable();
+	App->collisions->Enable();
+
 
 	return ret;
 }
 
 update_status SceneLevel2::Update()
 {
-	App->render->camera.x += 2;
+	App->render->camera.x += 0;
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -91,6 +93,8 @@ bool SceneLevel2::CleanUp()
 	App->flower->Disable();
 	App->red_flower->Disable();
 	App->tower->Disable();
+	App->collisions->Disable();
+
 
 	return true;
 }
