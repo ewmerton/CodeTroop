@@ -78,9 +78,9 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::ROCK] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::FLOWER] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::RED_FLOWER] = true;
-	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::MOON] = false;
-	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER_SHOT] = false;
 }
 

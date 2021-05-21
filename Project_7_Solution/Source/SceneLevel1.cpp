@@ -1,5 +1,4 @@
 #include "SceneLevel1.h"
-#include "getScene.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -31,7 +30,6 @@ bool SceneLevel1::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Map.png");
-	hudTexture = App->textures->Load("Assets/HUD.png");
 
 	App->audio->PlayMusic("Assets/Jumming_Jungle.ogg", 1.0f);
 
@@ -68,7 +66,6 @@ update_status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
-	App->render->Blit(hudTexture, 0, 1);
 
 
 

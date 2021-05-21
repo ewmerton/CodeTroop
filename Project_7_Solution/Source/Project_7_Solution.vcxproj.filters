@@ -121,6 +121,9 @@
     <ClInclude Include="ModuleRedFlower.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="SceneLevel2.h">
+      <Filter>Source Files\Modules\SceneLevel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -206,6 +209,9 @@
     </ClCompile>
     <ClCompile Include="ModuleRedFlower.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLevel2.cpp">
+      <Filter>Source Files\Modules\SceneLevel</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

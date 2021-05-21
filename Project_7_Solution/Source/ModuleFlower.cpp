@@ -5,6 +5,7 @@
 #include "ModuleCollisions.h"
 
 #include "SceneLevel1.h"
+#include "SceneLevel2.h"
 
 ModuleFlower::ModuleFlower(bool startEnabled) : Module(startEnabled)
 {
@@ -33,6 +34,11 @@ bool ModuleFlower::Start()
 		flowers[0] = CreateFlower(position.x, position.y, flowerTexture);
 		flowers[1] = CreateFlower(position.x + 16, position.y + 16, flowerTexture);
 	}
+	else if (App->sceneLevel_2->IsEnabled() == true)
+	{
+		flowers[0] = CreateFlower(position.x, position.y, flowerTexture);
+		flowers[1] = CreateFlower(position.x + 16, position.y + 16, flowerTexture);
+	}
 
 	return ret;
 }
@@ -44,6 +50,10 @@ update_status ModuleFlower::PostUpdate()
 	for (int i = 0; i < NUM_FLOWERS; i++)
 	{
 		if (App->sceneLevel_1->IsEnabled() == true && !flowers[i].isDestroyed)
+		{
+			App->render->Blit(flowers[i].flowerT, flowers[i].x, flowers[i].y, NULL);
+		}
+		else if (App->sceneLevel_2->IsEnabled() == true && !flowers[i].isDestroyed)
 		{
 			App->render->Blit(flowers[i].flowerT, flowers[i].x, flowers[i].y, NULL);
 		}

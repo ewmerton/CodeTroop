@@ -76,6 +76,7 @@ public:
 
 	// Font
 	int nFont = -1;
+	int hudTexture = -1;
 
 	// Player's lifes
 	uint lifes = 1;

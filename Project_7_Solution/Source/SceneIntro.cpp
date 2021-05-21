@@ -67,6 +67,15 @@ update_status SceneIntro::Update()
 		}
 	}
 
+	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 0);
+	}
+	else if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 0);
+	}
+
 	return update_status::UPDATE_CONTINUE;
 }
 
