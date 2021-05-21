@@ -9,6 +9,8 @@
 #include "SDL/include/SDL_render.h"
 #include "SDL/include/SDL_scancode.h"
 
+#include "SceneLevel2.h"
+
 ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled)
 {
 
@@ -63,13 +65,18 @@ update_status ModuleRender::Update()
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_REPEAT)
 		camera.y += cameraSpeed;
 
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_REPEAT && camera.x > 0)
 		camera.x -= cameraSpeed;
 
 	if (camera.x < 0) camera.x = 0;
 
-	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_REPEAT && camera.x < 768)
 		camera.x += cameraSpeed;
+
+	if (App->sceneLevel_2->IsEnabled())
+	{
+		if (camera.x > 768) camera.x = 768;
+	}
 
 
 	return update_status::UPDATE_CONTINUE;
@@ -128,6 +135,20 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* sect
 	}
 
 	return ret;
+}
+
+void ModuleRender::BlitHUD(SDL_Texture* texture, int x, int y, const SDL_Rect* section)
+{
+	SDL_Rect spriteRect;
+
+	spriteRect.w = section->x;
+	spriteRect.h = section->y;
+
+
+		App->render->Blit(texture, x, y, &spriteRect);
+
+		// Advance the position where we blit the next character
+		x += spriteRect.w;
 }
 
 bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, float speed)

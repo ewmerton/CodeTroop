@@ -35,9 +35,9 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* brTexture = nullptr;
-
-	// HUD Texture
 	SDL_Texture* hudTexture = nullptr;
+
+	float x = 0;
 
 };
 

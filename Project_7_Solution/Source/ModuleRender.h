@@ -44,6 +44,8 @@ public:
 	// Param speed		- The amount of effect that is applied to the sprite depending on the camera
 	bool Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section = nullptr, float speed = 1.0f, bool useCamera = true);
 
+	void BlitHUD(SDL_Texture* texture, int x, int y, const SDL_Rect* section);
+
 	bool DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, float speed = 1.0f);
 
 public:

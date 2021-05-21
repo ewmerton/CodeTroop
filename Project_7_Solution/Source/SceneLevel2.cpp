@@ -29,6 +29,8 @@ bool SceneLevel2::Start()
 
 	bool ret = true;
 
+	x = 0;
+
 	bgTexture = App->textures->Load("Assets/MapLevel2.png");
 	brTexture = App->textures->Load("Assets/Barandilla.png");
 	hudTexture = App->textures->Load("Assets/HUD.png");
@@ -63,7 +65,7 @@ bool SceneLevel2::Start()
 
 update_status SceneLevel2::Update()
 {
-	App->render->camera.x += 0;
+	App->render->camera.x += 2;
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -74,7 +76,7 @@ update_status SceneLevel2::PostUpdate()
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(brTexture, 260, 127, NULL);
-	App->render->Blit(hudTexture, 0, 1);
+	App->render->BlitHUD(hudTexture, 0, 0, &App->render->camera);
 
 
 

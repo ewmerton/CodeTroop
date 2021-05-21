@@ -103,7 +103,6 @@ bool ModulePlayer::Start()
 
 
 	char lookupTable[] = { "0123456789" };
-	hudTexture = App->fonts->Load("Assets/HUD.png", lookupTable, 1);
 	nFont = App->fonts->Load("Assets/hud_font.png", lookupTable, 1);
 
 	return ret;
@@ -263,8 +262,6 @@ update_status ModulePlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
-		App->fonts->BlitText(0, 0, nFont, lifesText);
-
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 
