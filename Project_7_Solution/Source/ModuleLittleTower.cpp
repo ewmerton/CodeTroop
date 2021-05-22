@@ -1,4 +1,5 @@
 #include "ModuleLittleTower.h"
+
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -31,9 +32,8 @@ bool ModuleLittleTower::Start()
 
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
-		little_towers[0] = CreateLittleTower(position.x + 80, position.y+16, little_towerTexture);
-		little_towers[1] = CreateLittleTower(position.x + 144, position.y+16, little_towerTexture);
-		little_towers[2] = CreateLittleTower(position.x + 160, position.y+16, little_towerTexture);
+		little_towers[0] = CreateLittleTower(position.x + 80, position.y + 16, little_towerTexture);
+		little_towers[1] = CreateLittleTower(position.x + 144, position.y + 16, little_towerTexture);
 
 	}
 	else if (App->sceneLevel_2->IsEnabled() == true)
@@ -41,6 +41,11 @@ bool ModuleLittleTower::Start()
 		//flowers[0] = CreateFlower(position.x, position.y, flowerTexture);
 		//flowers[1] = CreateFlower(position.x + 16, position.y + 16, flowerTexture);
 
+		for (int i = 0; i < NUM_LITTLE_TOWERS; i++)
+		{
+			// i = numero de torres de este nivel
+			little_towers[i].little_towerT = nullptr;
+		}
 	}
 
 	return ret;
@@ -101,7 +106,7 @@ Little_tower ModuleLittleTower::CreateLittleTower(int x, int y, SDL_Texture* t)
 {
 	Little_tower f;
 
-	f.colliderT = App->collisions->AddCollider({ x, y + 8, 16, 16 }, Collider::Type::LITTLE_TOWER, this);
+	f.colliderT = App->collisions->AddCollider({ x, y + 16, 16, 16 }, Collider::Type::FLOWER, this);
 	f.little_towerT = t;
 	f.x = x;
 	f.y = y;

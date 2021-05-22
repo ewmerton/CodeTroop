@@ -82,7 +82,12 @@ bool ModulePlayer::Start()
 	currentAnimation = &idleAnim;
 
 	position.x = 24;
-	position.y = 41;
+	position.y = 66;
+
+	freezeUp = false;
+	freezeDown = false;
+	freezeLeft = false;
+	freezeRight = false;
 
 	// Standard values
 	lifes = 1;
@@ -99,7 +104,7 @@ bool ModulePlayer::Start()
 	destroyedCountdown = 60;
 	freeze = false;
 
-	collider = App->collisions->AddCollider({ position.x, position.y + 7, 15, 15 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y + 7, 16, 16 }, Collider::Type::PLAYER, this);
 
 
 	char lookupTable[] = { "0123456789" };
@@ -115,7 +120,15 @@ update_status ModulePlayer::Update()
 		freeze = true;
 	}
 
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && !freeze)
+	if (freeze)
+	{
+		freezeUp = true;
+		freezeDown = true;
+		freezeLeft = true;
+		freezeRight = true;
+	}
+
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_DOWN && !freezeLeft)
 	{
 		position.x -= speed;
 		if (currentAnimation != &leftAnim)
@@ -125,7 +138,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && !freeze)
+	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN && !freezeRight)
 	{
 		position.x += speed;
 		if (currentAnimation != &rightAnim)
@@ -135,7 +148,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && !freeze)
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && !freezeDown)
 	{
 		position.y += speed;
 		if (currentAnimation != &downAnim)
@@ -145,7 +158,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && !freeze)
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && !freezeUp)
 	{
 		position.y -= speed;
 		if (currentAnimation != &upAnim)
@@ -306,7 +319,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			}; break;
 
 		case Collider::Type::ROCK:
-			if (c1->rect.y < c2->rect.y && c1->rect.y + c1->rect.h - 2 < c2->rect.y) //coming from up
+			/*if (c1->rect.y < c2->rect.y && c1->rect.y + c1->rect.h - 2 < c2->rect.y) //coming from up
 			{
 				position.y -= speed;
 			}
@@ -321,45 +334,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			else if (c1->rect.x + 2 > c2->rect.x + c2->rect.w) //coming from right
 			{
 				position.x += speed;
-			}; break;
-
-		case Collider::Type::LITTLE_TOWER:
-			if (c1->rect.y < c2->rect.y && c1->rect.y + c1->rect.h - 2 < c2->rect.y) //coming from up
-			{
-				position.y -= speed;
-			}
-			else if (c1->rect.y + 2 > c2->rect.y + c2->rect.h) //coming from down
-			{
-				position.y += speed;
-			}
-			if (c1->rect.x < c2->rect.x && c1->rect.x + c1->rect.w - 2 < c2->rect.x) //coming from left
-			{
-				position.x -= speed;
-			}
-			else if (c1->rect.x + 2 > c2->rect.x + c2->rect.w) //coming from right
-			{
-				position.x += speed;
-			}; break;
+			}; break;*/
 
 		case Collider::Type::FLOWER:
-			if (c1->rect.y < c2->rect.y && c1->rect.y + c1->rect.h - 2 < c2->rect.y) //coming from up
-			{
-				position.y -= speed;
-			}
-			else if (c1->rect.y + 2 > c2->rect.y + c2->rect.h) //coming from down
-			{
-				position.y += speed;
-			}
-			if (c1->rect.x < c2->rect.x && c1->rect.x + c1->rect.w - 2 < c2->rect.x) //coming from left
-			{
-				position.x -= speed;
-			}
-			else if (c1->rect.x + 2 > c2->rect.x + c2->rect.w) //coming from right
-			{
-				position.x += speed;
-			}; break;
-
-		case Collider::Type::RED_FLOWER:
 			if (c1->rect.y < c2->rect.y && c1->rect.y + c1->rect.h - 2 < c2->rect.y) //coming from up
 			{
 				position.y -= speed;
@@ -406,10 +383,75 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 }
 
+/*void ModulePlayer::NextTo(Collider* c[200], int n)
+{
+	bool retUp = false;
+	if (destroyed == false)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			//switch (c[i]->type)
+			//{
+			//case Collider::Type::ROCK:
+			if (c[i]->type == Collider::Type::ROCK)
+			{
+				if (collider->NextToFromUp(c[i]->rect))
+				{
+					retUp = true;
+					break;
+				}
+				else
+				{
+					retUp = false;
+				}
+
+				if (retUp) //coming from up
+				{
+					SpawnBomb(0);
+					freezeDown = true;
+				}
+				else
+				{
+					App->audio->PlayFx(placeBomb);
+					//freezeDown = false;
+				}
+			}
+				
+				/*if (collider->NextToFromDown(c->rect)) //coming from down
+				{
+					freezeUp = true;
+				}
+				else
+				{
+					freezeUp = false;
+				}
+				if (collider->NextToFromLeft(c->rect)) //coming from left
+				{
+					freezeRight = true;
+				}
+				else
+				{
+					freezeRight = false;
+				}
+				if (collider->NextToFromRight(c->rect)) //coming from right
+				{
+					freezeLeft = true;
+				}
+				else
+				{
+					freezeLeft = false;
+				}; break;
+			default:
+				break;
+			}
+		}
+	}
+}*/
+
 void ModulePlayer::SpawnBomb(int n)
 {
 	App->particles->AddParticle(App->particles->bomb, position.x, position.y + 6, Collider::Type::NONE, 0);
-	App->audio->PlayFx(placeBomb);
+	//App->audio->PlayFx(placeBomb);
 	SaveBombPos(position.x, position.y, n);
 	isCounting[n] = true;
 	a_bombs--;

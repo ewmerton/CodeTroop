@@ -31,7 +31,7 @@ bool ModuleFlower::Start()
 
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
-		flowers[0] = CreateFlower(position.x+80, position.y, flowerTexture);
+		flowers[0] = CreateFlower(position.x + 80, position.y, flowerTexture);
 		flowers[1] = CreateFlower(position.x + 144, position.y, flowerTexture);
 		flowers[2] = CreateFlower(position.x + 160, position.y, flowerTexture);
 
@@ -56,12 +56,12 @@ bool ModuleFlower::Start()
 		flowers[17] = CreateFlower(position.x + 128, position.y + 80, flowerTexture);
 		flowers[18] = CreateFlower(position.x + 160, position.y + 80, flowerTexture);
 
-		flowers[19] = CreateFlower(position.x + 16, position.y + 96, flowerTexture);
+		/*flowers[19] = CreateFlower(position.x + 16, position.y + 96, flowerTexture);
 		flowers[20] = CreateFlower(position.x + 32, position.y + 96, flowerTexture);
 		flowers[21] = CreateFlower(position.x + 48, position.y + 96, flowerTexture);
 		flowers[22] = CreateFlower(position.x + 80, position.y + 96, flowerTexture);
 		flowers[23] = CreateFlower(position.x + 96, position.y + 96, flowerTexture);
-		flowers[24] = CreateFlower(position.x + 176, position.y + 96, flowerTexture);
+		flowers[24] = CreateFlower(position.x + 176, position.y + 96, flowerTexture);*/
 		
 		flowers[25] = CreateFlower(position.x, position.y + 112, flowerTexture);
 		flowers[26] = CreateFlower(position.x + 32, position.y + 112, flowerTexture);
@@ -87,6 +87,12 @@ bool ModuleFlower::Start()
 	{
 		flowers[0] = CreateFlower(position.x, position.y, flowerTexture);
 		flowers[1] = CreateFlower(position.x + 16, position.y + 16, flowerTexture);
+
+		for (int i = 2; i < NUM_FLOWERS; i++)
+		{
+			// i = numero de flores de este nivel
+			flowers[i].flowerT = nullptr;
+		}
 		
 	}
 

@@ -40,7 +40,7 @@ bool ModuleCT::Start()
 	currentAnimation = &idleAnim;
 
 	//Object colliders
-	position.x = 105;
+	position.x = 104;
 	position.y = 82;
 
 	if (App->sceneLevel_1->IsEnabled() == true)

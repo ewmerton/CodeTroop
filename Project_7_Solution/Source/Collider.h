@@ -12,9 +12,7 @@ struct Collider
 		NONE = -1,
 		WALL,
 		ROCK,
-		LITTLE_TOWER,
 		FLOWER,
-		RED_FLOWER,
 		PLAYER,
 		MOON,
 		ENEMY,
@@ -29,6 +27,14 @@ struct Collider
 	void SetPos(int x, int y);
 
 	bool Intersects(const SDL_Rect& r) const;
+
+	bool NextToFromUp(const SDL_Rect& r) const;
+
+	bool NextToFromDown(const SDL_Rect& r) const;
+
+	bool NextToFromLeft(const SDL_Rect& r) const;
+
+	bool NextToFromRight(const SDL_Rect& r) const;
 
 	//Variables
 	SDL_Rect rect;

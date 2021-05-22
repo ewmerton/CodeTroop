@@ -60,6 +60,12 @@ bool ModuleRedFlower::Start()
 	{
 		red_flowers[0] = CreateRedFlower(position.x, position.y, flowerTexture);
 		red_flowers[1] = CreateRedFlower(position.x + 16, position.y + 16, flowerTexture);
+
+		for (int i = 2; i < NUM_RED_FLOWERS; i++)
+		{
+			// i = numero de flores de este nivel
+			red_flowers[i].flowerT = nullptr;
+		}
 	}
 
 
@@ -76,7 +82,7 @@ update_status ModuleRedFlower::Update()
 		if (red_flowers[i].isDestroyed)
 		{
 			red_flowers[i].dCount++;
-			if (red_flowers[i].dCount >= 115)
+			if (red_flowers[i].dCount >= 90)
 			{
 				red_flowers[i].destroyed = true;
 			}
@@ -138,7 +144,7 @@ RedFlower ModuleRedFlower::CreateRedFlower(int x, int y, SDL_Texture* t)
 {
 	RedFlower f;
 
-	f.colliderT = App->collisions->AddCollider({ x, y, 16, 16 }, Collider::Type::RED_FLOWER, this);
+	f.colliderT = App->collisions->AddCollider({ x, y, 16, 16 }, Collider::Type::FLOWER, this);
 	f.flowerT = t;
 	f.x = x;
 	f.y = y;

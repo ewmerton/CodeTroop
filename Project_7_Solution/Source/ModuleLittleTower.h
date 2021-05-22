@@ -4,7 +4,7 @@
 #include "Module.h"
 #include "p2Point.h"
 
-#define NUM_LITTLE_TOWERS 4
+#define NUM_LITTLE_TOWERS 2
 
 struct SDL_Texture;
 

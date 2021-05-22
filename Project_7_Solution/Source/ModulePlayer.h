@@ -34,6 +34,8 @@ public:
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
+	void NextTo(Collider* c[], int n);
+
 public:
 	// Position of the player in the map
 	iPoint position;
@@ -44,7 +46,8 @@ public:
 	uint bx[MAX_BOMBS], by[MAX_BOMBS];
 
 	// The speed in which we move the player (pixels per frame)
-	int speed = 1;
+	int speed = 16;
+	bool freezeUp, freezeDown, freezeLeft, freezeRight;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;

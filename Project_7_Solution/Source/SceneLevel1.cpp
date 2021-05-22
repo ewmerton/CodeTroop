@@ -73,18 +73,11 @@ update_status SceneLevel1::PostUpdate()
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(hudTexture, 0, 1, NULL);
 
-
-
 	return update_status::UPDATE_CONTINUE;
 }
 
 bool SceneLevel1::CleanUp()
 {
-	for (int i = 0; i < 4; i++)
-	{
-		//delete collider[i];
-		//collider[i] = nullptr;
-	}
 	App->player->Disable();
 	App->enemies->Disable();
 	App->rock->Disable();
