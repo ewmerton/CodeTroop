@@ -88,6 +88,7 @@
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleFlower.h" />
     <ClInclude Include="ModuleFonts.h" />
+    <ClInclude Include="ModuleLittleTower.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleRedFlower.h" />
     <ClInclude Include="ModuleRock.h" />
@@ -121,6 +122,7 @@
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleFlower.cpp" />
     <ClCompile Include="ModuleFonts.cpp" />
+    <ClCompile Include="ModuleLittleTower.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModuleRedFlower.cpp" />
     <ClCompile Include="ModuleRock.cpp" />

@@ -8,6 +8,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModuleRock.h"
+#include "ModuleLittleTower.h"
 #include "ModuleFlower.h"
 #include "ModuleRedFlower.h"
 #include "ModuleCT.h"
@@ -48,6 +49,7 @@ bool SceneLevel1::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->rock->Enable();
+	App->little_tower->Enable();
 	App->flower->Enable();
 	App->red_flower->Enable();
 	App->tower->Enable();
@@ -86,6 +88,7 @@ bool SceneLevel1::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->rock->Disable();
+	App->little_tower->Disable();
 	App->flower->Disable();
 	App->red_flower->Disable();
 	App->tower->Disable();

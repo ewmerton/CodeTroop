@@ -11,6 +11,7 @@
 #include "SceneLevel1.h"
 #include "SceneLevel2.h"
 #include "ModuleRock.h"
+#include "ModuleLittleTower.h"
 #include "ModuleFlower.h"
 #include "ModuleRedFlower.h"
 #include "ModuleCT.h"
@@ -37,17 +38,19 @@ Application::Application()
 	modules[7] = sceneLevel_2 = new SceneLevel2(false);
 
 	modules[8] = rock = new ModuleRock(false);
+	
 	modules[9] = flower = new ModuleFlower(false);
 	modules[10] = red_flower = new ModuleRedFlower(false);
-	modules[11] = tower = new ModuleCT(false);
-	modules[12] = particles = new ModuleParticles(true);
-	modules[13] = player = new ModulePlayer(false);
-	modules[14] = enemies = new ModuleEnemies(false);
+	modules[11] = little_tower = new ModuleLittleTower(false);
+	modules[12] = tower = new ModuleCT(false);
+	modules[13] = particles = new ModuleParticles(true);
+	modules[14] = player = new ModulePlayer(false);
+	modules[15] = enemies = new ModuleEnemies(false);
 
-	modules[15] = collisions = new ModuleCollisions(false);
-	modules[16] = fonts = new ModuleFonts(true);
-	modules[17] = render = new ModuleRender(true);
-	modules[18] = fade = new ModuleFadeToBlack(true);
+	modules[16] = collisions = new ModuleCollisions(false);
+	modules[17] = fonts = new ModuleFonts(true);
+	modules[18] = render = new ModuleRender(true);
+	modules[19] = fade = new ModuleFadeToBlack(true);
 }
 
 Application::~Application()
