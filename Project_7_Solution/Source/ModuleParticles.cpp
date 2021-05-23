@@ -58,9 +58,9 @@ bool ModuleParticles::Start()
 	exUp.anim.loop = false;
 	exUp.anim.speed = 0.03f;
 	// Down
-	exDown.anim.PushBack({ 32, 80, 16, 16 });
-	exDown.anim.PushBack({ 16, 80, 16, 16 });
 	exDown.anim.PushBack({ 0, 80, 16, 16 });
+	exDown.anim.PushBack({ 16, 80, 16, 16 });
+	exDown.anim.PushBack({ 32, 80, 16, 16 });
 	exDown.anim.loop = false;
 	exDown.anim.speed = 0.03f;
 

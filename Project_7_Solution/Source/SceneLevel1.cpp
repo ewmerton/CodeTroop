@@ -72,7 +72,7 @@ update_status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
-	App->render->Blit(hudTexture, 0, 1, NULL);
+	App->render->Blit(hudTexture, 0, 0, NULL);
 
 	return update_status::UPDATE_CONTINUE;
 }

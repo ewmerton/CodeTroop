@@ -91,8 +91,6 @@ bool ModulePlayer::Start()
 	isCollLeft = false;
 	isCollRight = false;
 
-	wCount = 0;
-
 	// Standard values
 	lifes = 1;
 	score = 0;
@@ -162,10 +160,7 @@ update_status ModulePlayer::Update()
 		freezeRight = false;
 	}
 
-	wCount++;
-	
-
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && !freeze)
 	{
 		if (currentAnimation != &leftAnim)
 		{
@@ -174,15 +169,11 @@ update_status ModulePlayer::Update()
 		}
 		if (!freezeLeft)
 		{
-			if (wCount >= 20)
-			{
-				position.x -= speed;
-				wCount = 0;
-			}
+			position.x -= speed;
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && !freeze)
 	{
 		if (currentAnimation != &rightAnim)
 		{
@@ -191,15 +182,11 @@ update_status ModulePlayer::Update()
 		}
 		if (!freezeRight)
 		{
-			if (wCount >= 20)
-			{
-				position.x += speed;
-				wCount = 0;
-			}
+			position.x += speed;
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && !freeze)
 	{
 		if (currentAnimation != &downAnim)
 		{
@@ -208,15 +195,11 @@ update_status ModulePlayer::Update()
 		}
 		if (!freezeDown)
 		{
-			if (wCount >= 20)
-			{
-				position.y += speed;
-				wCount = 0;
-			}
+			position.y += speed;
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && !freeze)
 	{		
 		if (currentAnimation != &upAnim)
 		{
@@ -225,25 +208,15 @@ update_status ModulePlayer::Update()
 		}
 		if (!freezeUp)
 		{
-			if (wCount >= 20)
-			{
-				position.y -= speed;
-				wCount = 0;
-			}
+			position.y -= speed;
 		}
 	}
 
 	// Bomb system
-	uint num = 0;
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && !freeze)
 	{
-		App->bomb->PlaceBomb(position);
-	}
-
-	// Provisional
-	if (App->input->keys[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN && !freeze)
-	{
-		App->bomb->NewBomb();
+		iPoint pos = CenterInTile({ position.x, position.y + 7 });
+		App->bomb->PlaceBomb(pos);
 	}
 
 	// GodMode
@@ -382,14 +355,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			} break;
 
 		case Collider::Type::ROCK:
-			if (c1->rect.x == c2->rect.x && c1->rect.y == c2->rect.y)
+			if (c1->rect.y == c2->rect.y)
 			{
 				freezeUp = true;
 				isCollUp = true;
 			} break;
 
 		case Collider::Type::FLOWER:
-			if (c1->rect.x == c2->rect.x && c1->rect.y == c2->rect.y)
+			if (c1->rect.y == c2->rect.y)
 			{
 				freezeUp = true;
 				isCollUp = true;
@@ -410,14 +383,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			} break;
 
 		case Collider::Type::ROCK:
-			if (c1->rect.x == c2->rect.x && c1->rect.y == c2->rect.y)
+			if (c1->rect.y == c2->rect.y)
 			{
 				freezeDown = true;
 				isCollDown = true;
 			} break;
 
 		case Collider::Type::FLOWER:
-			if (c1->rect.x == c2->rect.x && c1->rect.y == c2->rect.y)
+			if (c1->rect.y == c2->rect.y)
 			{
 				freezeDown = true;
 				isCollDown = true;
@@ -438,14 +411,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			} break;
 
 		case Collider::Type::ROCK:
-			if (c1->rect.x == c2->rect.x && c1->rect.y == c2->rect.y)
+			if (c1->rect.x == c2->rect.x)
 			{
 				freezeLeft = true;
 				isCollLeft = true;
 			} break;
 
 		case Collider::Type::FLOWER:
-			if (c1->rect.x == c2->rect.x && c1->rect.y == c2->rect.y)
+			if (c1->rect.x == c2->rect.x)
 			{
 				freezeLeft = true;
 				isCollLeft = true;
@@ -466,14 +439,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			} break;
 
 		case Collider::Type::ROCK:
-			if (c1->rect.x == c2->rect.x && c1->rect.y == c2->rect.y)
+			if (c1->rect.x == c2->rect.x)
 			{
 				freezeRight = true;
 				isCollRight = true;
 			} break;
 
 		case Collider::Type::FLOWER:
-			if (c1->rect.x == c2->rect.x && c1->rect.y == c2->rect.y)
+			if (c1->rect.x == c2->rect.x)
 			{
 				freezeRight = true;
 				isCollRight = true;
@@ -482,4 +455,41 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
+}
+
+iPoint ModulePlayer::CenterInTile(iPoint p)
+{
+	iPoint f_point;
+
+	if ((p.x - 24) % 16 == 0)
+	{
+		f_point.x = p.x;
+
+		if ((p.y - 34) % 16 == 0)
+		{
+			f_point.y = p.y;
+		}
+		else
+		{
+			while ((p.y - 34) % 16 != 0)
+			{
+				p.y += 1;
+			}
+
+			f_point.y = p.y - 9;
+		}
+	}
+	else
+	{
+		f_point.y = p.y;
+
+		while ((p.x - 24) % 16 != 0)
+		{
+			p.x -= 1;
+		}
+
+		f_point.x = p.x;
+	}
+
+	return f_point;
 }

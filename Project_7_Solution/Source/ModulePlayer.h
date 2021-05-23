@@ -38,12 +38,12 @@ public:
 	// Position of the player in the map
 	iPoint position;
 
+	iPoint CenterInTile(iPoint p);
+
 	// The speed in which we move the player (pixels per frame)
-	int speed = 16;
+	int speed = 1;
 	bool freezeUp, freezeDown, freezeLeft, freezeRight;
 	bool isCollUp, isCollDown, isCollLeft, isCollRight;
-
-	int wCount;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;

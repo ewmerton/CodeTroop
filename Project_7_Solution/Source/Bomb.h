@@ -6,17 +6,6 @@
 #include "Module.h"
 #include "p2Point.h"
 
-#define MAX_BOMBS 5
-
-struct Bomb {
-	Collider* collider = nullptr;
-
-	iPoint position, aP;
-
-	bool Cooldown = false ;
-	uint count = 0 ;
-};
-
 class ModuleBomb : public Module
 {
 public:
@@ -29,17 +18,19 @@ public:
 
 	bool Start() override;
 
+	update_status PreUpdate() override;
+
 	update_status Update() override;
 
-	//Methods
-	void NewBomb();
+	update_status PostUpdate() override;
 
+	void OnCollision(Collider* c1, Collider* c2) override;
+
+	//Methods
 	void PlaceBomb(iPoint p);
 
 private:
-	void SpawnBomb(iPoint p, int i);
-
-	iPoint SavePosition(iPoint p, int n);
+	void SpawnBomb(iPoint p);
 
 	void BombExplosion(iPoint p);
 
@@ -47,12 +38,27 @@ private:
 	uint explote = 0;
 
 	// Array for bombs
-	uint n_bombs = 1;
 	uint a_bombs = 1;
 
-	uint n = 0;
+	//Bomb bombs/*[MAX_BOMBS]*/ = { nullptr };
+	Collider* collider = nullptr;
 
-	Bomb bombs[MAX_BOMBS] = { nullptr };
+	iPoint position;
+
+	bool Cooldown = false;
+	uint count = 0;
+
+	Collider* cUp = nullptr;
+	Collider* cDown = nullptr;
+	Collider* cLeft = nullptr;
+	Collider* cRight = nullptr;
+	bool continueUp, continueDown, continueLeft, continueRight;
+	bool placed;
+
+	Collider* extraUp = nullptr;
+	Collider* extraDown = nullptr;
+	Collider* extraLeft = nullptr;
+	Collider* extraRight = nullptr;
 };
 
 #endif
