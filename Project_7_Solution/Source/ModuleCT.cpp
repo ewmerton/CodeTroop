@@ -45,12 +45,13 @@ bool ModuleCT::Start()
 
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
-		// Up
-		collider[0] = App->collisions->AddCollider({ position.x, position.y + 10, 48, 10 }, Collider::Type::ROCK, this);
-		// Left
-		collider[1] = App->collisions->AddCollider({ position.x, position.y + 20, 16, 34 }, Collider::Type::ROCK, this);
-		// Right
-		collider[2] = App->collisions->AddCollider({ position.x + 32, position.y + 20, 16, 34 }, Collider::Type::ROCK, this);
+		collider[0] = App->collisions->AddCollider({ position.x, position.y + 7, 16, 16 }, Collider::Type::ROCK, this);
+		collider[1] = App->collisions->AddCollider({ position.x + 16, position.y + 7, 16, 16 }, Collider::Type::ROCK, this);
+		collider[2] = App->collisions->AddCollider({ position.x + 32, position.y + 7, 16, 16 }, Collider::Type::ROCK, this);
+		collider[3] = App->collisions->AddCollider({ position.x, position.y + 23, 16, 16 }, Collider::Type::ROCK, this);
+		collider[4] = App->collisions->AddCollider({ position.x + 32, position.y + 23, 16, 16 }, Collider::Type::ROCK, this);
+		collider[5] = App->collisions->AddCollider({ position.x, position.y + 39, 16, 16 }, Collider::Type::ROCK, this);
+		collider[6] = App->collisions->AddCollider({ position.x + 32, position.y + 39, 16, 16 }, Collider::Type::ROCK, this);
 		// Moon
 		moon = App->collisions->AddCollider({ position.x + 16, position.y + 20, 16, 8 }, Collider::Type::MOON, this);
 

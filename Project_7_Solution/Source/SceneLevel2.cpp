@@ -53,6 +53,7 @@ bool SceneLevel2::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 181, 125);
 
 	// Enables
+	App->bomb->Enable();
 	App->player->Enable();
 	App->enemies->Enable();
 	App->rock->Enable();
@@ -87,6 +88,7 @@ update_status SceneLevel2::PostUpdate()
 
 bool SceneLevel2::CleanUp()
 {
+	App->bomb->Disable();
 	App->player->Disable();
 	App->enemies->Disable();
 	App->rock->Disable();

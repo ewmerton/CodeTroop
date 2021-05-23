@@ -5,6 +5,7 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "Bomb.h"
 #include "ModulePlayer.h"
 #include "GetScene.h"
 #include "SceneIntro.h"
@@ -44,13 +45,14 @@ Application::Application()
 	modules[11] = little_tower = new ModuleLittleTower(false);
 	modules[12] = tower = new ModuleCT(false);
 	modules[13] = particles = new ModuleParticles(true);
-	modules[14] = player = new ModulePlayer(false);
-	modules[15] = enemies = new ModuleEnemies(false);
+	modules[14] = bomb = new ModuleBomb(false);
+	modules[15] = player = new ModulePlayer(false);
+	modules[16] = enemies = new ModuleEnemies(false);
 
-	modules[16] = collisions = new ModuleCollisions(false);
-	modules[17] = fonts = new ModuleFonts(true);
-	modules[18] = render = new ModuleRender(true);
-	modules[19] = fade = new ModuleFadeToBlack(true);
+	modules[17] = collisions = new ModuleCollisions(false);
+	modules[18] = fonts = new ModuleFonts(true);
+	modules[19] = render = new ModuleRender(true);
+	modules[20] = fade = new ModuleFadeToBlack(true);
 }
 
 Application::~Application()

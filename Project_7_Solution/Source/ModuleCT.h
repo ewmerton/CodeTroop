@@ -42,7 +42,7 @@ public:
 	SDL_Texture* texture = nullptr;
 
 	// Tower collider -- 3 colliders
-	Collider* collider[3] = { nullptr };
+	Collider* collider[7] = { nullptr };
 	Collider* moon = nullptr;
 };
 

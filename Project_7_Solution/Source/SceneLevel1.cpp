@@ -38,14 +38,15 @@ bool SceneLevel1::Start()
 	//Border colliders
 	App->collisions->AddCollider({ 0, 25, 256, 16 }, Collider::Type::WALL); //up
 	App->collisions->AddCollider({ 0, 217, 256, 16 }, Collider::Type::WALL); //down
-	App->collisions->AddCollider({ 0, 25, 24, 208 }, Collider::Type::WALL); //left
-	App->collisions->AddCollider({ 232, 25, 24, 208 }, Collider::Type::WALL); //right
+	App->collisions->AddCollider({ 8, 25, 16, 208 }, Collider::Type::WALL); //left
+	App->collisions->AddCollider({ 232, 25, 16, 208 }, Collider::Type::WALL); //right
 	
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 155);
 	App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 181, 125);
 
 	// Enables
+	App->bomb->Enable();
 	App->player->Enable();
 	App->enemies->Enable();
 	App->rock->Enable();
@@ -78,6 +79,7 @@ update_status SceneLevel1::PostUpdate()
 
 bool SceneLevel1::CleanUp()
 {
+	App->bomb->Disable();
 	App->player->Disable();
 	App->enemies->Disable();
 	App->rock->Disable();

@@ -4,8 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "p2Point.h"
-
-#define MAX_BOMBS 5
+#include "Bomb.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -23,6 +22,7 @@ public:
 	// Loads the necessary textures for the player
 	bool Start() override;
 
+	update_status PreUpdate() override;
 	// Called at the middle of the application loop
 	// Processes new input and handles player movement
 	update_status Update() override;
@@ -34,20 +34,16 @@ public:
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
-	void NextTo(Collider* c[], int n);
-
 public:
 	// Position of the player in the map
 	iPoint position;
 
-	void SpawnBomb(int n);
-	void BombExplosion(int n);
-	void SaveBombPos(int x, int y, int n);
-	uint bx[MAX_BOMBS], by[MAX_BOMBS];
-
 	// The speed in which we move the player (pixels per frame)
 	int speed = 16;
 	bool freezeUp, freezeDown, freezeLeft, freezeRight;
+	bool isCollUp, isCollDown, isCollLeft, isCollRight;
+
+	int wCount;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
@@ -67,6 +63,11 @@ public:
 
 	// The player's collider
 	Collider* collider = nullptr;
+	Collider* colliderUp = nullptr;
+	Collider* colliderDown = nullptr;
+	Collider* colliderLeft = nullptr;
+	Collider* colliderRight = nullptr;
+
 
 	// A flag to detect when the player has been destroyed
 	bool dead = false;
@@ -95,17 +96,7 @@ public:
 	char mtimeText[10] = { "\0" };
 
 	// Sounds
-	uint placeBomb = 0;
-	uint explote = 0;
 	uint deadFx = 0;
-
-	// Array for bombs
-	uint n_bombs = 1;
-	uint a_bombs = 1;
-	void NewBomb();
-
-	bool isCounting[MAX_BOMBS] = { false };
-	uint count[MAX_BOMBS] = { 0 };
 
 	bool godMode = false;
 
