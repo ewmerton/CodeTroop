@@ -8,6 +8,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModuleRock.h"
+#include "ModuleLittleTower.h"
 #include "ModuleFlower.h"
 #include "ModuleRedFlower.h"
 #include "ModuleCT.h"
@@ -40,8 +41,8 @@ bool SceneLevel2::Start()
 	//Border colliders
 	App->collisions->AddCollider({ 0, 25, 512, 16 }, Collider::Type::WALL); //up
 	App->collisions->AddCollider({ 0, 217, 512, 16 }, Collider::Type::WALL); //down
-	App->collisions->AddCollider({ 0, 25, 16, 208 }, Collider::Type::WALL); //left
-	App->collisions->AddCollider({ 496, 25, 16, 208 }, Collider::Type::WALL); //right
+	App->collisions->AddCollider({ 8, 25, 16, 208 }, Collider::Type::WALL); //left
+	App->collisions->AddCollider({ 488, 25, 16, 208 }, Collider::Type::WALL); //right
 	App->collisions->AddCollider({ 168, 25, 240, 48 }, Collider::Type::WALL); //top
 	App->collisions->AddCollider({ 168, 185, 240, 48 }, Collider::Type::WALL); //bottom
 	App->collisions->AddCollider({ 264, 57, 48, 56 }, Collider::Type::WALL); //river top
@@ -99,6 +100,7 @@ bool SceneLevel2::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->rock->Enable();
+	App->little_tower->Enable();
 	App->flower->Enable();
 	App->red_flower->Enable();
 	App->tower->Enable();
@@ -140,6 +142,7 @@ bool SceneLevel2::CleanUp()
 	App->player->Disable();
 	App->enemies->Disable();
 	App->rock->Disable();
+	App->little_tower->Disable();
 	App->flower->Disable();
 	App->red_flower->Disable();
 	App->tower->Disable();

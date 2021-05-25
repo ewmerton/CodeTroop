@@ -32,16 +32,16 @@ bool ModuleLittleTower::Start()
 
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
-		little_towers[0] = CreateLittleTower(position.x + 80, position.y + 16, little_towerTexture);
-		little_towers[1] = CreateLittleTower(position.x + 144, position.y + 16, little_towerTexture);
+		little_towers[0] = CreateLittleTower(position.x + 160, position.y + 16, little_towerTexture);
+		little_towers[1] = CreateLittleTower(position.x + 32, position.y + 112, little_towerTexture);
 
 	}
 	else if (App->sceneLevel_2->IsEnabled() == true)
 	{
-		//flowers[0] = CreateFlower(position.x, position.y, flowerTexture);
-		//flowers[1] = CreateFlower(position.x + 16, position.y + 16, flowerTexture);
-
-		for (int i = 0; i < NUM_LITTLE_TOWERS; i++)
+		little_towers[0] = CreateLittleTower(position.x + 32, position.y + 112, little_towerTexture);
+		//little_towers[1] = CreateFlower(position.x + 16, position.y + 16, flowerTexture);
+		
+		for (int i = 1; i < NUM_LITTLE_TOWERS; i++)
 		{
 			// i = numero de torres de este nivel
 			little_towers[i].little_towerT = nullptr;

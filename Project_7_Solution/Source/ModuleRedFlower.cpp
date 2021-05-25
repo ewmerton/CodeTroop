@@ -58,8 +58,7 @@ bool ModuleRedFlower::Start()
 	}
 	if (App->sceneLevel_2->IsEnabled() == true)
 	{
-		//red_flowers[0] = CreateRedFlower(position.x, position.y, flowerTexture);
-		//red_flowers[1] = CreateRedFlower(position.x + 16, position.y + 16, flowerTexture);
+		red_flowers[0] = CreateRedFlower(position.x+ 416, position.y + 96, flowerTexture);
 
 		for (int i = 2; i < NUM_RED_FLOWERS; i++)
 		{
