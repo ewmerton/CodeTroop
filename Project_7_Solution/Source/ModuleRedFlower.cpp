@@ -37,7 +37,7 @@ bool ModuleRedFlower::Start()
 
 	bool ret = true;
 
-	flowerTexture = App->textures->Load("Assets/RedFlower_Destroy.png");  
+	flowerTexture = App->textures->Load("Assets/RedFlower_Destroy2.png");  
 
 	position.x = 24;
 	position.y = 41;
@@ -67,7 +67,6 @@ bool ModuleRedFlower::Start()
 		}
 	}
 
-
 	return ret;
 }
 
@@ -76,7 +75,6 @@ update_status ModuleRedFlower::Update()
 	for (int i = 0; i < NUM_RED_FLOWERS; i++)
 	{
 		currentAnimation[i]->Update();
-
 
 		if (red_flowers[i].isDestroyed)
 		{
@@ -88,9 +86,12 @@ update_status ModuleRedFlower::Update()
 			if (red_flowers[i].destroyed)
 			{
 				red_flowers[i].colliderT->pendingToDelete = true;
+				dead.Reset();
 			}
 		}
 	}
+
+
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -111,7 +112,7 @@ update_status ModuleRedFlower::PostUpdate()
 			App->render->Blit(red_flowers[i].flowerT, red_flowers[i].x, red_flowers[i].y, &(currentAnimation[i]->GetCurrentFrame()));
 		}
 	}
-
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
