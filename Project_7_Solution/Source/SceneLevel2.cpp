@@ -44,9 +44,51 @@ bool SceneLevel2::Start()
 	App->collisions->AddCollider({ 496, 25, 16, 208 }, Collider::Type::WALL); //right
 	App->collisions->AddCollider({ 168, 25, 240, 48 }, Collider::Type::WALL); //top
 	App->collisions->AddCollider({ 168, 185, 240, 48 }, Collider::Type::WALL); //bottom
-	App->collisions->AddCollider({ 264, 57, 48, 64 }, Collider::Type::WALL); //river top
-	App->collisions->AddCollider({ 264, 137, 48, 64 }, Collider::Type::WALL); //river bottom
+	App->collisions->AddCollider({ 264, 57, 48, 56 }, Collider::Type::WALL); //river top
+	App->collisions->AddCollider({ 264, 142, 48, 60 }, Collider::Type::WALL); //river bottom
 
+	//Rock colliders
+	/*App->collisions->AddCollider({ 40, 57, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 72, 57, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 104, 57, 48, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 136, 57, 16, 48 }, Collider::Type::ROCK);
+
+	App->collisions->AddCollider({ 40, 89, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 72, 89, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 104, 89, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 168, 89, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 200, 89, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 232, 89, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 328, 89, 48, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 392, 89, 16, 16 }, Collider::Type::ROCK);
+
+	App->collisions->AddCollider({ 40, 121, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 72, 121, 48, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 136, 121, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 168, 121, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 200, 121, 16, 48 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 232, 121, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 328, 121, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 360, 121, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 392, 121, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 424, 121, 16, 48 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 456, 121, 16, 16 }, Collider::Type::ROCK);
+
+	App->collisions->AddCollider({ 40, 153, 16, 48 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 72, 153, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 104, 153, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 136, 153, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 168, 153, 48, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 232, 153, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 328, 153, 48, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 392, 153, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 424, 153, 48, 16 }, Collider::Type::ROCK);
+
+	App->collisions->AddCollider({ 40, 185, 48, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 104, 185, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 136, 185, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 424, 185, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 456, 185, 16, 16 }, Collider::Type::ROCK);*/
 
 	// Enemies ---
 	//App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 155);
@@ -68,7 +110,13 @@ bool SceneLevel2::Start()
 
 update_status SceneLevel2::Update()
 {
+	iPoint p = App->player->GetPlayerPos();
 	App->render->camera.x += 0;
+
+	if (p.x >= 136 && p.x <= 376)
+	{
+		App->render->MoveCamera(p.x);
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }

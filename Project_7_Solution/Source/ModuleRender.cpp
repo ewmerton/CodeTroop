@@ -171,3 +171,8 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 
 	return ret;
 }
+
+void ModuleRender::MoveCamera(int x)
+{
+	camera.x = x + 136;
+}

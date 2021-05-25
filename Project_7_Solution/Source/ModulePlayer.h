@@ -38,6 +38,8 @@ public:
 	// Position of the player in the map
 	iPoint position;
 
+	iPoint GetPlayerPos();
+
 	iPoint CenterInTile(iPoint p);
 
 	// The speed in which we move the player (pixels per frame)

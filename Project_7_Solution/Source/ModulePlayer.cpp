@@ -348,7 +348,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		switch (c2->type)
 		{
 		case Collider::Type::WALL:
-			if (c1->rect.y == c2->rect.y)
+			if (c1->rect.y == c2->rect.y + c2->rect.h - 16)
 			{
 				freezeUp = true;
 				isCollUp = true;
@@ -404,7 +404,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		switch (c2->type)
 		{
 		case Collider::Type::WALL:
-			if (c1->rect.x == c2->rect.x)
+			if (c1->rect.x == c2->rect.x + c2->rect.w - 16)
 			{
 				freezeLeft = true;
 				isCollLeft = true;
@@ -455,6 +455,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
+}
+
+iPoint ModulePlayer::GetPlayerPos()
+{
+	return position;
 }
 
 iPoint ModulePlayer::CenterInTile(iPoint p)

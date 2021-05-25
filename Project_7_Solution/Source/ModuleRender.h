@@ -59,6 +59,8 @@ public:
 	// The speed at which the camera will be moving
 	int cameraSpeed = 3;
 
+	void MoveCamera(int x);
+
 };
 
 #endif //__MODULE_RENDER_H__
