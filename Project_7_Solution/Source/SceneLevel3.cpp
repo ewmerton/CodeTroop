@@ -30,10 +30,10 @@ bool SceneLevel3::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Map.png");
+	bgTexture = App->textures->Load("Assets/BossMap.png");
 	hudTexture = App->textures->Load("Assets/HUD.png");
 
-	App->audio->PlayMusic("Assets/Jumming_Jungle.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/BossTheme.ogg", 1.0f);
 
 	//Border colliders
 	App->collisions->AddCollider({ 0, 25, 256, 16 }, Collider::Type::WALL); //up

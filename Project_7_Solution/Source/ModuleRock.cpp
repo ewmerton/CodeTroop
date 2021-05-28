@@ -7,6 +7,7 @@
 
 #include "SceneLevel1.h"
 #include "SceneLevel2.h"
+#include "SceneLevel3.h"
 
 
 ModuleRock::ModuleRock(bool startEnabled) : Module(startEnabled)
@@ -55,6 +56,26 @@ bool ModuleRock::Start()
 	if (App->sceneLevel_2->IsEnabled() == true)
 	{
 		
+	}
+	
+	
+	if (App->sceneLevel_3->IsEnabled() == true)
+	{
+		for (int i = 0; i < 32 * 6; i += 32)
+		{
+			for (int j = 0; j < 32 * 5; j += 32)
+			{
+				if ((i == 32 * 2 || i == 32 * 3) && (j == 32 * 1 || j == 32 * 2))
+				{
+
+				}
+				else {
+					collider[n] = App->collisions->AddCollider({ position.x + i, position.y + j, 16, 16 }, Collider::Type::ROCK, this);
+					n++;
+				}
+			}
+		}
+		n = 0;
 	}
 
 	return ret;
