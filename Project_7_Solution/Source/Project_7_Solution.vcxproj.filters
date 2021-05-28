@@ -130,6 +130,12 @@
     <ClInclude Include="Bomb.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Robot2.h">
+      <Filter>Source Files\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLevel3.h">
+      <Filter>Source Files\Modules\SceneLevel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -224,6 +230,12 @@
     </ClCompile>
     <ClCompile Include="Bomb.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Robot2.cpp">
+      <Filter>Source Files\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLevel3.cpp">
+      <Filter>Source Files\Modules\SceneLevel</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

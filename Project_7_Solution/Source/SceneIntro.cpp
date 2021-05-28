@@ -30,8 +30,7 @@ bool SceneIntro::Start()
 	bgTexture = App->textures->Load("Assets/Main_Menu.png");
 	App->audio->PlayMusic("Assets/TitleScreen.ogg", 1.0f);
 
-	App->render->camera.x = 0;
-	App->render->camera.y = 0;
+	App->render->ResetCamera();
 
 	changeTex = false;
 	cd = 0;
@@ -71,6 +70,10 @@ update_status SceneIntro::Update()
 	else if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_2, 0);
+	}
+	else if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_3, 0);
 	}
 
 	return update_status::UPDATE_CONTINUE;

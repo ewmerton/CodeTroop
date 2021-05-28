@@ -11,6 +11,7 @@
 #include "SceneIntro.h"
 #include "SceneLevel1.h"
 #include "SceneLevel2.h"
+#include "SceneLevel3.h"
 #include "ModuleRock.h"
 #include "ModuleLittleTower.h"
 #include "ModuleFlower.h"
@@ -37,22 +38,23 @@ Application::Application()
 	modules[5] = sceneIntro = new SceneIntro(true);
 	modules[6] = sceneLevel_1 = new SceneLevel1(false);
 	modules[7] = sceneLevel_2 = new SceneLevel2(false);
+	modules[8] = sceneLevel_3 = new SceneLevel3(false);
 
-	modules[8] = rock = new ModuleRock(false);
+	modules[9] = rock = new ModuleRock(false);
 	
-	modules[9] = flower = new ModuleFlower(false);
-	modules[10] = red_flower = new ModuleRedFlower(false);
-	modules[11] = little_tower = new ModuleLittleTower(false);
-	modules[12] = tower = new ModuleCT(false);
-	modules[13] = particles = new ModuleParticles(true);
-	modules[14] = bomb = new ModuleBomb(false);
-	modules[15] = player = new ModulePlayer(false);
-	modules[16] = enemies = new ModuleEnemies(false);
+	modules[10] = flower = new ModuleFlower(false);
+	modules[11] = red_flower = new ModuleRedFlower(false);
+	modules[12] = little_tower = new ModuleLittleTower(false);
+	modules[13] = tower = new ModuleCT(false);
+	modules[14] = particles = new ModuleParticles(true);
+	modules[15] = bomb = new ModuleBomb(false);
+	modules[16] = player = new ModulePlayer(false);
+	modules[17] = enemies = new ModuleEnemies(false);
 
-	modules[17] = collisions = new ModuleCollisions(false);
-	modules[18] = fonts = new ModuleFonts(true);
-	modules[19] = render = new ModuleRender(true);
-	modules[20] = fade = new ModuleFadeToBlack(true);
+	modules[18] = collisions = new ModuleCollisions(false);
+	modules[19] = fonts = new ModuleFonts(true);
+	modules[20] = render = new ModuleRender(true);
+	modules[21] = fade = new ModuleFadeToBlack(true);
 }
 
 Application::~Application()

@@ -2,6 +2,7 @@
 #define __MODULE_RENDER_H__
 
 #include "Module.h"
+#include "p2Point.h"
 #include "SDL/include/SDL_Rect.h"
 
 struct SDL_Texture;
@@ -59,7 +60,8 @@ public:
 	// The speed at which the camera will be moving
 	int cameraSpeed = 3;
 
-	void MoveCamera(int x);
+	void MoveCamera(iPoint p);
+	void ResetCamera();
 
 };
 

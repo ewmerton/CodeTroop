@@ -188,11 +188,11 @@ void ModuleBomb::BombExplosion(iPoint p)
 
 	if (continueUp)
 	{
-		// Up
+		// Down
 		App->particles->AddParticle(App->particles->exV, p.x, p.y - 16, Collider::Type::PLAYER_SHOT, 0);
 		if (continueUp)
 		{
-			App->particles->AddParticle(App->particles->exUp, p.x , p.y - 32, Collider::Type::PLAYER_SHOT, 0);
+			App->particles->AddParticle(App->particles->exUp, p.x, p.y - 32, Collider::Type::PLAYER_SHOT, 0);
 		}
 		else
 		{
@@ -201,7 +201,7 @@ void ModuleBomb::BombExplosion(iPoint p)
 	}
 	else
 	{
-		extraUp->SetPos(p.x, p.y - 16);
+		extraDown->SetPos(p.x, p.y - 16);
 	}
 
 	if (continueDown)

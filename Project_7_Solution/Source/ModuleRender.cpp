@@ -137,20 +137,6 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* sect
 	return ret;
 }
 
-void ModuleRender::BlitHUD(SDL_Texture* texture, int x, int y, const SDL_Rect* section)
-{
-	SDL_Rect spriteRect;
-
-	spriteRect.w = section->x;
-	spriteRect.h = section->y;
-
-
-		App->render->Blit(texture, x, y, &spriteRect);
-
-		// Advance the position where we blit the next character
-		x += spriteRect.w;
-}
-
 bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, float speed)
 {
 	bool ret = true;
@@ -172,7 +158,17 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 	return ret;
 }
 
-void ModuleRender::MoveCamera(int x)
+void ModuleRender::MoveCamera(iPoint p)
 {
-	camera.x = x + 136;
+	if (p.x >= SCREEN_WIDTH / 2 && p.x <= 512 - (SCREEN_WIDTH / 2))
+	{
+		camera.x = p.x - (SCREEN_WIDTH / 2);
+		camera.x *= SCREEN_SIZE;
+		camera.y = p.y;
+	}
+}
+void ModuleRender::ResetCamera()
+{
+	camera.x = 0;
+	camera.y = 0;
 }

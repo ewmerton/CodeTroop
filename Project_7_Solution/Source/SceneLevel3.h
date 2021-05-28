@@ -1,20 +1,19 @@
-#ifndef __MODULE_SCENE_2_H__
-#define __MODULE_SCENE_2_H__
+#ifndef __MODULE_SCENE_3_H__
+#define __MODULE_SCENE_3_H__
 
 #include "Module.h"
-#include "p2Point.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class SceneLevel2 : public Module
+class SceneLevel3 : public Module
 {
 public:
 	//Constructor
-	SceneLevel2(bool startEnabled);
+	SceneLevel3(bool startEnabled);
 
 	//Destructor
-	~SceneLevel2();
+	~SceneLevel3();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
@@ -35,8 +34,8 @@ public:
 
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-	SDL_Texture* brTexture = nullptr;
 	SDL_Texture* hudTexture = nullptr;
+
 
 };
 

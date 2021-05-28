@@ -1,4 +1,4 @@
-#include "Enemy_Robot.h"
+#include "Enemy_Robot2.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-Enemy_Robot::Enemy_Robot(int x, int y) : Enemy(x, y)
+Enemy_Robot2::Enemy_Robot2(int x, int y) : Enemy(x, y)
 {
 	// Idle
 	walkIdle.PushBack({ 0, 133, 23, 32 });
@@ -44,39 +44,38 @@ Enemy_Robot::Enemy_Robot(int x, int y) : Enemy(x, y)
 
 	srand(time(NULL));
 	int n = rand() % 2;
+	int m = rand() % 2;
 
 	// TODO 3: Have the Brown Cookies describe a path in the screen
 	if (n == 0)
 	{
-		path.PushBack({ 0.0f, 0.2f }, 80 * 1, &walkDOWN);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 2, &walkLEFT);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 4, &walkUP);
-		path.PushBack({ 0.2f, 0.0f }, 80 * 6, &walkRIGHT);
-		path.PushBack({ 0.0f, 0.2f }, 80 * 4, &walkDOWN);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 2, &walkLEFT);
-		path.PushBack({ 0.2f, 0.0f }, 80 * 3, &walkRIGHT);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 1, &walkLEFT);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 4, &walkUP);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 6, &walkLEFT);
-		path.PushBack({ 0.0f, 0.2f }, 80 * 4, &walkDOWN);
+		path.PushBack({ -0.2f, 0.0f }, 80 * 5, &walkLEFT);
+		path.PushBack({ 0.2f, 0.0f }, 80 * 1, &walkRIGHT);
+		path.PushBack({ 0.0f, -0.2f }, 80 * 2, &walkUP);
 		path.PushBack({ 0.2f, 0.0f }, 80 * 2, &walkRIGHT);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 1, &walkUP);
+		path.PushBack({ 0.0f, 0.2f }, 80 * 2, &walkDOWN);
+		path.PushBack({ 0.2f, 0.0f }, 80 * 2, &walkRIGHT);
 	}
 	else
 	{
-		path.PushBack({ 0.0f, 0.2f }, 80 * 1, &walkDOWN);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 2, &walkLEFT);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 4, &walkUP);
-		path.PushBack({ 0.2f, 0.0f }, 80 * 12, &walkRIGHT);
 		path.PushBack({ 0.0f, 0.2f }, 80 * 2, &walkDOWN);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 3, &walkUP);
-		path.PushBack({ 0.0f, 0.2f }, 80 * 1, &walkDOWN);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 12, &walkLEFT);
-		path.PushBack({ 0.0f, 0.2f }, 80 * 4, &walkDOWN);
-		path.PushBack({ 0.2f, 0.0f }, 80 * 2, &walkRIGHT);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 1, &walkUP);
+		if (m == 0)
+		{
+			path.PushBack({ 0.2f, 0.0f }, 80 * 1, &walkRIGHT);
+			path.PushBack({ -0.2f, 0.0f }, 80 * 1, &walkLEFT);
+		}
+		else
+		{
+			path.PushBack({ -0.2f, 0.0f }, 80 * 1, &walkLEFT);
+			path.PushBack({ 0.2f, 0.0f }, 80 * 1, &walkRIGHT);
+		}
+		path.PushBack({ 0.0f, -0.2f }, 80 * 2, & walkUP);
+		path.PushBack({ -0.2f, 0.0f }, 80 * 2, &walkLEFT);
+		path.PushBack({ 0.0f, -0.2f }, 80 * 2, &walkUP);
+		path.PushBack({ -0.2f, 0.0f }, 80 * 2, &walkLEFT);
+		path.PushBack({ 0.0f, 0.2f }, 80 * 2, &walkDOWN);
+		path.PushBack({ 0.2f, 0.0f }, 80 * 4, &walkRIGHT);
 	}
-	
 
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 
@@ -84,7 +83,7 @@ Enemy_Robot::Enemy_Robot(int x, int y) : Enemy(x, y)
 	type = EnemyType::ROBOT;
 }
 
-void Enemy_Robot::Update()
+void Enemy_Robot2::Update()
 {
 	if (isDead)
 	{

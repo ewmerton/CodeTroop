@@ -1,4 +1,4 @@
-#include "SceneLevel1.h"
+#include "SceneLevel3.h"
 
 #include "Application.h"
 #include "ModuleTextures.h"
@@ -13,18 +13,18 @@
 #include "ModuleRedFlower.h"
 #include "ModuleCT.h"
 
-SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
+SceneLevel3::SceneLevel3(bool startEnabled) : Module(startEnabled)
 {
 
 }
 
-SceneLevel1::~SceneLevel1()
+SceneLevel3::~SceneLevel3()
 {
 
 }
 
 // Load assets
-bool SceneLevel1::Start()
+bool SceneLevel3::Start()
 {
 	LOG("Loading background assets");
 
@@ -40,11 +40,9 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 0, 217, 256, 16 }, Collider::Type::WALL); //down
 	App->collisions->AddCollider({ 8, 25, 16, 208 }, Collider::Type::WALL); //left
 	App->collisions->AddCollider({ 232, 25, 16, 208 }, Collider::Type::WALL); //right
-	
+
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 169);
-	App->enemies->AddEnemy(ENEMY_TYPE::ROBOT2, 181, 57);
-	//App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 181, 125);
+	//App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 169);
 
 	App->render->ResetCamera();
 
@@ -53,17 +51,12 @@ bool SceneLevel1::Start()
 	App->player->Enable();
 	App->enemies->Enable();
 	App->rock->Enable();
-	App->little_tower->Enable();
-	App->flower->Enable();
-	App->red_flower->Enable();
-	App->tower->Enable();
 	App->collisions->Enable();
-
 
 	return ret;
 }
 
-update_status SceneLevel1::Update()
+update_status SceneLevel3::Update()
 {
 	App->render->camera.x += 0;
 
@@ -71,7 +64,7 @@ update_status SceneLevel1::Update()
 }
 
 // Update: draw background
-update_status SceneLevel1::PostUpdate()
+update_status SceneLevel3::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
@@ -80,16 +73,12 @@ update_status SceneLevel1::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
-bool SceneLevel1::CleanUp()
+bool SceneLevel3::CleanUp()
 {
 	App->bomb->Disable();
 	App->player->Disable();
 	App->enemies->Disable();
 	App->rock->Disable();
-	App->little_tower->Disable();
-	App->flower->Disable();
-	App->red_flower->Disable();
-	App->tower->Disable();
 	App->collisions->Disable();
 
 	return true;

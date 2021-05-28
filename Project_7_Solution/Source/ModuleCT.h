@@ -33,9 +33,11 @@ public:
 	Animation* currentAnimation = nullptr;
 
 	// A set of animations
+	Animation covertAnim;
 	Animation idleAnim;
 	Animation outAnim;
 
+	void TowerDestroyed();
 	void MoonColected();
 
 	// The sprite rectangle for the Tower
@@ -44,6 +46,7 @@ public:
 	// Tower collider -- 3 colliders
 	Collider* collider[7] = { nullptr };
 	Collider* moon = nullptr;
+	Collider* barrier = nullptr;
 };
 
 #endif

@@ -58,7 +58,7 @@ Enemy_Snail::Enemy_Snail(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.2f, 0.0f }, 80 * 2, &walkRIGHT);
 	
 
-	collider = App->collisions->AddCollider({ 0, 0, 19, 19 }, Collider::Type::ENEMY, (Module*)App->enemies);
+	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 
 	type = EnemyType::SNAIL;
 }

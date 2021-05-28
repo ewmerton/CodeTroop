@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
+#include "ModuleCT.h"
 
 #include "SceneLevel1.h"
 #include "SceneLevel2.h"
@@ -32,16 +33,19 @@ bool ModuleLittleTower::Start()
 
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
-		little_towers[0] = CreateLittleTower(position.x + 160, position.y + 16, little_towerTexture);
+		little_towers[0] = CreateLittleTower(position.x + 160, position.y, little_towerTexture);
 		little_towers[1] = CreateLittleTower(position.x + 32, position.y + 112, little_towerTexture);
 
+		rTowers = 2; // numero de torres del nivel
 	}
 	else if (App->sceneLevel_2->IsEnabled() == true)
 	{
 		little_towers[0] = CreateLittleTower(position.x + 32, position.y + 112, little_towerTexture);
-		//little_towers[1] = CreateFlower(position.x + 16, position.y + 16, flowerTexture);
+		little_towers[1] = CreateLittleTower(position.x + 16, position.y + 16, little_towerTexture);
+
+		rTowers = 2; // numero de torres del nivel
 		
-		for (int i = 1; i < NUM_LITTLE_TOWERS; i++)
+		for (int i = 2; i < NUM_LITTLE_TOWERS; i++)
 		{
 			// i = numero de torres de este nivel
 			little_towers[i].little_towerT = nullptr;
@@ -49,6 +53,17 @@ bool ModuleLittleTower::Start()
 	}
 
 	return ret;
+}
+
+update_status ModuleLittleTower::Update()
+{
+	// Draw everything --------------------------------------
+	if (rTowers == 0)
+	{
+		App->tower->TowerDestroyed();
+	}
+
+	return update_status::UPDATE_CONTINUE;
 }
 
 // Update: draw background
@@ -92,6 +107,7 @@ void ModuleLittleTower::OnCollision(Collider* c1, Collider* c2)
 			case Collider::Type::PLAYER_SHOT:
 			{
 				little_towers[i].isDestroyed = true;
+				rTowers--;
 			} break;
 
 			default:

@@ -30,8 +30,6 @@ bool SceneLevel2::Start()
 
 	bool ret = true;
 
-	x = 0;
-
 	bgTexture = App->textures->Load("Assets/MapLevel2.png");
 	brTexture = App->textures->Load("Assets/Barandilla.png");
 	hudTexture = App->textures->Load("Assets/HUD.png");
@@ -95,6 +93,8 @@ bool SceneLevel2::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 155);
 	//App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 181, 125);
 
+	App->render->ResetCamera();
+
 	// Enables
 	App->bomb->Enable();
 	App->player->Enable();
@@ -106,19 +106,13 @@ bool SceneLevel2::Start()
 	App->tower->Enable();
 	App->collisions->Enable();
 
-
 	return ret;
 }
 
 update_status SceneLevel2::Update()
 {
 	iPoint p = App->player->GetPlayerPos();
-	App->render->camera.x += 0;
-
-	if (p.x >= 136 && p.x <= 376)
-	{
-		App->render->MoveCamera(p.x);
-	}
+	App->render->MoveCamera({ p.x, 0 });
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -129,9 +123,7 @@ update_status SceneLevel2::PostUpdate()
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(brTexture, 260, 127, NULL);
-	App->render->BlitHUD(hudTexture, 0, 0, &App->render->camera);
-
-
+	App->render->Blit(hudTexture, App->render->camera.x/SCREEN_SIZE, 0);
 
 	return update_status::UPDATE_CONTINUE;
 }

@@ -30,6 +30,8 @@ public:
 	// Loads the necessary textures for the map background
 	bool Start() override;
 
+
+	update_status Update() override;
 	// Called at the end of the application loop.
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
@@ -47,6 +49,8 @@ public:
 	Little_tower little_towers[NUM_LITTLE_TOWERS] = { nullptr };
 
 	Little_tower CreateLittleTower(int x, int y, SDL_Texture* t);
+
+	int rTowers;
 
 };
 

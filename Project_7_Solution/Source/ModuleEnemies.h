@@ -16,6 +16,7 @@ enum class ENEMY_TYPE
 	NO_TYPE,
 	SNAIL,
 	ROBOT,
+	ROBOT2,
 };
 
 struct EnemySpawnpoint

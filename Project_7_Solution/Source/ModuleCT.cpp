@@ -6,20 +6,28 @@
 #include "ModuleCollisions.h"
 
 #include "SceneLevel1.h"
+#include "SceneLevel2.h"
 
 ModuleCT::ModuleCT(bool startEnabled) : Module(startEnabled)
 {
+	// covert
+	covertAnim.PushBack({ 0, 180, 48, 64 });
+	covertAnim.PushBack({ 64, 180, 48, 64 });
+	covertAnim.PushBack({ 128, 180, 48, 64 });
+	covertAnim.PushBack({ 192, 180, 48, 64 });
+	covertAnim.speed = 0.05f;
+
 	// idle
-	idleAnim.PushBack({ 0, 0, 48, 54 });
-	idleAnim.PushBack({ 64, 0, 48, 54 });
-	idleAnim.PushBack({ 128, 0, 48, 54 });
-	idleAnim.PushBack({ 192, 0, 48, 54 });
+	idleAnim.PushBack({ 0, 0, 48, 64 });
+	idleAnim.PushBack({ 64, 0, 48, 64 });
+	idleAnim.PushBack({ 128, 0, 48, 64 });
+	idleAnim.PushBack({ 192, 0, 48, 64 });
 	idleAnim.speed = 0.05f;
 
 	// object reclaimed
-	outAnim.PushBack({ 0, 56, 48, 54 });
-	outAnim.PushBack({ 64, 56, 48, 54 });
-	outAnim.PushBack({ 128, 56, 48, 54 });
+	outAnim.PushBack({ 0, 90, 48, 64 });
+	outAnim.PushBack({ 64, 90, 48, 64 });
+	outAnim.PushBack({ 128, 90, 48, 64 });
 	outAnim.speed = 0.03f;
 }
 
@@ -37,23 +45,40 @@ bool ModuleCT::Start()
 
 	texture = App->textures->Load("Assets/centralTower.png");
 
-	currentAnimation = &idleAnim;
-
-	//Object colliders
-	position.x = 104;
-	position.y = 82;
+	currentAnimation = &covertAnim;	
 
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
-		collider[0] = App->collisions->AddCollider({ position.x, position.y + 7, 16, 16 }, Collider::Type::ROCK, this);
-		collider[1] = App->collisions->AddCollider({ position.x + 16, position.y + 7, 16, 16 }, Collider::Type::ROCK, this);
-		collider[2] = App->collisions->AddCollider({ position.x + 32, position.y + 7, 16, 16 }, Collider::Type::ROCK, this);
-		collider[3] = App->collisions->AddCollider({ position.x, position.y + 23, 16, 16 }, Collider::Type::ROCK, this);
-		collider[4] = App->collisions->AddCollider({ position.x + 32, position.y + 23, 16, 16 }, Collider::Type::ROCK, this);
-		collider[5] = App->collisions->AddCollider({ position.x, position.y + 39, 16, 16 }, Collider::Type::ROCK, this);
-		collider[6] = App->collisions->AddCollider({ position.x + 32, position.y + 39, 16, 16 }, Collider::Type::ROCK, this);
+		position.x = 104;
+		position.y = 72;
+
+		collider[0] = App->collisions->AddCollider({ position.x, position.y + 17, 16, 16 }, Collider::Type::ROCK, this);
+		collider[1] = App->collisions->AddCollider({ position.x + 16, position.y + 17, 16, 16 }, Collider::Type::ROCK, this);
+		collider[2] = App->collisions->AddCollider({ position.x + 32, position.y + 17, 16, 16 }, Collider::Type::ROCK, this);
+		collider[3] = App->collisions->AddCollider({ position.x, position.y + 33, 16, 16 }, Collider::Type::ROCK, this);
+		collider[4] = App->collisions->AddCollider({ position.x + 32, position.y + 33, 16, 16 }, Collider::Type::ROCK, this);
+		collider[5] = App->collisions->AddCollider({ position.x, position.y + 49, 16, 16 }, Collider::Type::ROCK, this);
+		collider[6] = App->collisions->AddCollider({ position.x + 32, position.y + 49, 16, 16 }, Collider::Type::ROCK, this);
 		// Moon
-		moon = App->collisions->AddCollider({ position.x + 16, position.y + 20, 16, 8 }, Collider::Type::MOON, this);
+		moon = App->collisions->AddCollider({ position.x + 16, position.y + 30, 16, 8 }, Collider::Type::MOON, this);
+		barrier = App->collisions->AddCollider({ position.x + 16, position.y + 38, 16, 8 }, Collider::Type::WALL, this);
+
+	}
+	else if (App->sceneLevel_2->IsEnabled() == true)
+	{
+		position.x = 424;
+		position.y = 40;
+
+		collider[0] = App->collisions->AddCollider({ position.x, position.y + 17, 16, 16 }, Collider::Type::ROCK, this);
+		collider[1] = App->collisions->AddCollider({ position.x + 16, position.y + 17, 16, 16 }, Collider::Type::ROCK, this);
+		collider[2] = App->collisions->AddCollider({ position.x + 32, position.y + 17, 16, 16 }, Collider::Type::ROCK, this);
+		collider[3] = App->collisions->AddCollider({ position.x, position.y + 33, 16, 16 }, Collider::Type::ROCK, this);
+		collider[4] = App->collisions->AddCollider({ position.x + 32, position.y + 33, 16, 16 }, Collider::Type::ROCK, this);
+		collider[5] = App->collisions->AddCollider({ position.x, position.y + 49, 16, 16 }, Collider::Type::ROCK, this);
+		collider[6] = App->collisions->AddCollider({ position.x + 32, position.y + 49, 16, 16 }, Collider::Type::ROCK, this);
+		// Moon
+		moon = App->collisions->AddCollider({ position.x + 16, position.y + 30, 16, 8 }, Collider::Type::MOON, this);
+		barrier = App->collisions->AddCollider({ position.x + 16, position.y + 38, 16, 8 }, Collider::Type::WALL, this);
 
 	}
 
@@ -74,8 +99,18 @@ update_status ModuleCT::PostUpdate()
 	{
 		App->render->Blit(texture, position.x, position.y, &(currentAnimation->GetCurrentFrame()));
 	}
+	else if (App->sceneLevel_2->IsEnabled() == true)
+	{
+		App->render->Blit(texture, position.x, position.y, &(currentAnimation->GetCurrentFrame()));
+	}
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+void ModuleCT::TowerDestroyed()
+{
+	currentAnimation = &idleAnim;
+	barrier->pendingToDelete = true;
 }
 
 void ModuleCT::MoonColected()
