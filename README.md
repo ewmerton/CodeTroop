@@ -8,28 +8,41 @@
 https://github.com/ewmerton/CodeTroop/wiki
 
 ### Group Members:
+<details> 
+  <summary> Roc Díez </summary>
+  
+- Github: [RocDiezBorras](https://github.com/RocDiezBorras)
+  
+</details><br>
 
-- Roc Díez
+<details> 
+  <summary> Pol Goñi </summary>
+  
+- Github: [polgoni1](https://github.com/polgoni1)
+  
+</details><br>
 
-  Github: [RocDiezBorras](https://github.com/RocDiezBorras)
+<details> 
+  <summary> Alejandro Giralt </summary>
+  
+- Github: [zapper163](https://github.com/zapper163)
+  
+</details><br>
 
-- Pol Goñi
+<details> 
+  <summary> Rubén Ayora </summary>
+  
+-  Github: [RubokiReuchi](https://github.com/RubokiReuchi)
+  
+</details><br>
 
-  Github: [polgoni1](https://github.com/polgoni1)
-
-- Alejandro Giralt
-
-  Github: [zapper163](https://github.com/zapper163)
-
-- Rubén Ayora: 
-
-  Github: [RubokiReuchi](https://github.com/RubokiReuchi)
-
-- Erik Fernandez:
-
-  Github: [ewmerton](https://github.com/ewmerton)
-
-
+ <details> 
+  <summary> Erik Fernández </summary>
+  
+  - Github: [ewmerton](https://github.com/ewmerton)
+  
+  </details><br>
+  
 
 ### Game Description:
 
