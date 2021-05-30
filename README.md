@@ -1,14 +1,14 @@
 # CodeTroop
-Project I - My first amazing arcade game
+## Project I - My first amazing arcade game
 
 
-Project’s GitHub:
+### Project’s GitHub:
 
 https://github.com/ewmerton/CodeTroop/wiki
 
 ![](https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Mega_bomberman_logo.png?raw=true)
 
-Group Members:
+### Group Members:
 
 -	Roc Díez
   Github: https://github.com/RocDiezBorras
@@ -23,13 +23,13 @@ Group Members:
 
 
 
-Game Description:
+### Game Description:
 
 Mega Bomberman is a video game in the Bomberman series. In the single-player mode, the character has to move around the stage placing bombs that destroy everything in their path within a certain range, including enemies, stage objects, and the player himself, something to keep in mind. As the player goes through a series of stages, with a boss at the end of each one, he will recover five pieces to reunite the five separate parts of the earth.
 
 
 
-Controls:
+### Controls:
 
 Movement with WASD.
 Place bombs with Space.
