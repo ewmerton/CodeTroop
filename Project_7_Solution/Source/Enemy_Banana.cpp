@@ -1,4 +1,4 @@
-#include "Enemy_Robot.h"
+#include "Enemy_Banana.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
@@ -6,23 +6,32 @@
 #include <stdlib.h>
 #include <time.h>
 
-Enemy_Robot::Enemy_Robot(int x, int y) : Enemy(x, y)
+Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 {
 	// Idle
 	walkIdle.PushBack({ 0, 133, 23, 32 });
 
 	// walk Up
-	walkUP.PushBack({ 0, 101, 23, 28 });
-	walkUP.PushBack({ 32, 100, 23, 28 });
-	walkUP.PushBack({ 0, 101, 23, 28 });
-	walkUP.PushBack({ 96, 100, 23, 28 });
+	walkUP.PushBack({ 2, 369, 76, 89 });
+	walkUP.PushBack({ 65, 369, 76, 89 });
+	walkUP.PushBack({ 133, 369, 76, 89 });
+	walkUP.PushBack({ 197, 369, 76, 89});
+
+	walkUP.PushBack({ 264, 369, 76, 89 });
+	walkUP.PushBack({ 344, 369, 76, 89});
+	walkUP.PushBack({ 421, 349, 76, 89 });
 	walkUP.speed = 0.05f;
 
 	// walk Down
-	walkDOWN.PushBack({ 0, 135, 23, 30 });
-	walkDOWN.PushBack({ 32, 134, 23, 30 });
-	walkDOWN.PushBack({ 0, 135, 23, 30 });
-	walkDOWN.PushBack({ 96, 134, 23, 30 });
+	walkDOWN.PushBack({ 4, 201, 76, 89 });
+	walkDOWN.PushBack({ 88, 201, 76, 89 });
+	walkDOWN.PushBack({ 180, 201, 76, 89 });
+	walkDOWN.PushBack({ 265, 201, 76, 89 });
+
+	walkDOWN.PushBack({ 194, 5, 76, 89 });
+	walkDOWN.PushBack({ 274, 5, 76, 89 });
+	walkDOWN.PushBack({ 358, 5, 76, 89 });
+	walkDOWN.PushBack({ 436, 5, 76, 89 });
 	walkDOWN.speed = 0.05f;
 
 	// walk Left
@@ -81,10 +90,10 @@ Enemy_Robot::Enemy_Robot(int x, int y) : Enemy(x, y)
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 
 
-	type = EnemyType::ROBOT;
+	type = EnemyType::BANANA;
 }
 
-void Enemy_Robot::Update()
+void Enemy_Banana::Update()
 {
 	if (isDead)
 	{

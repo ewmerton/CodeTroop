@@ -1,15 +1,15 @@
-#ifndef __ENEMY_ROBOT_H__
-#define __ENEMY_ROBOT_H__
+#ifndef __ENEMY_BANANA_H__
+#define __ENEMY_BANANA_H__
 
 #include "Enemy.h"
 #include "Path.h"
 
-class Enemy_Robot : public Enemy
+class Enemy_Banana : public Enemy
 {
 public:
 	// Constructor (x y coordinates in the world)
 	// Creates animation and movement data and the collider
-	Enemy_Robot(int x, int y);
+	Enemy_Banana(int x, int y);
 
 	// The enemy is going to follow the different steps in the path
 	// Position will be updated depending on the speed defined at each step
