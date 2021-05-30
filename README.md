@@ -9,16 +9,25 @@ https://github.com/ewmerton/CodeTroop/wiki
 
 ### Group Members:
 
--	Roc Díez
-  Github: https://github.com/RocDiezBorras
--	Pol Goñi
-  Github: https://github.com/polgoni1
--	Alejandro Giralt
-  Github: https://github.com/zapper163
--	Rubén Ayora: 
-  Github:  https://github.com/RubokiReuchi
--	Erik Fernandez:
-  Github: https://github.com/ewmerton
+- Roc Díez
+
+  Github: [RocDiezBorras](https://github.com/RocDiezBorras)
+
+- Pol Goñi
+
+  Github: [polgoni1](https://github.com/polgoni1)
+
+- Alejandro Giralt
+
+  Github: [zapper163](https://github.com/zapper163)
+
+- Rubén Ayora: 
+
+  Github: [RubokiReuchi](https://github.com/RubokiReuchi)
+
+- Erik Fernandez:
+
+  Github: [ewmerton](https://github.com/ewmerton)
 
 
 
