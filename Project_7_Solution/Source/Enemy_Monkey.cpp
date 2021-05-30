@@ -1,4 +1,4 @@
-#include "Enemy_Banana.h"
+#include "Enemy_Monkey.h"
 
 #include "Application.h"
 #include "ModuleCollisions.h"
@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
+Enemy_Monkey::Enemy_Monkey(int x, int y) : Enemy(x, y)
 {
 	// Idle
 	walkIdle.PushBack({ 0, 133, 23, 32 });
@@ -15,9 +15,9 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	walkUP.PushBack({ 2, 369, 76, 89 });
 	walkUP.PushBack({ 65, 369, 76, 89 });
 	walkUP.PushBack({ 133, 369, 76, 89 });
-	walkUP.PushBack({ 197, 369, 76, 89});
+	walkUP.PushBack({ 197, 369, 76, 89 });
 	walkUP.PushBack({ 264, 369, 76, 89 });
-	walkUP.PushBack({ 344, 369, 76, 89});
+	walkUP.PushBack({ 344, 369, 76, 89 });
 	walkUP.PushBack({ 421, 349, 76, 89 });
 	walkUP.speed = 0.05f;
 
@@ -77,7 +77,7 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	dead.PushBack({ 83, 720, 76, 89 });
 	dead.PushBack({ 163, 720, 76, 89 });
 	dead.PushBack({ 242, 720, 76, 89 });
-	
+
 	currentAnim = &walkIdle;
 
 	srand(time(NULL));
@@ -119,10 +119,10 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 
 
-	type = EnemyType::BANANA;
+	type = EnemyType::MONKEY;
 }
 
-void Enemy_Banana::Update()
+void Enemy_Monkey::Update()
 {
 	if (isDead)
 	{
