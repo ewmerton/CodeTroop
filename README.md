@@ -11,12 +11,16 @@ https://github.com/ewmerton/CodeTroop/wiki
 <details> 
   <summary> Roc Díez </summary>
   
+- Contributions:
+   
 - Github: [RocDiezBorras](https://github.com/RocDiezBorras)
   
 </details><br>
 
 <details> 
   <summary> Pol Goñi </summary>
+  
+- Contributions:
   
 - Github: [polgoni1](https://github.com/polgoni1)
   
@@ -25,6 +29,8 @@ https://github.com/ewmerton/CodeTroop/wiki
 <details> 
   <summary> Alejandro Giralt </summary>
   
+ - Contributions:
+  
 - Github: [zapper163](https://github.com/zapper163)
   
 </details><br>
@@ -32,6 +38,8 @@ https://github.com/ewmerton/CodeTroop/wiki
 <details> 
   <summary> Rubén Ayora </summary>
   
+- Contributions:
+   
 -  Github: [RubokiReuchi](https://github.com/RubokiReuchi)
   
 </details><br>
@@ -39,6 +47,8 @@ https://github.com/ewmerton/CodeTroop/wiki
  <details> 
   <summary> Erik Fernández </summary>
   
+  - Contributions:
+ 
   - Github: [ewmerton](https://github.com/ewmerton)
   
   </details><br>
