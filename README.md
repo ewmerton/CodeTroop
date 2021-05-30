@@ -31,6 +31,6 @@ Mega Bomberman is a video game in the Bomberman series. In the single-player mod
 
 Controls:
 
-Movement with AWSD.
+Movement with WASD.
 Place bombs with Space.
 Q key gives you an extra bomb to place, to simulate the effect of one of the power ups. It gives you a maximum of 5 bombs.
