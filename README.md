@@ -43,4 +43,4 @@ Q key gives you an extra bomb to place, to simulate the effect of one of the pow
 
 - Project wiki: https://github.com/ewmerton/CodeTroop/wiki
 - Latest version of the game:
-- GitHub repository: 
+- GitHub repository: https://github.com/ewmerton/CodeTroop
