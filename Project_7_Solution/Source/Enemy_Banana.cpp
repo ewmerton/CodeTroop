@@ -16,7 +16,6 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	walkUP.PushBack({ 65, 369, 76, 89 });
 	walkUP.PushBack({ 133, 369, 76, 89 });
 	walkUP.PushBack({ 197, 369, 76, 89});
-
 	walkUP.PushBack({ 264, 369, 76, 89 });
 	walkUP.PushBack({ 344, 369, 76, 89});
 	walkUP.PushBack({ 421, 349, 76, 89 });
@@ -35,9 +34,15 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	walkDOWN.speed = 0.05f;
 
 	// walk Left
-	walkLEFT.PushBack({ 0, 169, 24, 28 });
-	walkLEFT.PushBack({ 32, 168, 24, 28 });
-	walkLEFT.PushBack({ 64, 168, 24, 28 });
+	walkLEFT.PushBack({ 7, 285, 76, 89 });
+	walkLEFT.PushBack({ 89, 285, 76, 89 });
+	walkLEFT.PushBack({ 178, 285, 76, 89 });
+	walkLEFT.PushBack({ 264, 285, 76, 89 });
+
+	walkLEFT.PushBack({ 195, 97, 76, 89 });
+	walkLEFT.PushBack({ 273, 97, 76, 89 });
+	walkLEFT.PushBack({ 358, 97, 76, 89 });
+	walkLEFT.PushBack({ 436, 97, 76, 89 });
 	walkLEFT.speed = 0.05f;
 
 	// walk Right
@@ -47,8 +52,30 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	walkRIGHT.speed = 0.05f;
 
 	// dead Animation
-	dead.PushBack({ 126, 135, 23, 30 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 82, 446, 76, 89 });
+	dead.PushBack({ 161, 446, 76, 89 });
+	dead.PushBack({ 240, 446, 76, 89 });
+	dead.PushBack({ 318, 446, 76, 89 });
+	dead.PushBack({ 400, 446, 76, 89 });
 
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	dead.PushBack({ 5, 446, 76, 89 });
+	
 	currentAnim = &walkIdle;
 
 	srand(time(NULL));
