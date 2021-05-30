@@ -8,51 +8,26 @@
 https://github.com/ewmerton/CodeTroop/wiki
 
 ### Group Members:
-<details> 
-  <summary> <strong>Roc Díez</strong> </summary>
-  
-- Contributions:<br>
-  
-- Github: [RocDiezBorras](https://github.com/RocDiezBorras)
-  
-</details><br>
 
-<details> 
-  <summary> <strong>Pol Goñi</strong> </summary>
-  
-- Contributions:<br>
-  
-- Github: [polgoni1](https://github.com/polgoni1)
-  
-</details><br>
+* Roc Díez
 
-<details> 
-  <summary> <strong>Alejandro Giralt</strong> </summary>
-  
- - Contributions:<br>
-  
-- Github: [zapper163](https://github.com/zapper163)
-  
-</details><br>
+  Github: [RocDiezBorras](https://github.com/RocDiezBorras)
 
-<details> 
-  <summary> <strong>Rubén Ayora</strong> </summary>
-  
-- Contributions:<br>
-   
--  Github: [RubokiReuchi](https://github.com/RubokiReuchi)
-  
-</details><br>
+* Pol Goñi
 
- <details> 
-  <summary> <strong>Erik Fernández</strong> </summary>
-  
-  - Contributions:<br>
- 
-  - Github: [ewmerton](https://github.com/ewmerton)
-  
-  </details><br>
-  
+  Github: [polgoni1](https://github.com/polgoni1)
+
+* Alejandro Giralt
+
+  Github: [zapper163](https://github.com/zapper163)
+
+* Rubén Ayora: 
+
+  Github: [RubokiReuchi](https://github.com/RubokiReuchi)
+
+* Erik Fernandez:
+
+  Github: [ewmerton](https://github.com/ewmerton)
 
 ### Game Description:
 
