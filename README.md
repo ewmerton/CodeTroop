@@ -6,7 +6,7 @@ Project’s GitHub:
 
 https://github.com/ewmerton/CodeTroop/wiki
 
-
+![](https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Mega_bomberman_logo.png?raw=true)
 
 Group Members:
 
