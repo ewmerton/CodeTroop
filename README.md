@@ -9,7 +9,7 @@ https://github.com/ewmerton/CodeTroop/wiki
 
 ### Group Members:
 <details> 
-  <summary> Roc Díez </summary>
+  <summary> <strong>Roc Díez</strong> </summary>
   
 - Contributions:
    
@@ -18,7 +18,7 @@ https://github.com/ewmerton/CodeTroop/wiki
 </details><br>
 
 <details> 
-  <summary> Pol Goñi </summary>
+  <summary> <strong>Pol Goñi</strong> </summary>
   
 - Contributions:
   
@@ -27,7 +27,7 @@ https://github.com/ewmerton/CodeTroop/wiki
 </details><br>
 
 <details> 
-  <summary> Alejandro Giralt </summary>
+  <summary> <strong>Alejandro Giralt</strong> </summary>
   
  - Contributions:
   
@@ -36,7 +36,7 @@ https://github.com/ewmerton/CodeTroop/wiki
 </details><br>
 
 <details> 
-  <summary> Rubén Ayora </summary>
+  <summary> <strong>Rubén Ayora</strong> </summary>
   
 - Contributions:
    
@@ -45,7 +45,7 @@ https://github.com/ewmerton/CodeTroop/wiki
 </details><br>
 
  <details> 
-  <summary> Erik Fernández </summary>
+  <summary> <strong>Erik Fernández</strong> </summary>
   
   - Contributions:
  
