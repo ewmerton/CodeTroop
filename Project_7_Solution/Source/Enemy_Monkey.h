@@ -27,7 +27,7 @@ private:
 	Animation walkDOWN;
 	Animation walkLEFT;
 	Animation walkRIGHT;
-	Animation dead;
+	//Animation dead;
 };
 
 #endif

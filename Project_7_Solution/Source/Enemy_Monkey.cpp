@@ -9,48 +9,35 @@
 Enemy_Monkey::Enemy_Monkey(int x, int y) : Enemy(x, y)
 {
 	// Idle
-	walkIdle.PushBack({ 0, 133, 23, 32 });
+	walkIdle.PushBack({ 526, 0, 24, 19 });
+	walkIdle.PushBack({ 553, 0, 24, 19 });
+	walkIdle.PushBack({ 580, 0, 24, 19 });
+	walkIdle.PushBack({ 607, 0, 24, 19 });
+	walkIdle.PushBack({ 526, 22, 24, 19 });
+	walkIdle.PushBack({ 553, 22, 24, 19 });
+	walkIdle.PushBack({ 580, 22, 24, 19 });
+	walkIdle.PushBack({ 607, 22, 24, 19 });
 
 	// walk Up
-	walkUP.PushBack({ 2, 369, 76, 89 });
-	walkUP.PushBack({ 65, 369, 76, 89 });
-	walkUP.PushBack({ 133, 369, 76, 89 });
-	walkUP.PushBack({ 197, 369, 76, 89 });
-	walkUP.PushBack({ 264, 369, 76, 89 });
-	walkUP.PushBack({ 344, 369, 76, 89 });
-	walkUP.PushBack({ 421, 349, 76, 89 });
+	walkUP.PushBack({ 525, 91, 24, 19 });
+	walkUP.PushBack({ 552, 91, 24, 19 });
 	walkUP.speed = 0.05f;
 
 	// walk Down
-	walkDOWN.PushBack({ 4, 201, 76, 89 });
-	walkDOWN.PushBack({ 88, 201, 76, 89 });
-	walkDOWN.PushBack({ 180, 201, 76, 89 });
-	walkDOWN.PushBack({ 265, 201, 76, 89 });
-
-	walkDOWN.PushBack({ 194, 5, 76, 89 });
-	walkDOWN.PushBack({ 274, 5, 76, 89 });
-	walkDOWN.PushBack({ 358, 5, 76, 89 });
-	walkDOWN.PushBack({ 436, 5, 76, 89 });
+	walkDOWN.PushBack({ 525, 45, 24, 19 });
+	walkDOWN.PushBack({ 552, 45, 24, 19 });
 	walkDOWN.speed = 0.05f;
 
 	// walk Left
 	walkLEFT.PushBack({ 7, 285, 76, 89 });
 	walkLEFT.PushBack({ 89, 285, 76, 89 });
-	walkLEFT.PushBack({ 178, 285, 76, 89 });
-	walkLEFT.PushBack({ 264, 285, 76, 89 });
-
-	walkLEFT.PushBack({ 195, 97, 76, 89 });
-	walkLEFT.PushBack({ 273, 97, 76, 89 });
-	walkLEFT.PushBack({ 358, 97, 76, 89 });
-	walkLEFT.PushBack({ 436, 97, 76, 89 });
 	walkLEFT.speed = 0.05f;
 
 	// walk Right
-	walkRIGHT.PushBack({ 97, 170, 24, 28 });
-	walkRIGHT.PushBack({ 129, 169, 24, 28 });
-	walkRIGHT.PushBack({ 161, 169, 24, 28 });
+	walkRIGHT.PushBack({ 525, 68,  24, 19 });
+	walkRIGHT.PushBack({ 552, 68, 24, 19 });
 	walkRIGHT.speed = 0.05f;
-
+	/*
 	// dead Animation
 	dead.PushBack({ 5, 446, 76, 89 });
 	dead.PushBack({ 82, 446, 76, 89 });
@@ -77,7 +64,7 @@ Enemy_Monkey::Enemy_Monkey(int x, int y) : Enemy(x, y)
 	dead.PushBack({ 83, 720, 76, 89 });
 	dead.PushBack({ 163, 720, 76, 89 });
 	dead.PushBack({ 242, 720, 76, 89 });
-
+	*/
 	currentAnim = &walkIdle;
 
 	srand(time(NULL));
