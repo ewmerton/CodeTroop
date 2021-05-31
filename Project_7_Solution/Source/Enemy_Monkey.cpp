@@ -29,8 +29,8 @@ Enemy_Monkey::Enemy_Monkey(int x, int y) : Enemy(x, y)
 	walkDOWN.speed = 0.05f;
 
 	// walk Left
-	walkLEFT.PushBack({ 7, 285, 76, 89 });
-	walkLEFT.PushBack({ 89, 285, 76, 89 });
+	walkLEFT.PushBack({ 525, 117, 24, 19 });
+	walkLEFT.PushBack({ 552, 117, 24, 19 });
 	walkLEFT.speed = 0.05f;
 
 	// walk Right

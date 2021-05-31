@@ -12,43 +12,46 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	walkIdle.PushBack({ 0, 133, 23, 32 });
 
 	// walk Up
-	walkUP.PushBack({ 2, 369, 76, 89 });
-	walkUP.PushBack({ 65, 369, 76, 89 });
-	walkUP.PushBack({ 133, 369, 76, 89 });
-	walkUP.PushBack({ 197, 369, 76, 89});
-	walkUP.PushBack({ 264, 369, 76, 89 });
-	walkUP.PushBack({ 344, 369, 76, 89});
+	walkUP.PushBack({ 2, 349, 76, 89 });
+	walkUP.PushBack({ 65, 349, 76, 89 });
+	walkUP.PushBack({ 133, 349, 76, 89 });
+	walkUP.PushBack({ 197, 349, 76, 89});
+	walkUP.PushBack({ 264, 349, 76, 89 });
+	walkUP.PushBack({ 344, 349, 76, 89});
 	walkUP.PushBack({ 421, 349, 76, 89 });
 	walkUP.speed = 0.05f;
 
 	// walk Down
-	walkDOWN.PushBack({ 4, 201, 76, 89 });
-	walkDOWN.PushBack({ 88, 201, 76, 89 });
-	walkDOWN.PushBack({ 180, 201, 76, 89 });
-	walkDOWN.PushBack({ 265, 201, 76, 89 });
-
-	walkDOWN.PushBack({ 194, 5, 76, 89 });
-	walkDOWN.PushBack({ 274, 5, 76, 89 });
-	walkDOWN.PushBack({ 358, 5, 76, 89 });
-	walkDOWN.PushBack({ 436, 5, 76, 89 });
+	walkDOWN.PushBack({ 7, 248, 76, 89 });
+	walkDOWN.PushBack({ 89, 248, 76, 89 });
+	walkDOWN.PushBack({ 179, 248, 76, 89 });
+	walkDOWN.PushBack({ 265, 248, 76, 89 });
+	walkDOWN.PushBack({ 361, 248, 76, 89 });
+	walkDOWN.PushBack({ 443, 248, 76, 89 });
+	walkDOWN.PushBack({ 527, 248, 76, 89 });
+	walkDOWN.PushBack({ 606, 248, 76, 89 });
 	walkDOWN.speed = 0.05f;
 
 	// walk Left
-	walkLEFT.PushBack({ 7, 285, 76, 89 });
-	walkLEFT.PushBack({ 89, 285, 76, 89 });
-	walkLEFT.PushBack({ 178, 285, 76, 89 });
-	walkLEFT.PushBack({ 264, 285, 76, 89 });
-
-	walkLEFT.PushBack({ 195, 97, 76, 89 });
-	walkLEFT.PushBack({ 273, 97, 76, 89 });
-	walkLEFT.PushBack({ 358, 97, 76, 89 });
-	walkLEFT.PushBack({ 436, 97, 76, 89 });
+	walkLEFT.PushBack({ 12, 902, 76, 89 });
+	walkLEFT.PushBack({ 95, 902, 76, 89 });
+	walkLEFT.PushBack({ 186, 902, 76, 89 });
+	walkLEFT.PushBack({ 270, 902, 76, 89 });
+	walkLEFT.PushBack({ 347, 902, 76, 89 });
+	walkLEFT.PushBack({ 428, 902, 76, 89 });
+	walkLEFT.PushBack({ 514, 902, 76, 89 });
+	walkLEFT.PushBack({ 593, 902, 76, 89 });
 	walkLEFT.speed = 0.05f;
 
 	// walk Right
-	walkRIGHT.PushBack({ 97, 170, 24, 28 });
-	walkRIGHT.PushBack({ 129, 169, 24, 28 });
-	walkRIGHT.PushBack({ 161, 169, 24, 28 });
+	walkRIGHT.PushBack({ 17, 814, 24, 28 });
+	walkRIGHT.PushBack({ 97, 814, 24, 28 });
+	walkRIGHT.PushBack({ 180, 814, 24, 28 });
+	walkRIGHT.PushBack({ 261, 814, 24, 28 });
+	walkRIGHT.PushBack({ 341, 814, 24, 28 });
+	walkRIGHT.PushBack({ 427, 814, 24, 28 });
+	walkRIGHT.PushBack({ 515, 814, 24, 28 });
+	walkRIGHT.PushBack({ 601, 814, 24, 28 });
 	walkRIGHT.speed = 0.05f;
 
 	// dead Animation
