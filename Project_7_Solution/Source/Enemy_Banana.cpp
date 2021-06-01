@@ -10,46 +10,46 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	walkIdle.PushBack({ 179, 248, 76, 89 });
 
 	// walk Up
-	walkUP.PushBack({ 2, 349, 76, 89 });
+	walkUP.PushBack({ 0, 349, 76, 89 });
 	walkUP.PushBack({ 65, 349, 76, 89 });
-	walkUP.PushBack({ 133, 349, 76, 89 });
-	walkUP.PushBack({ 197, 349, 76, 89});
-	walkUP.PushBack({ 264, 349, 76, 89 });
-	walkUP.PushBack({ 344, 349, 76, 89});
+	walkUP.PushBack({ 135, 349, 76, 89 });
+	walkUP.PushBack({ 199, 349, 76, 89});
+	walkUP.PushBack({ 266, 349, 76, 89 });
+	walkUP.PushBack({ 343, 349, 76, 89});
 	walkUP.PushBack({ 421, 349, 76, 89 });
 	walkUP.speed = 0.05f;
 
 	// walk Down
-	walkDOWN.PushBack({ 7, 248, 76, 89 });
-	walkDOWN.PushBack({ 89, 248, 76, 89 });
+	walkDOWN.PushBack({ 6, 248, 76, 89 });
+	walkDOWN.PushBack({ 90, 248, 76, 89 });
 	walkDOWN.PushBack({ 179, 248, 76, 89 });
 	walkDOWN.PushBack({ 265, 248, 76, 89 });
-	walkDOWN.PushBack({ 361, 248, 76, 89 });
-	walkDOWN.PushBack({ 443, 248, 76, 89 });
-	walkDOWN.PushBack({ 527, 248, 76, 89 });
-	walkDOWN.PushBack({ 606, 248, 76, 89 });
+	walkDOWN.PushBack({ 342, 248, 76, 89 });
+	walkDOWN.PushBack({ 424, 248, 76, 89 });
+	walkDOWN.PushBack({ 509, 248, 76, 89 });
+	walkDOWN.PushBack({ 591, 248, 76, 89 });
 	walkDOWN.speed = 0.05f;
 
 	// walk Left
-	walkLEFT.PushBack({ 12, 902, 76, 89 });
-	walkLEFT.PushBack({ 95, 902, 76, 89 });
-	walkLEFT.PushBack({ 186, 902, 76, 89 });
-	walkLEFT.PushBack({ 270, 902, 76, 89 });
-	walkLEFT.PushBack({ 347, 902, 76, 89 });
+	walkLEFT.PushBack({ 11, 902, 76, 89 });
+	walkLEFT.PushBack({ 94, 902, 76, 89 });
+	walkLEFT.PushBack({ 183, 902, 76, 89 });
+	walkLEFT.PushBack({ 271, 902, 76, 89 });
+	walkLEFT.PushBack({ 358, 902, 76, 89 });
 	walkLEFT.PushBack({ 428, 902, 76, 89 });
 	walkLEFT.PushBack({ 514, 902, 76, 89 });
 	walkLEFT.PushBack({ 593, 902, 76, 89 });
 	walkLEFT.speed = 0.05f;
 
 	// walk Right
-	walkRIGHT.PushBack({ 17, 814, 24, 28 });
-	walkRIGHT.PushBack({ 97, 814, 24, 28 });
-	walkRIGHT.PushBack({ 180, 814, 24, 28 });
-	walkRIGHT.PushBack({ 261, 814, 24, 28 });
-	walkRIGHT.PushBack({ 341, 814, 24, 28 });
-	walkRIGHT.PushBack({ 427, 814, 24, 28 });
-	walkRIGHT.PushBack({ 515, 814, 24, 28 });
-	walkRIGHT.PushBack({ 601, 814, 24, 28 });
+	walkRIGHT.PushBack({ 15, 814, 76, 89 });
+	walkRIGHT.PushBack({ 95, 814, 76, 89 });
+	walkRIGHT.PushBack({ 179, 814, 76, 89 });
+	walkRIGHT.PushBack({ 258, 814, 76, 89 });
+	walkRIGHT.PushBack({ 345, 814, 76, 89 });
+	walkRIGHT.PushBack({ 440, 814, 76, 89 });
+	walkRIGHT.PushBack({ 525, 814, 76, 89 });
+	walkRIGHT.PushBack({ 605, 814, 76, 89 });
 	walkRIGHT.speed = 0.05f;
 
 	// dead Animation
@@ -83,25 +83,25 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 
 	// TODO 3: Have the Brown Cookies describe a path in the screen
 	
-	path.PushBack({ 0.0f, 0.4f }, 80 * 0.5, &walkIdle); //Down
-	path.PushBack({ -0.4f, 0.0f }, 80 * 3, &walkIdle); //Left
-	path.PushBack({ 0.0f, 0.4f }, 80 * 2, &walkIdle); //Down
-	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkIdle); //Up
-	path.PushBack({ 0.4f, 0.0f }, 80 * 6, &walkIdle); //Right
-	path.PushBack({ 0.0f, -0.4f }, 80 * 2, &walkIdle); //Up
-	path.PushBack({ -0.4f, 0.0f }, 80 * 4, &walkIdle); //Left
-	path.PushBack({ 0.4f, 0.0f }, 80 * 3, &walkIdle); //Right
-	path.PushBack({ 0.0f, 0.4f }, 80 * 5, &walkIdle); //Down
-	path.PushBack({ -0.4f, 0.0f }, 80 * 5, &walkIdle); //Left
-	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkIdle); //Up
-	path.PushBack({ 0.4f, 0.0f }, 80 * 2, &walkIdle); //Right
-	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkIdle); //Up
-	path.PushBack({ 0.4f, 0.0f }, 80 * 2, &walkIdle); //Right
-	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkIdle); //Up
-	path.PushBack({ -0.4f, 0.0f }, 80 * 4, &walkIdle); //Left
-	path.PushBack({ 0.0f, -0.4f }, 80 * 2, &walkIdle); //Up
-	path.PushBack({ 0.4f, 0.0f }, 80 * 3, &walkIdle); //Right
-	path.PushBack({ 0.0f, 0.4f }, 80 * 0.5, &walkIdle); //Down
+	path.PushBack({ 0.0f, 0.4f }, 80 * 0.5, &walkDOWN); //Down
+	path.PushBack({ -0.4f, 0.0f }, 80 * 3, &walkLEFT); //Left
+	path.PushBack({ 0.0f, 0.4f }, 80 * 2, &walkDOWN); //Down
+	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkUP); //Up
+	path.PushBack({ 0.4f, 0.0f }, 80 * 6, &walkRIGHT); //Right
+	path.PushBack({ 0.0f, -0.4f }, 80 * 2, &walkUP); //Up
+	path.PushBack({ -0.4f, 0.0f }, 80 * 4, &walkLEFT); //Left
+	path.PushBack({ 0.4f, 0.0f }, 80 * 3, &walkRIGHT); //Right
+	path.PushBack({ 0.0f, 0.4f }, 80 * 5, &walkDOWN); //Down
+	path.PushBack({ -0.4f, 0.0f }, 80 * 5, &walkLEFT); //Left
+	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkUP); //Up
+	path.PushBack({ 0.4f, 0.0f }, 80 * 2, &walkRIGHT); //Right
+	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkUP); //Up
+	path.PushBack({ 0.4f, 0.0f }, 80 * 2, &walkRIGHT); //Right
+	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkUP); //Up
+	path.PushBack({ -0.4f, 0.0f }, 80 * 4, &walkLEFT); //Left
+	path.PushBack({ 0.0f, -0.4f }, 80 * 2, &walkUP); //Up
+	path.PushBack({ 0.4f, 0.0f }, 80 * 3, &walkRIGHT); //Right
+	path.PushBack({ 0.0f, 0.4f }, 80 * 0.5, &walkDOWN); //Down
 
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 
