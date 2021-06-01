@@ -80,6 +80,7 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_Banana.h" />
+    <ClInclude Include="ModuleJungle.h" />
     <ClInclude Include="ModuleMonkey.h" />
     <ClInclude Include="Enemy_Robot.h" />
     <ClInclude Include="Enemy_Robot2.h" />
@@ -118,6 +119,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Banana.cpp" />
+    <ClCompile Include="ModuleJungle.cpp" />
     <ClCompile Include="ModuleMonkey.cpp" />
     <ClCompile Include="Enemy_Robot.cpp" />
     <ClCompile Include="Enemy_Robot2.cpp" />

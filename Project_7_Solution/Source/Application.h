@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 23
+#define NUM_MODULES 24
 
 class Module;
 class ModuleWindow;
@@ -18,6 +18,7 @@ class SceneIntro;
 class SceneLevel1;
 class SceneLevel2;
 class SceneLevel3;
+class ModuleJungle;
 class ModuleLittleTower;
 class ModuleRock;
 class ModuleFlower;
@@ -70,6 +71,8 @@ public:
 	SceneLevel1* sceneLevel_1 = nullptr;
 	SceneLevel2* sceneLevel_2 = nullptr;
 	SceneLevel3* sceneLevel_3 = nullptr;
+
+	ModuleJungle*  jungle = nullptr;
 
 	ModuleRock* rock = nullptr;
 	ModuleLittleTower* little_tower = nullptr;

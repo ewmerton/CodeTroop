@@ -78,7 +78,7 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	dead.PushBack({ 83, 720, 76, 89 });
 	dead.PushBack({ 163, 720, 76, 89 });
 	dead.PushBack({ 242, 720, 76, 89 });
-	
+	dead.speed = 0.07f;
 	currentAnim = &walkIdle;
 
 	// TODO 3: Have the Brown Cookies describe a path in the screen

@@ -121,7 +121,6 @@ void ModuleLittleTower::OnCollision(Collider* c1, Collider* c2)
 Little_tower ModuleLittleTower::CreateLittleTower(int x, int y, SDL_Texture* t)
 {
 	Little_tower f;
-
 	f.colliderT = App->collisions->AddCollider({ x, y + 16, 16, 16 }, Collider::Type::FLOWER, this);
 	f.little_towerT = t;
 	f.x = x;

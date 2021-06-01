@@ -41,6 +41,6 @@ Mega Bomberman is a video game in the Bomberman series. In the single-player mod
   
 ### More Information:
 
-- Check the project wiki [HERE](https://github.com/ewmerton/CodeTroop/wiki). 
+- Check the project wiki here: https://github.com/ewmerton/CodeTroop/wiki. 
 - Download the latest version of the game 
-- Visit our GitHub repository [HERE](https://github.com/ewmerton/CodeTroop).
+- Visit our GitHub repository here: https://github.com/ewmerton/CodeTroop.
