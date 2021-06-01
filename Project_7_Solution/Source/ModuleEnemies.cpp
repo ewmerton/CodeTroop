@@ -12,6 +12,7 @@
 #include "Enemy_Robot.h"
 #include "Enemy_Robot2.h"
 #include "Enemy_Snail.h"
+#include "Enemy_Banana.h"
 
 #define SPAWN_MARGIN 50
 
@@ -136,6 +137,9 @@ void ModuleEnemies::SpawnEnemy(const EnemySpawnpoint& info)
 				case ENEMY_TYPE::SNAIL:
 					enemies[i] = new Enemy_Snail(info.x, info.y);
 					break;
+				case ENEMY_TYPE::BANANA:
+					enemies[i] = new Enemy_Banana(info.x, info.y);
+					break;
 			}
 			enemies[i]->texture = enemyTexture;
 			break;
@@ -152,7 +156,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			switch (c2->type)
 			{
 			case Collider::Type::PLAYER_SHOT:
-				if (enemies[i]->isDead == false)
+				if (enemies[i]->isDead == false && enemies[i]->type != EnemyType::BANANA)
 				{
 					switch (enemies[i]->type)
 					{

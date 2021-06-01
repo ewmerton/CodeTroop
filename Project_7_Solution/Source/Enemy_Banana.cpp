@@ -2,14 +2,12 @@
 
 #include "Application.h"
 #include "ModuleCollisions.h"
-
-#include <stdlib.h>
-#include <time.h>
+#include "ModuleMonkey.h"
 
 Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 {
 	// Idle
-	walkIdle.PushBack({ 0, 133, 23, 32 });
+	walkIdle.PushBack({ 179, 248, 76, 89 });
 
 	// walk Up
 	walkUP.PushBack({ 2, 349, 76, 89 });
@@ -83,50 +81,40 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	
 	currentAnim = &walkIdle;
 
-	srand(time(NULL));
-	int n = rand() % 2;
-
 	// TODO 3: Have the Brown Cookies describe a path in the screen
-	if (n == 0)
-	{
-		path.PushBack({ 0.0f, 0.2f }, 80 * 1, &walkDOWN);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 2, &walkLEFT);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 4, &walkUP);
-		path.PushBack({ 0.2f, 0.0f }, 80 * 6, &walkRIGHT);
-		path.PushBack({ 0.0f, 0.2f }, 80 * 4, &walkDOWN);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 2, &walkLEFT);
-		path.PushBack({ 0.2f, 0.0f }, 80 * 3, &walkRIGHT);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 1, &walkLEFT);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 4, &walkUP);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 6, &walkLEFT);
-		path.PushBack({ 0.0f, 0.2f }, 80 * 4, &walkDOWN);
-		path.PushBack({ 0.2f, 0.0f }, 80 * 2, &walkRIGHT);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 1, &walkUP);
-	}
-	else
-	{
-		path.PushBack({ 0.0f, 0.2f }, 80 * 1, &walkDOWN);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 2, &walkLEFT);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 4, &walkUP);
-		path.PushBack({ 0.2f, 0.0f }, 80 * 12, &walkRIGHT);
-		path.PushBack({ 0.0f, 0.2f }, 80 * 2, &walkDOWN);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 3, &walkUP);
-		path.PushBack({ 0.0f, 0.2f }, 80 * 1, &walkDOWN);
-		path.PushBack({ -0.2f, 0.0f }, 80 * 12, &walkLEFT);
-		path.PushBack({ 0.0f, 0.2f }, 80 * 4, &walkDOWN);
-		path.PushBack({ 0.2f, 0.0f }, 80 * 2, &walkRIGHT);
-		path.PushBack({ 0.0f, -0.2f }, 80 * 1, &walkUP);
-	}
-
+	
+	path.PushBack({ 0.0f, 0.4f }, 80 * 0.5, &walkIdle); //Down
+	path.PushBack({ -0.4f, 0.0f }, 80 * 3, &walkIdle); //Left
+	path.PushBack({ 0.0f, 0.4f }, 80 * 2, &walkIdle); //Down
+	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkIdle); //Up
+	path.PushBack({ 0.4f, 0.0f }, 80 * 6, &walkIdle); //Right
+	path.PushBack({ 0.0f, -0.4f }, 80 * 2, &walkIdle); //Up
+	path.PushBack({ -0.4f, 0.0f }, 80 * 4, &walkIdle); //Left
+	path.PushBack({ 0.4f, 0.0f }, 80 * 3, &walkIdle); //Right
+	path.PushBack({ 0.0f, 0.4f }, 80 * 5, &walkIdle); //Down
+	path.PushBack({ -0.4f, 0.0f }, 80 * 5, &walkIdle); //Left
+	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkIdle); //Up
+	path.PushBack({ 0.4f, 0.0f }, 80 * 2, &walkIdle); //Right
+	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkIdle); //Up
+	path.PushBack({ 0.4f, 0.0f }, 80 * 2, &walkIdle); //Right
+	path.PushBack({ 0.0f, -0.4f }, 80 * 1, &walkIdle); //Up
+	path.PushBack({ -0.4f, 0.0f }, 80 * 4, &walkIdle); //Left
+	path.PushBack({ 0.0f, -0.4f }, 80 * 2, &walkIdle); //Up
+	path.PushBack({ 0.4f, 0.0f }, 80 * 3, &walkIdle); //Right
+	path.PushBack({ 0.0f, 0.4f }, 80 * 0.5, &walkIdle); //Down
 
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
-
 
 	type = EnemyType::BANANA;
 }
 
 void Enemy_Banana::Update()
 {
+	if (!App->monkey->isAlive())
+	{
+		isDead = true;
+	}
+
 	if (isDead)
 	{
 		currentAnim = &dead;

@@ -139,8 +139,8 @@
     <ClInclude Include="Enemy_Banana.h">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Monkey.h">
-      <Filter>Source Files\Entities\Enemies</Filter>
+    <ClInclude Include="ModuleMonkey.h">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -246,8 +246,8 @@
     <ClCompile Include="Enemy_Banana.cpp">
       <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Monkey.cpp">
-      <Filter>Source Files\Entities\Enemies</Filter>
+    <ClCompile Include="ModuleMonkey.cpp">
+      <Filter>Source Files\Modules\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

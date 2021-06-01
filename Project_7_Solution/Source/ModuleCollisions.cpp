@@ -43,7 +43,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::ROCK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::FLOWER] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_NXT] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_NXT] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::MOON] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_SHOT] = true;
@@ -51,7 +51,7 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 	matrix[Collider::Type::PLAYER_NXT][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER_NXT][Collider::Type::ROCK] = true;
 	matrix[Collider::Type::PLAYER_NXT][Collider::Type::FLOWER] = true;
-	matrix[Collider::Type::PLAYER_NXT][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::PLAYER_NXT][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::PLAYER_NXT][Collider::Type::PLAYER_NXT] = false;
 	matrix[Collider::Type::PLAYER_NXT][Collider::Type::MOON] = false;
 	matrix[Collider::Type::PLAYER_NXT][Collider::Type::ENEMY] = false;

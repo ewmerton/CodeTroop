@@ -7,6 +7,7 @@
 #include "ModuleAudio.h"
 #include "Bomb.h"
 #include "ModulePlayer.h"
+#include "ModuleMonkey.h"
 #include "GetScene.h"
 #include "SceneIntro.h"
 #include "SceneLevel1.h"
@@ -50,11 +51,12 @@ Application::Application()
 	modules[15] = bomb = new ModuleBomb(false);
 	modules[16] = player = new ModulePlayer(false);
 	modules[17] = enemies = new ModuleEnemies(false);
+	modules[18] = monkey = new ModuleMonkey(false);
 
-	modules[18] = collisions = new ModuleCollisions(false);
-	modules[19] = fonts = new ModuleFonts(true);
-	modules[20] = render = new ModuleRender(true);
-	modules[21] = fade = new ModuleFadeToBlack(true);
+	modules[19] = collisions = new ModuleCollisions(false);
+	modules[20] = fonts = new ModuleFonts(true);
+	modules[21] = render = new ModuleRender(true);
+	modules[22] = fade = new ModuleFadeToBlack(true);
 }
 
 Application::~Application()

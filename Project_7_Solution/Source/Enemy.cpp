@@ -31,7 +31,14 @@ void Enemy::Update()
 
 	if (collider != nullptr)
 	{
-		collider->SetPos(position.x + 3, position.y + 16);
+		if (type == EnemyType::BANANA)
+		{
+			collider->SetPos(position.x + 30, position.y + 60);
+		}
+		else
+		{
+			collider->SetPos(position.x + 3, position.y + 16);
+		}
 	}
 }
 

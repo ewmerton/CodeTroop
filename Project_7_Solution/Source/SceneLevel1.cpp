@@ -40,6 +40,20 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 0, 217, 256, 16 }, Collider::Type::WALL); //down
 	App->collisions->AddCollider({ 8, 25, 16, 208 }, Collider::Type::WALL); //left
 	App->collisions->AddCollider({ 232, 25, 16, 208 }, Collider::Type::WALL); //right
+
+	for (int i = 0; i < 32 * 6; i += 32)
+	{
+		for (int j = 0; j < 32 * 5; j += 32)
+		{
+			if ((i == 32 * 2 || i == 32 * 3) && (j == 32 * 1 || j == 32 * 2))
+			{
+
+			}
+			else {
+				App->collisions->AddCollider({ 40 + i, 57 + j, 16, 16 }, Collider::Type::ROCK, this);
+			}
+		}
+	}
 	
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 169);

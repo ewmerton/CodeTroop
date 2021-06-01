@@ -12,8 +12,7 @@ enum EnemyType
 	NONE = -1,
 	ROBOT,
 	SNAIL,
-	BANANA, 
-	MONKEY
+	BANANA
 };
 
 class Enemy

@@ -47,7 +47,7 @@ bool SceneLevel2::Start()
 	App->collisions->AddCollider({ 264, 142, 48, 60 }, Collider::Type::WALL); //river bottom
 
 	//Rock colliders
-	/*App->collisions->AddCollider({ 40, 57, 16, 16 }, Collider::Type::ROCK);
+	App->collisions->AddCollider({ 40, 57, 16, 16 }, Collider::Type::ROCK);
 	App->collisions->AddCollider({ 72, 57, 16, 16 }, Collider::Type::ROCK);
 	App->collisions->AddCollider({ 104, 57, 48, 16 }, Collider::Type::ROCK);
 	App->collisions->AddCollider({ 136, 57, 16, 48 }, Collider::Type::ROCK);
@@ -87,7 +87,7 @@ bool SceneLevel2::Start()
 	App->collisions->AddCollider({ 104, 185, 16, 16 }, Collider::Type::ROCK);
 	App->collisions->AddCollider({ 136, 185, 16, 16 }, Collider::Type::ROCK);
 	App->collisions->AddCollider({ 424, 185, 16, 16 }, Collider::Type::ROCK);
-	App->collisions->AddCollider({ 456, 185, 16, 16 }, Collider::Type::ROCK);*/
+	App->collisions->AddCollider({ 456, 185, 16, 16 }, Collider::Type::ROCK);
 
 	// Enemies ---
 	//App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 155);

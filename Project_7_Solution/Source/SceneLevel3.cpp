@@ -7,6 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
+#include "ModuleMonkey.h"
 #include "ModuleRock.h"
 #include "ModuleLittleTower.h"
 #include "ModuleFlower.h"
@@ -41,14 +42,23 @@ bool SceneLevel3::Start()
 	App->collisions->AddCollider({ 8, 25, 16, 208 }, Collider::Type::WALL); //left
 	App->collisions->AddCollider({ 232, 25, 16, 208 }, Collider::Type::WALL); //right
 
+	/*for (int i = 0; i < 32 * 6; i += 32)
+	{
+		for (int j = 0; j < 32 * 5; j += 32)
+		{
+			App->collisions->AddCollider({ 40 + i, 57 + j, 16, 16 }, Collider::Type::ROCK, this);
+		}
+	}*/
+
 	// Enemies ---
-	//App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 169);
+	App->enemies->AddEnemy(ENEMY_TYPE::BANANA, 90, -3);
 
 	App->render->ResetCamera();
 
 	// Enables
 	App->bomb->Enable();
 	App->player->Enable();
+	App->monkey->Enable();
 	App->enemies->Enable();
 	App->rock->Enable();
 	App->collisions->Enable();
@@ -77,6 +87,7 @@ bool SceneLevel3::CleanUp()
 {
 	App->bomb->Disable();
 	App->player->Disable();
+	App->monkey->Disable();
 	App->enemies->Disable();
 	App->rock->Disable();
 	App->collisions->Disable();
