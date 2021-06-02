@@ -198,24 +198,28 @@ update_status ModuleMonkey::Update()
 		if (delayTP < 0)
 		{
 			position = { 118, 101 };
-			dTP = false;
-			delayTP = 15;
 
-			if (App->player->GetPlayerPos().x > position.x)
+			if (delayTP < -15)
 			{
-				currentAnimation = &idleRIGHT;
-			}
-			else if (App->player->GetPlayerPos().x < position.x)
-			{
-				currentAnimation = &idleLEFT;
-			}
-			else if (App->player->GetPlayerPos().y > position.y)
-			{
-				currentAnimation = &idleDOWN;
-			}
-			else if (App->player->GetPlayerPos().y < position.y)
-			{
-				currentAnimation = &idleUP;
+				dTP = false;
+				delayTP = 15;
+
+				if (App->player->GetPlayerPos().x > position.x)
+				{
+					currentAnimation = &idleRIGHT;
+				}
+				else if (App->player->GetPlayerPos().x < position.x)
+				{
+					currentAnimation = &idleLEFT;
+				}
+				else if (App->player->GetPlayerPos().y > position.y)
+				{
+					currentAnimation = &idleDOWN;
+				}
+				else if (App->player->GetPlayerPos().y < position.y)
+				{
+					currentAnimation = &idleUP;
+				}
 			}
 		}
 	}

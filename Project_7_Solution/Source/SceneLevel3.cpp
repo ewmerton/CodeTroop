@@ -26,8 +26,7 @@ SceneLevel3::~SceneLevel3()
 
 // Load assets
 bool SceneLevel3::Start()
-{
-	LOG("Loading background assets");
+{	LOG("Loading background assets");
 
 	bool ret = true;
 
@@ -42,13 +41,13 @@ bool SceneLevel3::Start()
 	App->collisions->AddCollider({ 8, 25, 16, 208 }, Collider::Type::WALL); //left
 	App->collisions->AddCollider({ 232, 25, 16, 208 }, Collider::Type::WALL); //right
 
-	/*for (int i = 0; i < 32 * 6; i += 32)
+	for (int i = 0; i < 32 * 6; i += 32)
 	{
 		for (int j = 0; j < 32 * 5; j += 32)
 		{
 			App->collisions->AddCollider({ 40 + i, 57 + j, 16, 16 }, Collider::Type::ROCK, this);
 		}
-	}*/
+	}
 
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::BANANA, 90, -3);

@@ -107,10 +107,10 @@ bool ModulePlayer::Start()
 	freeze = false;
 
 	collider = App->collisions->AddCollider({ position.x, position.y + 7, 16, 16 }, Collider::Type::PLAYER, this);
-	colliderUp = App->collisions->AddCollider({ position.x, position.y - 9, 16, 16 }, Collider::Type::PLAYER_NXT, this);
-	colliderDown = App->collisions->AddCollider({ position.x, position.y + 23, 16, 16 }, Collider::Type::PLAYER_NXT, this);
-	colliderLeft = App->collisions->AddCollider({ position.x - 16, position.y + 7, 16, 16 }, Collider::Type::PLAYER_NXT, this);
-	colliderRight = App->collisions->AddCollider({ position.x + 16, position.y + 7, 16, 16 }, Collider::Type::PLAYER_NXT, this);
+	colliderUp = App->collisions->AddCollider({ position.x + 1, position.y - 9, 12, 16 }, Collider::Type::PLAYER_NXT, this);
+	colliderDown = App->collisions->AddCollider({ position.x + 1, position.y + 23, 12, 16 }, Collider::Type::PLAYER_NXT, this);
+	colliderLeft = App->collisions->AddCollider({ position.x - 16, position.y + 8, 16, 12 }, Collider::Type::PLAYER_NXT, this);
+	colliderRight = App->collisions->AddCollider({ position.x + 16, position.y + 8, 16, 12 }, Collider::Type::PLAYER_NXT, this);
 
 	char lookupTable[] = { "0123456789" };
 	nFont = App->fonts->Load("Assets/hud_font.png", lookupTable, 1);
@@ -170,6 +170,9 @@ update_status ModulePlayer::Update()
 		if (!freezeLeft)
 		{
 			position.x -= speed;
+			freezeUp = true;
+			freezeDown = true;
+			freezeRight = true;
 		}
 	}
 
@@ -183,6 +186,9 @@ update_status ModulePlayer::Update()
 		if (!freezeRight)
 		{
 			position.x += speed;
+			freezeUp = true;
+			freezeDown = true;
+			freezeLeft = true;
 		}
 	}
 
@@ -196,6 +202,9 @@ update_status ModulePlayer::Update()
 		if (!freezeDown)
 		{
 			position.y += speed;
+			freezeUp = true;
+			freezeLeft = true;
+			freezeRight = true;
 		}
 	}
 
@@ -209,8 +218,37 @@ update_status ModulePlayer::Update()
 		if (!freezeUp)
 		{
 			position.y -= speed;
+			freezeLeft = true;
+			freezeDown = true;
+			freezeRight = true;
 		}
 	}
+
+	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_UP)
+	{
+		freezeUp = false;
+		freezeDown = false;
+		freezeRight = false;
+	}
+	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_UP)
+	{
+		freezeLeft = false;
+		freezeDown = false;
+		freezeUp = false;
+	}
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_UP)
+	{
+		freezeLeft = false;
+		freezeUp = false;
+		freezeRight = false;
+	}
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_UP)
+	{
+		freezeLeft = false;
+		freezeDown = false;
+		freezeRight = false;
+	}
+
 
 	// Bomb system
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && !freeze)
@@ -246,18 +284,13 @@ update_status ModulePlayer::Update()
 		&& !freeze)
 		currentAnimation = &idleAnim;
 
-	collider->SetPos(position.x, position.y + 7);
-	colliderUp->SetPos(position.x, position.y - 9);
-	colliderDown->SetPos(position.x, position.y + 23);
-	colliderLeft->SetPos(position.x - 16, position.y + 7);
-	colliderRight->SetPos(position.x + 16, position.y + 7);
+	collider->SetPos(position.x, position.y + 7);///
+	colliderUp->SetPos(position.x + 2, position.y - 9);///
+	colliderDown->SetPos(position.x + 2, position.y + 23);///
+	colliderLeft->SetPos(position.x - 16, position.y + 9);///
+	colliderRight->SetPos(position.x + 16, position.y + 9);///
 
 	currentAnimation->Update();
-
-	if (App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN)
-	{
-		return update_status::UPDATE_STOP;
-	}
 
 	// Jump next level
 	if (lvlComplete)
@@ -469,31 +502,29 @@ iPoint ModulePlayer::CenterInTile(iPoint p)
 	if ((p.x - 24) % 16 == 0)
 	{
 		f_point.x = p.x;
-
-		if ((p.y - 34) % 16 == 0)
-		{
-			f_point.y = p.y;
-		}
-		else
-		{
-			while ((p.y - 34) % 16 != 0)
-			{
-				p.y += 1;
-			}
-
-			f_point.y = p.y - 9;
-		}
 	}
 	else
 	{
-		f_point.y = p.y;
-
 		while ((p.x - 24) % 16 != 0)
 		{
 			p.x -= 1;
 		}
 
 		f_point.x = p.x;
+	}
+
+	if ((p.y - 34) % 16 == 0)
+	{
+		f_point.y = p.y;
+	}
+	else
+	{
+		while ((p.y - 34) % 16 != 0)
+		{
+			p.y += 1;
+		}
+
+		f_point.y = p.y - 9;
 	}
 
 	return f_point;

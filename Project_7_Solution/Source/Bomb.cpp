@@ -29,12 +29,21 @@ bool ModuleBomb::Start()
 	continueDown = true;
 	continueLeft = true;
 	continueRight = true;
+	continueUpX = true;
+	continueDownX = true;
+	continueLeftX = true;
+	continueRightX = true;
 	placed = false;
 
+	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ROCK, this);
 	cUp = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
 	cDown = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
 	cLeft = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
 	cRight = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
+	cUpX = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
+	cDownX = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
+	cLeftX = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
+	cRightX = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
 	extraUp = App->collisions->AddCollider({ 100, 0, 16, 16 }, Collider::Type::PLAYER_SHOT);
 	extraDown = App->collisions->AddCollider({ 100, 0, 16, 16 }, Collider::Type::PLAYER_SHOT);
 	extraLeft = App->collisions->AddCollider({ 100, 0, 16, 16 }, Collider::Type::PLAYER_SHOT);
@@ -52,6 +61,10 @@ update_status ModuleBomb::PreUpdate()
 	continueDown = true;
 	continueLeft = true;
 	continueRight = true;
+	continueUpX = true;
+	continueDownX = true;
+	continueLeftX = true;
+	continueRightX = true;
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -67,6 +80,10 @@ update_status ModuleBomb::Update()
 	cDown->SetPos(position.x, position.y + 16);
 	cLeft->SetPos(position.x - 16, position.y);
 	cRight->SetPos(position.x + 16, position.y);
+	cUpX->SetPos(position.x, position.y - 32);
+	cDownX->SetPos(position.x, position.y + 32);
+	cLeftX->SetPos(position.x - 32, position.y);
+	cRightX->SetPos(position.x + 32, position.y);
 
 	extraUp->SetPos(100, 0);
 	extraDown->SetPos(100, 0);
@@ -81,7 +98,7 @@ update_status ModuleBomb::PostUpdate()
 	if (count >= 300)
 	{
 		BombExplosion(position);
-		collider->pendingToDelete = true;
+		collider->SetPos(0, 0);
 		Cooldown = false;
 		count = 0;
 		a_bombs++;
@@ -92,6 +109,7 @@ update_status ModuleBomb::PostUpdate()
 
 void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 {
+	// first round
 	if (c1 == cUp && placed)
 	{
 		switch (c2->type)
@@ -159,6 +177,75 @@ void ModuleBomb::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
+
+	// second round
+	if (c1 == cUpX && placed)
+	{
+		switch (c2->type)
+		{
+		case Collider::Type::WALL:
+			continueUpX = false; break;
+
+		case Collider::Type::ROCK:
+			continueUpX = false; break;
+
+		case Collider::Type::FLOWER:
+			continueUpX = false; break;
+		default:
+			break;
+		}
+	}
+
+	if (c1 == cDownX && placed)
+	{
+		switch (c2->type)
+		{
+		case Collider::Type::WALL:
+			continueDownX = false; break;
+
+		case Collider::Type::ROCK:
+			continueDownX = false; break;
+
+		case Collider::Type::FLOWER:
+			continueDownX = false; break;
+		default:
+			break;
+		}
+	}
+
+	if (c1 == cLeftX && placed)
+	{
+		switch (c2->type)
+		{
+		case Collider::Type::WALL:
+			continueLeftX = false; break;
+
+		case Collider::Type::ROCK:
+			continueLeftX = false; break;
+
+		case Collider::Type::FLOWER:
+			continueLeftX = false; break;
+		default:
+			break;
+		}
+	}
+
+	if (c1 == cRight && placed)
+	{
+		switch (c2->type)
+		{
+		case Collider::Type::WALL:
+			continueRightX = false; break;
+
+		case Collider::Type::ROCK:
+			continueRightX = false; break;
+
+		case Collider::Type::FLOWER:
+			continueRightX = false; break;
+		default:
+			break;
+		}
+	}
 }
 
 void ModuleBomb::PlaceBomb(iPoint p)
@@ -177,7 +264,7 @@ void ModuleBomb::PlaceBomb(iPoint p)
 void ModuleBomb::SpawnBomb(iPoint p)
 {
 	App->particles->AddParticle(App->particles->bomb, p.x, p.y, Collider::Type::NONE, 0);
-	collider = App->collisions->AddCollider({ p.x, p.y, 16, 16 }, Collider::Type::ROCK, this);
+	collider->SetPos(p.x, p.y);
 }
 
 void ModuleBomb::BombExplosion(iPoint p)
@@ -190,7 +277,7 @@ void ModuleBomb::BombExplosion(iPoint p)
 	{
 		// Down
 		App->particles->AddParticle(App->particles->exV, p.x, p.y - 16, Collider::Type::PLAYER_SHOT, 0);
-		if (continueUp)
+		if (continueUpX)
 		{
 			App->particles->AddParticle(App->particles->exUp, p.x, p.y - 32, Collider::Type::PLAYER_SHOT, 0);
 		}
@@ -201,20 +288,20 @@ void ModuleBomb::BombExplosion(iPoint p)
 	}
 	else
 	{
-		extraDown->SetPos(p.x, p.y - 16);
+		extraUp->SetPos(p.x, p.y - 16);
 	}
 
 	if (continueDown)
 	{
 		// Down
 		App->particles->AddParticle(App->particles->exV, p.x, p.y + 16, Collider::Type::PLAYER_SHOT, 0);
-		if (continueDown)
+		if (continueDownX)
 		{
 			App->particles->AddParticle(App->particles->exDown, p.x, p.y + 32, Collider::Type::PLAYER_SHOT, 0);
 		}
 		else
 		{
-			extraUp->SetPos(p.x, p.y + 32);
+			extraDown->SetPos(p.x, p.y + 32);
 		}
 	}
 	else
@@ -226,13 +313,13 @@ void ModuleBomb::BombExplosion(iPoint p)
 	{
 		// Left
 		App->particles->AddParticle(App->particles->exH, p.x - 16, p.y, Collider::Type::PLAYER_SHOT, 0);
-		if (continueLeft)
+		if (continueLeftX)
 		{
 			App->particles->AddParticle(App->particles->exLeft, p.x - 32, p.y, Collider::Type::PLAYER_SHOT, 0);
 		}
 		else
 		{
-			extraUp->SetPos(p.x - 32, p.y);
+			extraLeft->SetPos(p.x - 32, p.y);
 		}
 	}
 	else
@@ -244,18 +331,18 @@ void ModuleBomb::BombExplosion(iPoint p)
 	{
 		// Right
 		App->particles->AddParticle(App->particles->exH, p.x + 16, p.y, Collider::Type::PLAYER_SHOT, 0);
-		if (continueRight)
+		if (continueRightX)
 		{
 			App->particles->AddParticle(App->particles->exRight, p.x + 32, p.y, Collider::Type::PLAYER_SHOT, 0);
 		}
 		else
 		{
-			extraUp->SetPos(p.x + 32, p.y);
+			extraRight->SetPos(p.x + 32, p.y);
 		}
 	}
 	else
 	{
-		extraUp->SetPos(p.x + 16, p.y);
+		extraRight->SetPos(p.x + 16, p.y);
 	}
 
 	placed = false;

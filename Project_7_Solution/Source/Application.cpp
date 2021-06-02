@@ -90,6 +90,11 @@ update_status Application::Update()
 {
 	update_status ret = update_status::UPDATE_CONTINUE;
 
+	if (App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN)
+	{
+		return update_status::UPDATE_STOP;
+	}
+
 	for (int i = 0; i < NUM_MODULES && ret == update_status::UPDATE_CONTINUE; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : update_status::UPDATE_CONTINUE;
 

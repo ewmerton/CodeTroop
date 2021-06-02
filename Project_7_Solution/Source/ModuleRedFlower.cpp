@@ -61,7 +61,7 @@ bool ModuleRedFlower::Start()
 	{
 		red_flowers[0] = CreateRedFlower(position.x+ 416, position.y + 96, flowerTexture);
 
-		for (int i = 2; i < NUM_RED_FLOWERS; i++)
+		for (int i = 1; i < NUM_RED_FLOWERS; i++)
 		{
 			// i = numero de flores de este nivel
 			red_flowers[i].flowerT = nullptr;

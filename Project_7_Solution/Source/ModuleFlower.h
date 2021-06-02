@@ -4,7 +4,7 @@
 #include "Module.h"
 #include "p2Point.h"
 
-#define NUM_FLOWERS 50
+#define NUM_FLOWERS 100
 
 struct SDL_Texture;
 

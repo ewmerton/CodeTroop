@@ -35,6 +35,8 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* nameTexture = nullptr;
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* Texture1 = nullptr;
+	SDL_Texture* Texture2 = nullptr;
 
 	bool changeTex = false;
 	uint cd = 0;

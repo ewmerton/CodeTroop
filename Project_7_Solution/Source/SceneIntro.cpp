@@ -27,10 +27,13 @@ bool SceneIntro::Start()
 	bool ret = true;
 
 	nameTexture = App->textures->Load("Assets/NameScreen.png");
-	bgTexture = App->textures->Load("Assets/Main_Menu.png");
+	Texture1 = App->textures->Load("Assets/Main_Menu.png");
+	Texture2 = App->textures->Load("Assets/.png");
 	App->audio->PlayMusic("Assets/TitleScreen.ogg", 1.0f);
 
 	App->render->ResetCamera();
+
+	bgTexture = Texture1;
 
 	changeTex = false;
 	cd = 0;
@@ -61,8 +64,19 @@ update_status SceneIntro::Update()
 		{
 			App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
 		}
+
+		// images
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
+		{
+			bgTexture = Texture2;
+		}
+		else if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
+		{
+			bgTexture = Texture1;
+		}
 	}
 
+	// level selection
 	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 0);

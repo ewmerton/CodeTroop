@@ -12,6 +12,7 @@
 #include "ModuleFlower.h"
 #include "ModuleRedFlower.h"
 #include "ModuleCT.h"
+#include "ModuleJungle.h"
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
@@ -58,7 +59,6 @@ bool SceneLevel1::Start()
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 169);
 	App->enemies->AddEnemy(ENEMY_TYPE::ROBOT2, 181, 57);
-	//App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 181, 125);
 
 	App->render->ResetCamera();
 
@@ -71,8 +71,8 @@ bool SceneLevel1::Start()
 	App->flower->Enable();
 	App->red_flower->Enable();
 	App->tower->Enable();
+	App->jungle->Enable();
 	App->collisions->Enable();
-
 
 	return ret;
 }
@@ -104,6 +104,7 @@ bool SceneLevel1::CleanUp()
 	App->flower->Disable();
 	App->red_flower->Disable();
 	App->tower->Disable();
+	App->jungle->Disable();
 	App->collisions->Disable();
 
 	return true;

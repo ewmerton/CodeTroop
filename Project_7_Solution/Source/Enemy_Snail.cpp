@@ -40,23 +40,16 @@ Enemy_Snail::Enemy_Snail(int x, int y) : Enemy(x, y)
 	currentAnim = &walkIdle;
 
 	// TODO 3: Have the Brown Cookies describe a path in the screen
-	path.PushBack({ 0.0f, -0.2f },80 * 6, &walkUP);
-	path.PushBack({ 0.0f, 0.0f }, 80, &walkIdle);
+	path.PushBack({ -0.2f, 0.0f }, 80 * 1, &walkLEFT);
+	path.PushBack({ 0.0f, 0.2f }, 80 * 4, &walkDOWN);
+	path.PushBack({ 0.2f, 0.0f }, 80 * 4, &walkRIGHT);
+	path.PushBack({ 0.0f, -0.2f }, 80 * 4, &walkUP);
+	path.PushBack({ -0.2f, 0.0f }, 80 * 1, &walkLEFT);
+	path.PushBack({ 0.2f, 0.0f }, 80 * 1, &walkRIGHT);
+	path.PushBack({ 0.0f, 0.2f }, 80 * 4, &walkDOWN);
 	path.PushBack({ -0.2f, 0.0f }, 80 * 4, &walkLEFT);
-	path.PushBack({ 0.0f, 0.2f }, 80 * 2, &walkDOWN);
-	path.PushBack({ 0.0f, 0.0f }, 80, &walkIdle);
-	path.PushBack({ 0.2f, 0.0f }, 80 * 6, &walkRIGHT);
-	path.PushBack({ 0.0f, -0.2f }, 80 * 2, &walkUP);
-	path.PushBack({ -0.2f, 0.0f }, 80 * 2, &walkLEFT);
-	path.PushBack({ 0.0f, 0.2f }, 80 * 4, &walkDOWN);
-	path.PushBack({ 0.0f, 0.0f }, 80, &walkIdle);
-	path.PushBack({ -0.2f, 0.0f }, 80 * 2, &walkLEFT);
-	path.PushBack({ 0.0f, 0.0f }, 80, &walkIdle);
-	path.PushBack({ 0.0f, 0.2f }, 80 * 4, &walkDOWN);
-	path.PushBack({ 0.0f, -0.2f }, 80 * 2, &walkUP);
-	path.PushBack({ 0.0f, 0.0f }, 80, &walkIdle);
-	path.PushBack({ 0.2f, 0.0f }, 80 * 2, &walkRIGHT);
-	
+	path.PushBack({ 0.0f, -0.2f }, 80 * 4, &walkUP);
+	path.PushBack({ 0.2f, 0.0f }, 80 * 1, &walkRIGHT);
 
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 

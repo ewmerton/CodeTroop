@@ -40,7 +40,6 @@ private:
 	// Array for bombs
 	uint a_bombs = 1;
 
-	//Bomb bombs/*[MAX_BOMBS]*/ = { nullptr };
 	Collider* collider = nullptr;
 
 	iPoint position;
@@ -52,7 +51,11 @@ private:
 	Collider* cDown = nullptr;
 	Collider* cLeft = nullptr;
 	Collider* cRight = nullptr;
-	bool continueUp, continueDown, continueLeft, continueRight;
+	Collider* cUpX = nullptr;
+	Collider* cDownX = nullptr;
+	Collider* cLeftX = nullptr;
+	Collider* cRightX = nullptr;
+	bool continueUp, continueDown, continueLeft, continueRight, continueUpX, continueDownX, continueLeftX, continueRightX;
 	bool placed;
 
 	Collider* extraUp = nullptr;

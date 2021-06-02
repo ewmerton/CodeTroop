@@ -12,6 +12,7 @@
 #include "ModuleFlower.h"
 #include "ModuleRedFlower.h"
 #include "ModuleCT.h"
+#include "ModuleJungle.h"
 
 SceneLevel2::SceneLevel2(bool startEnabled) : Module(startEnabled)
 {
@@ -26,6 +27,8 @@ SceneLevel2::~SceneLevel2()
 // Load assets
 bool SceneLevel2::Start()
 {
+	App->collisions->Enable();
+
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -91,7 +94,7 @@ bool SceneLevel2::Start()
 
 	// Enemies ---
 	//App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 155);
-	//App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 181, 125);
+	App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 325, 89);
 
 	App->render->ResetCamera();
 
@@ -104,7 +107,7 @@ bool SceneLevel2::Start()
 	App->flower->Enable();
 	App->red_flower->Enable();
 	App->tower->Enable();
-	App->collisions->Enable();
+	App->jungle->Enable();
 
 	return ret;
 }
@@ -138,6 +141,7 @@ bool SceneLevel2::CleanUp()
 	App->flower->Disable();
 	App->red_flower->Disable();
 	App->tower->Disable();
+	App->jungle->Disable();
 	App->collisions->Disable();
 
 

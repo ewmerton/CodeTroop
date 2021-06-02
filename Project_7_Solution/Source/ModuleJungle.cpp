@@ -3,8 +3,6 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-#include "ModuleCollisions.h"
-#include "ModuleCT.h"
 
 #include "SceneLevel1.h"
 #include "SceneLevel2.h"
@@ -29,8 +27,8 @@ bool ModuleJungle::Start()
 	jungleTextureL = App->textures->Load("Assets/JungleL.png");
 	jungleTextureR = App->textures->Load("Assets/JungleR.png");
 
-	position.x = 24;  //Esquina arriba izq
-	position.y = 41;  //primera fila
+	position.x = 16;
+	position.y = 41;
 
 	return ret;
 }
@@ -47,7 +45,7 @@ update_status ModuleJungle::PostUpdate()
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
 		App->render->Blit(jungleTextureL,position.x, position.y, NULL);
-		App->render->Blit(jungleTextureR, position.x, position.y, NULL);
+		App->render->Blit(jungleTextureR, position.x + 208, position.y, NULL);
 	}
 	else if (App->sceneLevel_2->IsEnabled() == true)
 	{
