@@ -10,6 +10,7 @@
 #include "ModuleMonkey.h"
 #include "GetScene.h"
 #include "SceneIntro.h"
+#include "SceneStage.h"
 #include "SceneLevel1.h"
 #include "SceneLevel2.h"
 #include "SceneLevel3.h"
@@ -38,26 +39,27 @@ Application::Application()
 
 	modules[4] = getScene = new GetScene(false);
 	modules[5] = sceneIntro = new SceneIntro(true);
-	modules[6] = sceneLevel_1 = new SceneLevel1(false);
-	modules[7] = sceneLevel_2 = new SceneLevel2(false);
-	modules[8] = sceneLevel_3 = new SceneLevel3(false);
+	modules[6] = sceneStage = new SceneStage(false);
+	modules[7] = sceneLevel_1 = new SceneLevel1(false);
+	modules[8] = sceneLevel_2 = new SceneLevel2(false);
+	modules[9] = sceneLevel_3 = new SceneLevel3(false);
 
-	modules[9] = rock = new ModuleRock(false);
-	modules[10] = flower = new ModuleFlower(false);
-	modules[11] = red_flower = new ModuleRedFlower(false);
-	modules[12] = little_tower = new ModuleLittleTower(false);
-	modules[13] = tower = new ModuleCT(false);
-	modules[14] = particles = new ModuleParticles(true);
-	modules[15] = bomb = new ModuleBomb(false);
-	modules[16] = player = new ModulePlayer(false);
-	modules[17] = monkey = new ModuleMonkey(false);
-	modules[18] = enemies = new ModuleEnemies(false);
-	modules[19] = jungle = new ModuleJungle(false);
+	modules[10] = rock = new ModuleRock(false);
+	modules[11] = flower = new ModuleFlower(false);
+	modules[12] = red_flower = new ModuleRedFlower(false);
+	modules[13] = little_tower = new ModuleLittleTower(false);
+	modules[14] = tower = new ModuleCT(false);
+	modules[15] = particles = new ModuleParticles(true);
+	modules[16] = bomb = new ModuleBomb(false);
+	modules[17] = player = new ModulePlayer(false);
+	modules[18] = monkey = new ModuleMonkey(false);
+	modules[19] = enemies = new ModuleEnemies(false);
+	modules[20] = jungle = new ModuleJungle(false);
 
-	modules[20] = collisions = new ModuleCollisions(false);
-	modules[21] = fonts = new ModuleFonts(true);
-	modules[22] = fade = new ModuleFadeToBlack(true);
-	modules[23] = render = new ModuleRender(true);
+	modules[21] = collisions = new ModuleCollisions(false);
+	modules[22] = fonts = new ModuleFonts(true);
+	modules[23] = fade = new ModuleFadeToBlack(true);
+	modules[24] = render = new ModuleRender(true);
 }
 
 Application::~Application()
@@ -88,9 +90,10 @@ bool Application::Init()
 
 update_status Application::Update()
 {
+	GamePad& pad = App->input->pads[0];
 	update_status ret = update_status::UPDATE_CONTINUE;
 
-	if (App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN ||  pad.r1 == true)
 	{
 		return update_status::UPDATE_STOP;
 	}

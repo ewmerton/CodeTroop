@@ -17,6 +17,7 @@ enum class ENEMY_TYPE
 	SNAIL,
 	ROBOT,
 	ROBOT2,
+	GAS,
 	BANANA,
 	MONKEY
 };

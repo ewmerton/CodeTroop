@@ -38,7 +38,7 @@ Module* GetScene::GetNextScene()
 {
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
-		NextScene = (Module*)App->sceneLevel_2;
+		NextScene = (Module*)App->sceneStage;
 	}
 	else if (App->sceneLevel_2->IsEnabled() == true)
 	{

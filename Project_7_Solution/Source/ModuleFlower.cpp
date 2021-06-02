@@ -146,6 +146,7 @@ bool ModuleFlower::Start()
 		flowers[46] = CreateFlower(position.x + 384, position.y + 144, flowerTexture);
 		flowers[47] = CreateFlower(position.x + 416, position.y + 144, flowerTexture);
 		flowers[48] = CreateFlower(position.x + 448, position.y + 144, flowerTexture);
+		flowers[49] = CreateFlower(position.x + 32, position.y + 32, flowerTexture); //left bridge
 
 		/*
 		for (int i = 30; i < NUM_FLOWERS; i++)

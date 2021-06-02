@@ -14,6 +14,8 @@
 #include "ModuleCT.h"
 #include "ModuleJungle.h"
 
+#include "SceneStage.h"
+
 SceneLevel2::SceneLevel2(bool startEnabled) : Module(startEnabled)
 {
 
@@ -93,7 +95,7 @@ bool SceneLevel2::Start()
 	App->collisions->AddCollider({ 456, 185, 16, 16 }, Collider::Type::ROCK);
 
 	// Enemies ---
-	//App->enemies->AddEnemy(ENEMY_TYPE::ROBOT, 53, 155);
+	App->enemies->AddEnemy(ENEMY_TYPE::GAS, 184, 155);
 	App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 325, 89);
 
 	App->render->ResetCamera();
@@ -133,6 +135,7 @@ update_status SceneLevel2::PostUpdate()
 
 bool SceneLevel2::CleanUp()
 {
+	App->sceneStage->changeTex = false;
 	App->bomb->Disable();
 	App->player->Disable();
 	App->enemies->Disable();

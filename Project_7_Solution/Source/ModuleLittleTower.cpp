@@ -41,7 +41,7 @@ bool ModuleLittleTower::Start()
 	else if (App->sceneLevel_2->IsEnabled() == true)
 	{
 		little_towers[0] = CreateLittleTower(position.x + 32, position.y + 112, little_towerTexture);
-		little_towers[1] = CreateLittleTower(position.x + 16, position.y + 16, little_towerTexture);
+		little_towers[1] = CreateLittleTower(position.x + 320, position.y + 64, little_towerTexture);
 
 		rTowers = 2; // numero de torres del nivel
 		

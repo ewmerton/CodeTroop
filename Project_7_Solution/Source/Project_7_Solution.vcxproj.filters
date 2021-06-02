@@ -145,6 +145,12 @@
     <ClInclude Include="ModuleJungle.h">
       <Filter>Source Files\Modules\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="SceneStage.h">
+      <Filter>Source Files\Modules\SceneLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Gas.h">
+      <Filter>Source Files\Entities\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Module.cpp">
@@ -254,6 +260,12 @@
     </ClCompile>
     <ClCompile Include="ModuleJungle.cpp">
       <Filter>Source Files\Modules\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneStage.cpp">
+      <Filter>Source Files\Modules\SceneLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Gas.cpp">
+      <Filter>Source Files\Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@
 #include "ModuleCT.h"
 #include "ModuleFadeToBlack.h"
 #include "GetScene.h"
+#include "SceneStage.h"
 
 #include <stdio.h>
 #include "SDL/include/SDL_scancode.h"
@@ -130,37 +131,46 @@ update_status ModulePlayer::PreUpdate()
 
 update_status ModulePlayer::Update()
 {
-	if (lvlComplete || dead)
+	// Get gamepad info
+	GamePad& pad = App->input->pads[0];
+
+	// Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
 	{
-		freeze = true;
+		App->input->ShakeController(0, 12, 0.33f);
 	}
 
-	if (freeze)
+	// Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
 	{
-		freezeUp = true;
-		freezeDown = true;
-		freezeLeft = true;
-		freezeRight = true;
+		App->input->ShakeController(0, 36, 0.66f);
 	}
 
-	if (!isCollUp)
+	// Debug key for gamepad rumble testing purposes
+	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)
 	{
-		freezeUp = false;
-	}
-	if (!isCollDown)
-	{
-		freezeDown = false;
-	}
-	if (!isCollLeft)
-	{
-		freezeLeft = false;
-	}
-	if (!isCollRight)
-	{
-		freezeRight = false;
+		App->input->ShakeController(0, 60, 1.0f);
 	}
 
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && !freeze)
+	if (pad.up == true)
+	{
+		App->input->keys[SDL_SCANCODE_W] = KEY_STATE::KEY_REPEAT;
+	}
+	if (pad.down == true)
+	{
+		App->input->keys[SDL_SCANCODE_S] = KEY_STATE::KEY_REPEAT;
+	}
+	if (pad.left == true)
+	{
+		App->input->keys[SDL_SCANCODE_A] = KEY_STATE::KEY_REPEAT;
+	}
+	if (pad.right == true)
+	{
+		App->input->keys[SDL_SCANCODE_D] = KEY_STATE::KEY_REPEAT;
+	}
+
+
+	if ((App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && !freeze)
 	{
 		if (currentAnimation != &leftAnim)
 		{
@@ -176,7 +186,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && !freeze)
+	if ((App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && !freeze)
 	{
 		if (currentAnimation != &rightAnim)
 		{
@@ -192,7 +202,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT && !freeze)
+	if ((App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && !freeze)
 	{
 		if (currentAnimation != &downAnim)
 		{
@@ -208,7 +218,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT && !freeze)
+	if ((App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && !freeze)
 	{		
 		if (currentAnimation != &upAnim)
 		{
@@ -251,27 +261,20 @@ update_status ModulePlayer::Update()
 
 
 	// Bomb system
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && !freeze)
+	if ((App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true) && !freeze)
 	{
 		iPoint pos = CenterInTile({ position.x, position.y + 7 });
 		App->bomb->PlaceBomb(pos);
 	}
 
 	// GodMode
-	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN || pad.start == true)
 	{
-		if (!godMode)
-		{
-			godMode = true;
-		}
-		else
-		{
-			godMode = false;
-		}
+		godMode = !godMode;
 	}
 
 	// Menu Game
-	if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN || pad.l1 == true)
 	{
 		App->fade->FadeToBlack(App->getScene->GetActualScene(), (Module*)App->sceneIntro, 60);
 	}
@@ -284,13 +287,43 @@ update_status ModulePlayer::Update()
 		&& !freeze)
 		currentAnimation = &idleAnim;
 
-	collider->SetPos(position.x, position.y + 7);///
-	colliderUp->SetPos(position.x + 2, position.y - 9);///
-	colliderDown->SetPos(position.x + 2, position.y + 23);///
-	colliderLeft->SetPos(position.x - 16, position.y + 9);///
-	colliderRight->SetPos(position.x + 16, position.y + 9);///
+	collider->SetPos(position.x, position.y + 7);
+	colliderUp->SetPos(position.x + 2, position.y - 9);
+	colliderDown->SetPos(position.x + 2, position.y + 23);
+	colliderLeft->SetPos(position.x - 16, position.y + 9);
+	colliderRight->SetPos(position.x + 16, position.y + 9);
 
 	currentAnimation->Update();
+
+	if (lvlComplete || dead)
+	{
+		freeze = true;
+	}
+
+	if (freeze)
+	{
+		freezeUp = true;
+		freezeDown = true;
+		freezeLeft = true;
+		freezeRight = true;
+	}
+
+	if (!isCollUp)
+	{
+		freezeUp = false;
+	}
+	if (!isCollDown)
+	{
+		freezeDown = false;
+	}
+	if (!isCollLeft)
+	{
+		freezeLeft = false;
+	}
+	if (!isCollRight)
+	{
+		freezeRight = false;
+	}
 
 	// Jump next level
 	if (lvlComplete)
@@ -351,6 +384,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		case Collider::Type::MOON:
 			currentAnimation = &winAnim;
 			App->tower->MoonColected();
+			App->sceneStage->changeTex = true;
 			lvlComplete = true; break;
 
 		case Collider::Type::ENEMY:
@@ -529,3 +563,4 @@ iPoint ModulePlayer::CenterInTile(iPoint p)
 
 	return f_point;
 }
+

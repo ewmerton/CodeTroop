@@ -80,6 +80,7 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_Banana.h" />
+    <ClInclude Include="Enemy_Gas.h" />
     <ClInclude Include="ModuleJungle.h" />
     <ClInclude Include="ModuleMonkey.h" />
     <ClInclude Include="Enemy_Robot.h" />
@@ -112,6 +113,7 @@
     <ClInclude Include="Path.h" />
     <ClInclude Include="SceneLevel2.h" />
     <ClInclude Include="SceneLevel3.h" />
+    <ClInclude Include="SceneStage.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -119,6 +121,7 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Banana.cpp" />
+    <ClCompile Include="Enemy_Gas.cpp" />
     <ClCompile Include="ModuleJungle.cpp" />
     <ClCompile Include="ModuleMonkey.cpp" />
     <ClCompile Include="Enemy_Robot.cpp" />
@@ -150,6 +153,7 @@
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="SceneLevel2.cpp" />
     <ClCompile Include="SceneLevel3.cpp" />
+    <ClCompile Include="SceneStage.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

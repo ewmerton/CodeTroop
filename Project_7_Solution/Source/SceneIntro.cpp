@@ -28,14 +28,20 @@ bool SceneIntro::Start()
 
 	nameTexture = App->textures->Load("Assets/NameScreen.png");
 	Texture1 = App->textures->Load("Assets/Main_Menu.png");
-	Texture2 = App->textures->Load("Assets/.png");
+	Texture2 = App->textures->Load("Assets/Battle_Game.png");
+	Texture3 = App->textures->Load("Assets/Password.png");
+	Texture4 = App->textures->Load("Assets/Area1.png");
+	Texture5 = App->textures->Load("Assets/Area2.png");
 	App->audio->PlayMusic("Assets/TitleScreen.ogg", 1.0f);
+	arrow = App->audio->LoadFx("Assets/ChangeOptionSound.wav");
+	enter = App->audio->LoadFx("Assets/SelectSound.wav");
 
 	App->render->ResetCamera();
 
 	bgTexture = Texture1;
 
 	changeTex = false;
+	changeTex2 = false;
 	cd = 0;
 
 	return ret;
@@ -48,9 +54,10 @@ update_status SceneIntro::PreUpdate()
 		cd++;
 	}
 
-	if (cd >= 400)
+	if (cd >= 200)
 	{
 		changeTex = true;
+		cd = 0;
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -58,21 +65,67 @@ update_status SceneIntro::PreUpdate()
 
 update_status SceneIntro::Update()
 {
+	GamePad& pad = App->input->pads[0];
+
 	if (changeTex)
 	{
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
 		{
-			App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+			App->audio->PlayFx(enter);
+			changeTex = false;
+			changeTex2 = true;
 		}
 
 		// images
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN || pad.down == true)
 		{
-			bgTexture = Texture2;
+			if (bgTexture == Texture1)
+			{
+				App->audio->PlayFx(arrow);
+				bgTexture = Texture2;
+			}
+			else if (bgTexture == Texture2)
+			{
+				App->audio->PlayFx(arrow);
+				bgTexture = Texture3;
+			}
 		}
-		else if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_DOWN)
+		else if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN || pad.up == true)
 		{
-			bgTexture = Texture1;
+			if (bgTexture == Texture2)
+			{
+				App->audio->PlayFx(arrow);
+				bgTexture = Texture1;
+			}
+			else if (bgTexture == Texture3)
+			{
+				App->audio->PlayFx(arrow);
+				bgTexture = Texture2;
+			}
+		}
+	}
+	else if (changeTex2)
+	{
+		cd++;
+
+		if (cd >= 75)
+		{
+			if (bgTexture == Texture4)
+			{
+				bgTexture = Texture5;
+			}
+			else
+			{
+				bgTexture = Texture4;
+			}
+			
+			cd = 0;
+		}
+
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
+		{
+			App->audio->PlayFx(enter);
+			App->fade->FadeToBlack(this, (Module*)App->sceneStage, 90);
 		}
 	}
 
@@ -96,7 +149,7 @@ update_status SceneIntro::Update()
 update_status SceneIntro::PostUpdate()
 {
 	// Draw everything
-	if (changeTex)
+	if (changeTex || changeTex2)
 	{
 		App->render->Blit(bgTexture, 0, 0, NULL);
 	}

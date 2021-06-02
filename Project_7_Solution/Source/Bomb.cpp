@@ -263,6 +263,7 @@ void ModuleBomb::PlaceBomb(iPoint p)
 
 void ModuleBomb::SpawnBomb(iPoint p)
 {
+	App->audio->PlayFx(placeBomb);
 	App->particles->AddParticle(App->particles->bomb, p.x, p.y, Collider::Type::NONE, 0);
 	collider->SetPos(p.x, p.y);
 }
