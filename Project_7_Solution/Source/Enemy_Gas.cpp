@@ -9,11 +9,13 @@
 Enemy_Gas::Enemy_Gas(int x, int y) : Enemy(x, y)
 {
 	// Idle
-	idle.PushBack({ 0, 133, 23, 32 });
-	idle.PushBack({ 0, 133, 23, 32 });
+	idle.PushBack({ 212, 0, 26, 27 });
+	idle.PushBack({ 245, 0, 26, 27 });
 
 	// dead Animation
-	dead.PushBack({ 126, 135, 23, 30 });
+	dead.PushBack({ 278, 0, 26, 27 });
+	dead.PushBack({ 311, 0, 26, 27 });
+
 
 	currentAnim = &idle;
 
