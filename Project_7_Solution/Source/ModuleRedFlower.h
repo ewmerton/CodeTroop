@@ -5,7 +5,6 @@
 #include "p2Point.h"
 #include "Animation.h"
 
-
 #define NUM_RED_FLOWERS 5
 
 struct SDL_Texture;

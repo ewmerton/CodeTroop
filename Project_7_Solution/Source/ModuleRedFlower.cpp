@@ -14,14 +14,8 @@ ModuleRedFlower::ModuleRedFlower(bool startEnabled) : Module(startEnabled)
 		// Idle
 		idle.PushBack({ 0, 0, 16, 16 });
 
-		// walk Up
+		// Dead
 		dead.PushBack({ 16, 0, 16, 16 });
-		dead.PushBack({ 32, 0, 16, 16 });
-		dead.PushBack({ 48, 0, 16, 16 });
-		dead.PushBack({ 64, 0, 16, 16 });
-		dead.PushBack({ 80, 0, 16, 16 });
-		dead.speed = 0.05f;
-		dead.loop = false;
 	}
 }
 
@@ -37,7 +31,7 @@ bool ModuleRedFlower::Start()
 
 	bool ret = true;
 
-	flowerTexture = App->textures->Load("Assets/RedFlower_Destroy2.png");  
+	flowerTexture = App->textures->Load("Assets/RedFlower_Destroy.png");  
 
 	position.x = 24;
 	position.y = 41;

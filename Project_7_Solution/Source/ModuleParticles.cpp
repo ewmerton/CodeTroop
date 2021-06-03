@@ -29,7 +29,7 @@ bool ModuleParticles::Start()
 	bomb.anim.PushBack({ 63, 48, 16, 16 });
 	bomb.anim.PushBack({ 80, 48, 16, 16 });
 	bomb.lifetime = 300;
-	bomb.anim.speed = 0.02f;
+	bomb.anim.speed = 0.03f;
 	
 
 	// Explosion particle

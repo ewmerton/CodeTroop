@@ -9,7 +9,11 @@
 
 ModuleFlower::ModuleFlower(bool startEnabled) : Module(startEnabled)
 {
+	// Idle
+	idle.PushBack({ 0, 0, 16, 16 });
 
+	// Dead
+	dead.PushBack({ 16, 0, 16, 16 });
 }
 
 ModuleFlower::~ModuleFlower()
@@ -28,6 +32,11 @@ bool ModuleFlower::Start()
 	
 	position.x = 24;  //Esquina arriba izq
 	position.y = 41;  //primera fila
+
+	for (int i = 0; i < NUM_FLOWERS; i++)
+	{
+		currentAnimation[i] = &idle;
+	}
 
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
@@ -160,28 +169,43 @@ bool ModuleFlower::Start()
 	return ret;
 }
 
+update_status ModuleFlower::Update()
+{
+	for (int i = 0; i < NUM_FLOWERS; i++)
+	{
+		currentAnimation[i]->Update();
+
+		if (flowers[i].isDestroyed)
+		{
+			flowers[i].dCount++;
+			if (flowers[i].dCount >= 90)
+			{
+				flowers[i].destroyed = true;
+			}
+			if (flowers[i].destroyed)
+			{
+				flowers[i].colliderT->pendingToDelete = true;
+			}
+		}
+	}
+
+
+	return update_status::UPDATE_CONTINUE;
+}
+
 // Update: draw background
 update_status ModuleFlower::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	for (int i = 0; i < NUM_FLOWERS; i++)
 	{
-		if (App->sceneLevel_1->IsEnabled() == true && !flowers[i].isDestroyed)
+		if (App->sceneLevel_1->IsEnabled() == true && !flowers[i].destroyed)
 		{
-			App->render->Blit(flowers[i].flowerT, flowers[i].x, flowers[i].y, NULL);
+			App->render->Blit(flowers[i].flowerT, flowers[i].x, flowers[i].y, &(currentAnimation[i]->GetCurrentFrame()));
 		}
-		else if (App->sceneLevel_2->IsEnabled() == true && !flowers[i].isDestroyed)
+		else if (App->sceneLevel_2->IsEnabled() == true && !flowers[i].destroyed)
 		{
-			App->render->Blit(flowers[i].flowerT, flowers[i].x, flowers[i].y, NULL);
-		}
-	}
-	
-
-	for (int i = 0; i < NUM_FLOWERS; i++)
-	{
-		if (flowers[i].isDestroyed == true)
-		{
-			flowers[i].colliderT->pendingToDelete = true;
+			App->render->Blit(flowers[i].flowerT, flowers[i].x, flowers[i].y, &(currentAnimation[i]->GetCurrentFrame()));
 		}
 	}
 	
@@ -201,6 +225,7 @@ void ModuleFlower::OnCollision(Collider* c1, Collider* c2)
 			case Collider::Type::PLAYER_SHOT:
 			{
 				flowers[i].isDestroyed = true;
+				currentAnimation[i] = &dead;
 			} break;
 
 			default:

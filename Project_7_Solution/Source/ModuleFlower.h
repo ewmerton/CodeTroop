@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "p2Point.h"
+#include "Animation.h"
 
 #define NUM_FLOWERS 100
 
@@ -15,6 +16,8 @@ struct Flower {
 	int x;
 	int y;
 	bool isDestroyed = false;
+	uint dCount = 0;
+	bool destroyed = false;
 };
 
 class ModuleFlower : public Module
@@ -29,6 +32,8 @@ public:
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
 	bool Start() override;
+
+	update_status Update() override;
 
 	// Called at the end of the application loop.
 	// Performs the render call of all the parts of the scene's background
@@ -47,6 +52,10 @@ public:
 	Flower flowers[NUM_FLOWERS] = { nullptr };
 
 	Flower CreateFlower(int x, int y, SDL_Texture* t);
+
+	Animation* currentAnimation[NUM_FLOWERS] = { nullptr };
+	Animation idle;
+	Animation dead;
 
 };
 
