@@ -95,7 +95,7 @@ bool SceneLevel2::Start()
 	App->collisions->AddCollider({ 456, 185, 16, 16 }, Collider::Type::ROCK);
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPE::GAS, 184, 155);
+	App->enemies->AddEnemy(ENEMY_TYPE::GAS, 195, 158);
 	App->enemies->AddEnemy(ENEMY_TYPE::SNAIL, 325, 89);
 
 	App->render->ResetCamera();

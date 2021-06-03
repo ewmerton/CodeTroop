@@ -77,6 +77,7 @@ bool ModulePlayer::Start()
 
 	texture = App->textures->Load("Assets/Char.png");
 	deadFx = App->audio->LoadFx("Assets/GameOverSound.wav");
+	oneMin = App->audio->LoadFx("Assets/OneMinuteLeft.wav");
 
 	currentAnimation = &idleAnim;
 
@@ -96,7 +97,8 @@ bool ModulePlayer::Start()
 	lifes = 1;
 	score = 0;
 	stime = 0;
-	mtime = 0;
+	mtime = 5;
+	fps = 120;
 
 	dead = false;
 	dCount = 0;
@@ -131,26 +133,40 @@ update_status ModulePlayer::PreUpdate()
 
 update_status ModulePlayer::Update()
 {
+	fps--;
+
+	if (fps <= 0)
+	{
+		fps = 120;
+
+		if (mtime == 1 && stime == 0)
+		{
+			App->audio->PlayFx(oneMin);
+			mtime--;
+			stime = 59;
+		}
+		else if (mtime == 0 && stime == 0)
+		{
+			currentAnimation = &deadAnim;
+			App->audio->PlayFx(deadFx);
+			dead = true;
+		}
+		else
+		{
+			if (stime == 0)
+			{
+				mtime--;
+				stime = 59;
+			}
+			else
+			{
+				stime--;
+			}
+		}
+	}
+
 	// Get gamepad info
 	GamePad& pad = App->input->pads[0];
-
-	// Debug key for gamepad rumble testing purposes
-	if (App->input->keys[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
-	{
-		App->input->ShakeController(0, 12, 0.33f);
-	}
-
-	// Debug key for gamepad rumble testing purposes
-	if (App->input->keys[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
-	{
-		App->input->ShakeController(0, 36, 0.66f);
-	}
-
-	// Debug key for gamepad rumble testing purposes
-	if (App->input->keys[SDL_SCANCODE_3] == KEY_STATE::KEY_DOWN)
-	{
-		App->input->ShakeController(0, 60, 1.0f);
-	}
 
 	if (pad.up == true)
 	{
@@ -365,11 +381,11 @@ update_status ModulePlayer::PostUpdate()
 		sprintf_s(scoreText, 6, "%5d", score);
 		App->fonts->BlitText(160, 9, nFont, scoreText);
 
-		/*sprintf_s(stimeText,2, "%7d", stime);
-		App->fonts->BlitText(16, 9, nFont, stimeText);
+		sprintf_s(stimeText,3, "%2d", stime);
+		App->fonts->BlitText(30, 9, nFont, stimeText);
 
-		sprintf_s(mtimeText, 1, "%9d", mtime);
-		App->fonts->BlitText(30, 9, nFont, mtimeText);*/
+		sprintf_s(mtimeText, 2, "%1d", mtime);
+		App->fonts->BlitText(16, 9, nFont, mtimeText);
 	}
 
 	return update_status::UPDATE_CONTINUE;

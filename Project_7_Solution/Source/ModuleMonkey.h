@@ -58,11 +58,8 @@ public:
 
 	// The player's collider
 	Collider* collider = nullptr;
-	Collider* b_collider[4] = { nullptr };
-	Collider* colliderUp = nullptr;
-	Collider* colliderDown = nullptr;
-	Collider* colliderLeft = nullptr;
-	Collider* colliderRight = nullptr;
+	Collider* b_collider[8] = { nullptr };
+	Collider* colliderFace = nullptr;
 
 
 	// A flag to detect when the player has been destroyed

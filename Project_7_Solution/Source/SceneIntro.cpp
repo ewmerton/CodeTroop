@@ -67,9 +67,22 @@ update_status SceneIntro::Update()
 {
 	GamePad& pad = App->input->pads[0];
 
+	if (pad.up == true)
+	{
+		App->input->keys[SDL_SCANCODE_W] = KEY_STATE::KEY_DOWN;
+	}
+	else if (pad.down == true)
+	{
+		App->input->keys[SDL_SCANCODE_S] = KEY_STATE::KEY_DOWN;
+	}
+	if (pad.a == true)
+	{
+		App->input->keys[SDL_SCANCODE_SPACE] = KEY_STATE::KEY_DOWN;
+	}
+
 	if (changeTex)
 	{
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN/* || pad.a == true*/)
 		{
 			App->audio->PlayFx(enter);
 			changeTex = false;
@@ -77,7 +90,7 @@ update_status SceneIntro::Update()
 		}
 
 		// images
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN || pad.down == true)
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN/* || pad.down == true*/)
 		{
 			if (bgTexture == Texture1)
 			{
@@ -90,7 +103,7 @@ update_status SceneIntro::Update()
 				bgTexture = Texture3;
 			}
 		}
-		else if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN || pad.up == true)
+		else if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN/* || pad.up == true*/)
 		{
 			if (bgTexture == Texture2)
 			{
@@ -122,7 +135,7 @@ update_status SceneIntro::Update()
 			cd = 0;
 		}
 
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || pad.a == true)
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN/* || pad.a == true*/)
 		{
 			App->audio->PlayFx(enter);
 			App->fade->FadeToBlack(this, (Module*)App->sceneStage, 90);

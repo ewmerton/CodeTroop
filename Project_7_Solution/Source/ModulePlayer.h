@@ -94,11 +94,13 @@ public:
 	// Player's time
 	uint stime = 0;
 	char stimeText[10] = { "\0" };
-	uint mtime = 0;
+	uint mtime = 5;
 	char mtimeText[10] = { "\0" };
+	int fps = 120;
 
 	// Sounds
 	uint deadFx = 0;
+	uint oneMin = 0;
 
 	bool godMode = false;
 

@@ -35,6 +35,10 @@ void Enemy::Update()
 		{
 			collider->SetPos(position.x + 30, position.y + 60);
 		}
+		else if (type == EnemyType::GAS)
+		{
+			collider->SetPos(position.x + 5, position.y + 11);
+		}
 		else
 		{
 			collider->SetPos(position.x + 3, position.y + 16);

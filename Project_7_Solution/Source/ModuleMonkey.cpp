@@ -82,10 +82,11 @@ bool ModuleMonkey::Start()
 	b_collider[1] = App->collisions->AddCollider({ position.x + 2, position.y + 20, 16, 16 }, Collider::Type::PLAYER_NXT, this);
 	b_collider[2] = App->collisions->AddCollider({ position.x - 14, position.y + 4, 16, 16 }, Collider::Type::PLAYER_NXT, this);
 	b_collider[3] = App->collisions->AddCollider({ position.x + 18, position.y + 4, 16, 16 }, Collider::Type::PLAYER_NXT, this);
-	colliderUp = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
-	colliderDown = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
-	colliderLeft = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
-	colliderRight = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
+	b_collider[4] = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
+	b_collider[5] = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
+	b_collider[6] = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
+	b_collider[7] = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
+	colliderFace = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::PLAYER_NXT, this);
 
 	delayUp = 15;
 	delayDown = 15;
@@ -232,31 +233,35 @@ update_status ModuleMonkey::Update()
 
 	if (currentAnimation == &idleUP)
 	{
-		colliderUp->SetPos(position.x + 2, position.y - 28);
-		colliderDown->SetPos(0, 0);
-		colliderLeft->SetPos(position.x - 30, position.y + 4);
-		colliderRight->SetPos(position.x + 34, position.y + 4);
+		b_collider[4]->SetPos(position.x + 2, position.y - 28);
+		b_collider[5]->SetPos(0, 0);
+		b_collider[6]->SetPos(position.x - 30, position.y + 4);
+		b_collider[7]->SetPos(position.x + 34, position.y + 4);
+		colliderFace->SetPos(position.x + 2, position.y - 44);
 	}
 	else if (currentAnimation == &idleDOWN)
 	{
-		colliderUp->SetPos(0, 0);
-		colliderDown->SetPos(position.x + 2, position.y + 36);
-		colliderLeft->SetPos(position.x - 30, position.y + 4);
-		colliderRight->SetPos(position.x + 34, position.y + 4);
+		b_collider[4]->SetPos(0, 0);
+		b_collider[5]->SetPos(position.x + 2, position.y + 36);
+		b_collider[6]->SetPos(position.x - 30, position.y + 4);
+		b_collider[7]->SetPos(position.x + 34, position.y + 4);
+		colliderFace->SetPos(position.x + 2, position.y + 52);
 	}
 	else if (currentAnimation == &idleLEFT)
 	{
-		colliderUp->SetPos(position.x + 2, position.y - 28);
-		colliderDown->SetPos(position.x + 2, position.y + 36);
-		colliderLeft->SetPos(position.x - 30, position.y + 4);
-		colliderRight->SetPos(0, 0);
+		b_collider[4]->SetPos(position.x + 2, position.y - 28);
+		b_collider[5]->SetPos(position.x + 2, position.y + 36);
+		b_collider[6]->SetPos(position.x - 30, position.y + 4);
+		b_collider[7]->SetPos(0, 0);
+		colliderFace->SetPos(position.x - 46, position.y + 4);
 	}
 	else if (currentAnimation == &idleRIGHT)
 	{
-		colliderUp->SetPos(position.x + 2, position.y - 28);
-		colliderDown->SetPos(position.x + 2, position.y + 36);
-		colliderLeft->SetPos(0, 0);
-		colliderRight->SetPos(position.x + 34, position.y + 4);
+		b_collider[4]->SetPos(position.x + 2, position.y - 28);
+		b_collider[5]->SetPos(position.x + 2, position.y + 36);
+		b_collider[6]->SetPos(0, 0);
+		b_collider[7]->SetPos(position.x + 34, position.y + 4);
+		colliderFace->SetPos(position.x + 50, position.y + 4);
 	}
 	
 	currentAnimation->Update();
@@ -380,7 +385,7 @@ void ModuleMonkey::OnCollision(Collider * c1, Collider * c2)
 		}
 	}
 
-	if (c1 == colliderUp && dead == false) // Normal collision
+	if (c1 == b_collider[4] && dead == false) // Normal collision
 	{
 		switch (c2->type)
 		{
@@ -393,7 +398,7 @@ void ModuleMonkey::OnCollision(Collider * c1, Collider * c2)
 		}
 	}
 
-	if (c1 == colliderDown && dead == false) // Normal collision
+	if (c1 == b_collider[5] && dead == false) // Normal collision
 	{
 		switch (c2->type)
 		{
@@ -406,7 +411,7 @@ void ModuleMonkey::OnCollision(Collider * c1, Collider * c2)
 		}
 	}
 
-	if (c1 == colliderLeft && dead == false) // Normal collision
+	if (c1 == b_collider[6] && dead == false) // Normal collision
 	{
 		switch (c2->type)
 		{
@@ -419,12 +424,40 @@ void ModuleMonkey::OnCollision(Collider * c1, Collider * c2)
 		}
 	}
 
-	if (c1 == colliderRight && dead == false) // Normal collision
+	if (c1 == b_collider[7] && dead == false) // Normal collision
 	{
 		switch (c2->type)
 		{
 		case Collider::Type::PLAYER:
 			dLeft = true;
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	if (c1 == colliderFace && dead == false) // Normal collision
+	{
+		switch (c2->type)
+		{
+		case Collider::Type::PLAYER:
+			if (currentAnimation == &idleUP)
+			{
+				dDown = true;
+			}
+			else if (currentAnimation == &idleDOWN)
+			{
+				dUp = true;
+			}
+			else if (currentAnimation == &idleLEFT)
+			{
+				dRight = true;
+			}
+			else if (currentAnimation == &idleRIGHT)
+			{
+				dLeft = true;
+			}
 			break;
 
 		default:
