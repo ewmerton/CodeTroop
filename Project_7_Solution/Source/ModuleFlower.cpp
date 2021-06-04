@@ -40,50 +40,56 @@ bool ModuleFlower::Start()
 
 	if (App->sceneLevel_1->IsEnabled() == true)
 	{
-		flowers[0] = CreateFlower(position.x + 80, position.y, flowerTexture);
-		flowers[1] = CreateFlower(position.x + 144, position.y, flowerTexture);
-		flowers[2] = CreateFlower(position.x + 160, position.y, flowerTexture);
-
-		flowers[3] = CreateFlower(position.x + 64, position.y + 16, flowerTexture);
-		flowers[4] = CreateFlower(position.x + 192, position.y + 16, flowerTexture);
-
-		flowers[5] = CreateFlower(position.x + 16, position.y + 32, flowerTexture);
-		flowers[6] = CreateFlower(position.x + 48, position.y + 32, flowerTexture);
-		flowers[7] = CreateFlower(position.x + 176, position.y + 32, flowerTexture);
-		flowers[8] = CreateFlower(position.x + 192, position.y + 32, flowerTexture);
-
-		flowers[9] = CreateFlower(position.x + 64, position.y + 32, flowerTexture);
-		flowers[10] = CreateFlower(position.x + 192, position.y + 48, flowerTexture);
-
-		flowers[11] = CreateFlower(position.x + 48, position.y + 64, flowerTexture);
-		flowers[12] = CreateFlower(position.x + 128, position.y + 64, flowerTexture);
-		flowers[13] = CreateFlower(position.x + 192, position.y + 64, flowerTexture);
-
-		flowers[14] = CreateFlower(position.x + 32, position.y + 80, flowerTexture);
-		flowers[15] = CreateFlower(position.x + 64, position.y + 80, flowerTexture);
-		flowers[16] = CreateFlower(position.x + 128, position.y + 80, flowerTexture);
-		flowers[17] = CreateFlower(position.x + 160, position.y + 80, flowerTexture);
+		flowers[0] = CreateFlower(position.x + 32, position.y, flowerTexture);
+		flowers[1] = CreateFlower(position.x + 48, position.y, flowerTexture);
+		flowers[2] = CreateFlower(position.x + 80, position.y, flowerTexture);
+		flowers[3] = CreateFlower(position.x + 144, position.y, flowerTexture);
+		flowers[4] = CreateFlower(position.x + 160, position.y, flowerTexture);
 		
-		flowers[18] = CreateFlower(position.x + 32, position.y + 112, flowerTexture);
-		flowers[19] = CreateFlower(position.x + 64, position.y + 112, flowerTexture);
-		flowers[20] = CreateFlower(position.x + 128, position.y + 112, flowerTexture);
+		flowers[5] = CreateFlower(position.x + 64, position.y + 16, flowerTexture);
+		flowers[6] = CreateFlower(position.x + 192, position.y + 16, flowerTexture);
 
-		flowers[21] = CreateFlower(position.x + 16, position.y + 128, flowerTexture);
-		flowers[22] = CreateFlower(position.x + 80, position.y + 128, flowerTexture);
-		flowers[23] = CreateFlower(position.x + 160, position.y + 128, flowerTexture);
-		flowers[24] = CreateFlower(position.x + 176, position.y + 128, flowerTexture);
+		flowers[7] = CreateFlower(position.x + 16, position.y + 32, flowerTexture);
+		flowers[8] = CreateFlower(position.x + 48, position.y + 32, flowerTexture);
+		flowers[9] = CreateFlower(position.x + 176, position.y + 32, flowerTexture);
+		flowers[10] = CreateFlower(position.x + 192, position.y + 32, flowerTexture);
+		flowers[11] = CreateFlower(position.x + 64, position.y + 32, flowerTexture);
 
-		flowers[25] = CreateFlower(position.x + 64, position.y + 144, flowerTexture);
-		flowers[26] = CreateFlower(position.x + 192, position.y + 144, flowerTexture);
+		flowers[12] = CreateFlower(position.x + 192, position.y + 48, flowerTexture);
+		flowers[13] = CreateFlower(position.x, position.y + 48, flowerTexture);
 
-		flowers[27] = CreateFlower(position.x + 48, position.y + 160, flowerTexture);
-		flowers[28] = CreateFlower(position.x + 128, position.y + 160, flowerTexture);
-		flowers[29] = CreateFlower(position.x + 144, position.y + 160, flowerTexture);
-		flowers[30] = CreateFlower(position.x + 48, position.y, flowerTexture);
+		flowers[14] = CreateFlower(position.x, position.y + 64, flowerTexture);
+		flowers[15] = CreateFlower(position.x + 48, position.y + 64, flowerTexture);
+		flowers[16] = CreateFlower(position.x + 128, position.y + 64, flowerTexture);
+		flowers[17] = CreateFlower(position.x + 192, position.y + 64, flowerTexture);
+		
 
-		flowers[31] = CreateFlower(position.x, position.y + 48, flowerTexture);
-		flowers[32] = CreateFlower(position.x, position.y + 64, flowerTexture);
-		flowers[33] = CreateFlower(position.x + 32, position.y, flowerTexture);
+		flowers[18] = CreateFlower(position.x + 32, position.y + 80, flowerTexture);
+		flowers[19] = CreateFlower(position.x + 64, position.y + 80, flowerTexture);
+		flowers[20] = CreateFlower(position.x + 128, position.y + 80, flowerTexture);
+		flowers[21] = CreateFlower(position.x + 160, position.y + 80, flowerTexture);
+
+		flowers[22] = CreateFlower(position.x + 80, position.y + 96, flowerTexture);
+		flowers[23] = CreateFlower(position.x + 144, position.y + 96, flowerTexture);
+		flowers[24] = CreateFlower(position.x + 176, position.y + 96, flowerTexture);
+		flowers[25] = CreateFlower(position.x + 192, position.y + 96, flowerTexture);
+
+		flowers[26] = CreateFlower(position.x + 32, position.y + 112, flowerTexture);
+		flowers[27] = CreateFlower(position.x + 64, position.y + 112, flowerTexture);
+		flowers[28] = CreateFlower(position.x + 128, position.y + 112, flowerTexture);
+
+		flowers[29] = CreateFlower(position.x + 16, position.y + 128, flowerTexture);
+		flowers[30] = CreateFlower(position.x + 80, position.y + 128, flowerTexture);
+		flowers[31] = CreateFlower(position.x + 160, position.y + 128, flowerTexture);
+		flowers[32] = CreateFlower(position.x + 176, position.y + 128, flowerTexture);
+
+		flowers[33] = CreateFlower(position.x + 64, position.y + 144, flowerTexture);
+		flowers[34] = CreateFlower(position.x + 192, position.y + 144, flowerTexture);
+
+		flowers[35] = CreateFlower(position.x + 48, position.y + 160, flowerTexture);
+		flowers[36] = CreateFlower(position.x + 128, position.y + 160, flowerTexture);
+		flowers[37] = CreateFlower(position.x + 144, position.y + 160, flowerTexture);
+		
 	}
 	else if (App->sceneLevel_2->IsEnabled() == true)
 	{
