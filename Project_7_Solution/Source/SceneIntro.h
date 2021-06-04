@@ -33,6 +33,9 @@ public:
 
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
+	SDL_Texture* intro = nullptr;
+	SDL_Texture* SegaLogo = nullptr;
+	SDL_Texture* SegaCreditos = nullptr;
 	SDL_Texture* nameTexture = nullptr;
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* Texture1 = nullptr;

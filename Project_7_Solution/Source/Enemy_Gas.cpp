@@ -11,7 +11,7 @@ Enemy_Gas::Enemy_Gas(int x, int y) : Enemy(x, y)
 	// Idle
 	idle.PushBack({ 212, 0, 26, 27 });
 	idle.PushBack({ 245, 0, 26, 27 });
-	idle.speed = 0.05f;
+	idle.speed = 0.125f;
 
 	// dead Animation
 	dead.PushBack({ 278, 0, 26, 27 });

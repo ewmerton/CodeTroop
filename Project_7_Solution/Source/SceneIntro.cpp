@@ -25,7 +25,8 @@ bool SceneIntro::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-
+	SegaLogo = App->textures->Load("Assets/IntroSegaLogo.png");
+	SegaCreditos = App->textures->Load("Assets/IntroSegaLogo2.png");
 	nameTexture = App->textures->Load("Assets/NameScreen.png");
 	Texture1 = App->textures->Load("Assets/Main_Menu.png");
 	Texture2 = App->textures->Load("Assets/Battle_Game.png");
@@ -38,6 +39,7 @@ bool SceneIntro::Start()
 
 	App->render->ResetCamera();
 
+	intro = nameTexture;
 	bgTexture = Texture1;
 
 	changeTex = false;
@@ -52,12 +54,21 @@ update_status SceneIntro::PreUpdate()
 	if (!changeTex)
 	{
 		cd++;
-	}
-
-	if (cd >= 200)
-	{
-		changeTex = true;
-		cd = 0;
+		if (intro == nameTexture && cd >= 50 )
+		{
+			intro = SegaLogo;
+			cd = 0;
+		}
+		else if (intro == SegaLogo && cd >= 50)
+		{
+			intro = SegaCreditos;
+			cd = 0;
+		}
+		else if (intro == SegaCreditos && cd >= 50)
+		{
+			changeTex = true;
+			cd = 0;
+		}
 	}
 
 	return update_status::UPDATE_CONTINUE;
@@ -168,9 +179,9 @@ update_status SceneIntro::PostUpdate()
 	}
 	else
 	{
-		App->render->Blit(nameTexture, 0, 0, NULL);
+		App->render->Blit(intro, 0, 0, NULL);
 	}
-	
+
 	return update_status::UPDATE_CONTINUE;
 }
 
