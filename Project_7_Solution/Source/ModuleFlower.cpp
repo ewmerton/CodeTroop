@@ -89,6 +89,12 @@ bool ModuleFlower::Start()
 		flowers[35] = CreateFlower(position.x + 48, position.y + 160, flowerTexture);
 		flowers[36] = CreateFlower(position.x + 128, position.y + 160, flowerTexture);
 		flowers[37] = CreateFlower(position.x + 144, position.y + 160, flowerTexture);
+
+		for (int i = 37; i < NUM_FLOWERS; i++)
+		{
+			// i = numero de flores de este nivel
+			flowers[i].flowerT = nullptr;
+		}
 		
 	}
 	else if (App->sceneLevel_2->IsEnabled() == true)

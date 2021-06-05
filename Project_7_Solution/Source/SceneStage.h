@@ -32,8 +32,28 @@ public:
 	SDL_Texture* bgTexture = nullptr;
 	SDL_Texture* Texture1 = nullptr;
 	SDL_Texture* Texture2 = nullptr;
+	SDL_Texture* Texture3 = nullptr;
+	SDL_Texture* Texture4 = nullptr;
+	SDL_Texture* Texture5 = nullptr;
+	SDL_Texture* Texture6 = nullptr;
+	SDL_Texture* Texture7 = nullptr;
+	SDL_Texture* Texture8 = nullptr;
+
+	SDL_Texture* bgTexture2 = nullptr;
+	SDL_Texture* Texture9 = nullptr;
+	SDL_Texture* Texture10 = nullptr;
+	SDL_Texture* Texture11 = nullptr;
+	SDL_Texture* Texture12 = nullptr;
+	SDL_Texture* Texture13 = nullptr;
+	SDL_Texture* Texture14 = nullptr;
+	SDL_Texture* Texture15 = nullptr;
+	SDL_Texture* Texture16 = nullptr;
+
+	
+
 
 	uint enter = 0;
+	uint cd = 0;
 
 	bool changeTex = false;
 };
