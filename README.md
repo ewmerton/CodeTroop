@@ -20,7 +20,7 @@ Mega Bomberman is a video game in the Bomberman series. In the single-player mod
 - F2: God Mode.
 - X: Close the game.
 - Y: Return to main menu.
-- While in menu press keys 1, 2 oe 3 to select stage.
+- While in menu press keys 1, 2 or 3 to select stage.
 
 ### Group Members:
 
