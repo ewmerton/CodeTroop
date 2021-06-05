@@ -16,6 +16,11 @@ Mega Bomberman is a video game in the Bomberman series. In the single-player mod
 - Movement with WASD.<br>
 - Place bombs with Space.<br>
 - Q key gives you an extra bomb to place, to simulate the effect of one of the power ups. It gives you a maximum of 5 bombs.<br>
+- F1: Show Colliders.
+- F2: God Mode.
+- X: Close the game.
+- Y: Return to main menu.
+- While in menu press keys 1, 2 oe 3 to select stage.
 
 ### Group Members:
 
@@ -41,6 +46,6 @@ Mega Bomberman is a video game in the Bomberman series. In the single-player mod
   
 ### More Information:
 
-- Check the project wiki here: https://github.com/ewmerton/CodeTroop/wiki. 
+- Check the project wiki [HERE](https://github.com/ewmerton/CodeTroop/wiki). 
 - Download the latest version of the game 
-- Visit our GitHub repository here: https://github.com/ewmerton/CodeTroop.
+- Visit our GitHub repository [HERE](https://github.com/ewmerton/CodeTroop).
