@@ -45,7 +45,7 @@ You need to destroy the orbs placed around the map in order to gain access to th
   - Github: [zapper163](https://github.com/zapper163)
 
 ### Rubén Ayora: 
-<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Erik.jpeg" width="210" height="281">
+<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Rub%C3%A9n.jpeg" width="210" height="281">
 <details> 
   <summary> Individual Work </summary>
   - Enemies mecanics.<br>
