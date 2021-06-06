@@ -28,6 +28,9 @@ private:
 	Animation walkLEFT;
 	Animation walkRIGHT;
 	Animation dead;
+
+	bool death = false;
+	int cd = 0;
 };
 
 #endif

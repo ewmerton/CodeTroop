@@ -79,6 +79,7 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	dead.PushBack({ 163, 720, 76, 89 });
 	dead.PushBack({ 242, 720, 76, 89 });
 	dead.speed = 0.07f;
+
 	currentAnim = &walkIdle;
 
 	// TODO 3: Have the Brown Cookies describe a path in the screen
@@ -103,6 +104,9 @@ Enemy_Banana::Enemy_Banana(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0.4f, 0.0f }, 80 * 3, &walkRIGHT); //Right
 	path.PushBack({ 0.0f, 0.4f }, 80 * 0.5, &walkDOWN); //Down
 
+	death = false;
+	cd = 0;
+
 	collider = App->collisions->AddCollider({ 0, 0, 16, 16 }, Collider::Type::ENEMY, (Module*)App->enemies);
 
 	type = EnemyType::BANANA;
@@ -112,12 +116,17 @@ void Enemy_Banana::Update()
 {
 	if (!App->monkey->isAlive())
 	{
-		isDead = true;
+		death = true;
 	}
-
-	if (isDead)
+	if (death)
 	{
+		cd++;
 		currentAnim = &dead;
+
+		if (cd >= 200)
+		{
+			isDead = true;
+		}
 	}
 	else
 	{

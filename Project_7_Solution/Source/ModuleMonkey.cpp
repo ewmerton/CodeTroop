@@ -74,7 +74,7 @@ bool ModuleMonkey::Start()
 	dead = false;
 	dCount = 0;
 	destroyed = false;
-	destroyedCountdown = 60;
+	destroyedCountdown = 200;
 	deadAnim.Reset();
 
 	collider = App->collisions->AddCollider({ position.x + 2, position.y + 4, 16, 16 }, Collider::Type::FLOWER, this);
