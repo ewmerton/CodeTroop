@@ -31,7 +31,7 @@ You need to destroy the orbs placed around the map in order to gain access to th
 
 ## Group Members:
 
-* Alejandro Giralt
+### Alejandro Giralt
 
 <details> 
   <summary> Individual Work </summary>
@@ -42,9 +42,9 @@ You need to destroy the orbs placed around the map in order to gain access to th
   - Video edit.<br>
 </details>
 
-  Github: [zapper163](https://github.com/zapper163)
+  - Github: [zapper163](https://github.com/zapper163)
 
-* Rubén Ayora: 
+### Rubén Ayora: 
 
 <details> 
   <summary> Individual Work </summary>
@@ -57,9 +57,9 @@ You need to destroy the orbs placed around the map in order to gain access to th
   - Gameplay Recording.<br>
 </details>
 
-  Github: [RubokiReuchi](https://github.com/RubokiReuchi)
+  - Github: [RubokiReuchi](https://github.com/RubokiReuchi)
 
-* Erik Fernandez:
+### Erik Fernandez:
 
 <details> 
   <summary> Individual Work </summary>
@@ -68,7 +68,7 @@ You need to destroy the orbs placed around the map in order to gain access to th
   - Website design.<br>
 </details>
 
-  Github: [ewmerton](https://github.com/ewmerton)
+  - Github: [ewmerton](https://github.com/ewmerton)
   
 ## More Information:
 
