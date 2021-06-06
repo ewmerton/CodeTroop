@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "ModuleCT.h"
 
@@ -27,6 +28,7 @@ bool ModuleLittleTower::Start()
 	bool ret = true;
 
 	little_towerTexture = App->textures->Load("Assets/Button.png");
+	destroy = App->audio->LoadFx("Assets/OrbsDestroyedSound.wav");
 
 	position.x = 24;  //Esquina arriba izq
 	position.y = 41;  //primera fila
@@ -107,6 +109,7 @@ void ModuleLittleTower::OnCollision(Collider* c1, Collider* c2)
 			case Collider::Type::PLAYER_SHOT:
 			{
 				little_towers[i].isDestroyed = true;
+				App->audio->PlayFx(destroy);
 				rTowers--;
 			} break;
 

@@ -62,7 +62,7 @@ update_status SceneStage::Update()
 
 		cd++;
 
-		if (cd >= 10)
+		if (cd >= 15)
 		{
 			if (bgTexture == Texture1)
 			{
@@ -110,7 +110,7 @@ update_status SceneStage::Update()
 	{
 		cd++;
 
-		if (cd >= 10)
+		if (cd >= 15)
 		{
 			if (bgTexture2 == Texture9)
 			{

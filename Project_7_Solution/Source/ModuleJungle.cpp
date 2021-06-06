@@ -50,7 +50,7 @@ update_status ModuleJungle::PostUpdate()
 	else if (App->sceneLevel_2->IsEnabled() == true)
 	{
 		App->render->Blit(jungleTextureL, position.x, position.y, NULL);
-		App->render->Blit(jungleTextureR, position.x, position.y, NULL);
+		App->render->Blit(jungleTextureR, position.x + 465, position.y, NULL);
 	}
 
 	return update_status::UPDATE_CONTINUE;

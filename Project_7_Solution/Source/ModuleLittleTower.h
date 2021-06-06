@@ -52,6 +52,9 @@ public:
 
 	int rTowers;
 
+
+	uint destroy = 0;
+
 };
 
 #endif

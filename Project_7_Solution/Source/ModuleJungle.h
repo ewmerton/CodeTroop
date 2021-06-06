@@ -34,8 +34,6 @@ public:
 	// The sprite rectangle for the rocks
 	SDL_Texture* jungleTextureL = nullptr;
 	SDL_Texture* jungleTextureR = nullptr;
-
-
 };
 
 #endif
