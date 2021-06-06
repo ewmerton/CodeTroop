@@ -32,7 +32,7 @@ You need to destroy the orbs placed around the map in order to gain access to th
 ## Group Members:
 
 ### Alejandro Giralt
-<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Alejandro.jpeg" width="210" height="281">
+<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Alejandro.png" width="210" height="281">
 <details> 
   <summary> Individual Work </summary>
   - Stages.<br>
@@ -45,7 +45,7 @@ You need to destroy the orbs placed around the map in order to gain access to th
   - Github: [zapper163](https://github.com/zapper163)
 
 ### Rubén Ayora: 
-<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Rub%C3%A9n.jpeg" width="210" height="281">
+<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Rub%C3%A9n.png" width="210" height="281">
 <details> 
   <summary> Individual Work </summary>
   - Enemies mecanics.<br>
@@ -60,7 +60,7 @@ You need to destroy the orbs placed around the map in order to gain access to th
   - Github: [RubokiReuchi](https://github.com/RubokiReuchi)
 
 ### Erik Fernandez:
-<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Erik.jpeg" width="210" height="281">
+<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Erik.png" width="210" height="281">
 <details> 
   <summary> Individual Work </summary>
   - HUD Sprites.<br>
