@@ -54,17 +54,17 @@ update_status SceneIntro::PreUpdate()
 	if (!changeTex && !changeTex2)
 	{
 		cd++;
-		if (intro == nameTexture && cd >= 100 )
+		if (intro == nameTexture && cd >= 150 )
 		{
 			intro = SegaLogo;
 			cd = 0;
 		}
-		else if (intro == SegaLogo && cd >= 100)
+		else if (intro == SegaLogo && cd >= 150)
 		{
 			intro = SegaCreditos;
 			cd = 0;
 		}
-		else if (intro == SegaCreditos && cd >= 100)
+		else if (intro == SegaCreditos && cd >= 150)
 		{
 			changeTex = true;
 			cd = 0;
