@@ -30,19 +30,35 @@ Mega Bomberman is a video game in the Bomberman series. In the single-player mod
 
 * Alejandro Giralt
 
+<details> 
+  <summary> Individual Work </summary>
+  - Stages.<br>
+  - Destructibles in map.<br>
+  - Sprite managment.<br>
+  - Intro animations.<br>
+</details>
+
   Github: [zapper163](https://github.com/zapper163)
 
 * Rubén Ayora: 
+
+<details> 
+  <summary> Individual Work </summary>
+  - Enemies mecanics.<br>
+  - Player and his mechanics.<br>
+  - Bomb and its mechanics.<br>
+  - Boss and its mechanics.<br>
+  - FadeOut and translacions.<br>
+  - Time implementation.<br>
+</details>
 
   Github: [RubokiReuchi](https://github.com/RubokiReuchi)
 
 * Erik Fernandez:
 
-  Github: [ewmerton](https://github.com/ewmerton)
-
 <details> 
   <summary> Individual Work </summary>
-  - Stages and HUD Sprites.<br>
+  - HUD Sprites.<br>
   - Lifes and Score implementation.<br>
   - Website design.<br>
 </details>
