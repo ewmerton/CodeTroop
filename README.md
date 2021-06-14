@@ -9,7 +9,7 @@ Mega Bomberman is a video game in the Bomberman series. In the single-player mod
 
 
 ## Gameplay:
-<iframe width="740" heigth="590" src="https://www.youtube.com/watch?v=G27xBVIa7fs" frameborder="0" allowfullscreen></iframe>
+
 
 ## How to play:
 You need to destroy the orbs placed around the map in order to gain access to the central monument and pick the earth shard. You may find some enemies. Once you have all the shards, you can dead with the Boss.
@@ -32,7 +32,7 @@ You need to destroy the orbs placed around the map in order to gain access to th
 ## Group Members:
 
 ### Alejandro Giralt
-<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Alejandro.png" width="210" height="281">
+![](https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Alejandro%20(210%20x%20281).png)
 <details> 
   <summary> Individual Work </summary>
   - Stages.<br>
@@ -45,7 +45,7 @@ You need to destroy the orbs placed around the map in order to gain access to th
   - Github: [zapper163](https://github.com/zapper163)
 
 ### Rubén Ayora: 
-<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Rub%C3%A9n.png" width="210" height="281">
+![](https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Rub%C3%A9n%20(210%20x%20281).png)
 <details> 
   <summary> Individual Work </summary>
   - Enemies mecanics.<br>
@@ -60,7 +60,7 @@ You need to destroy the orbs placed around the map in order to gain access to th
   - Github: [RubokiReuchi](https://github.com/RubokiReuchi)
 
 ### Erik Fernandez:
-<img src="https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Erik.png" width="210" height="281">
+![](https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Group%20Members/Erik%20(210%20x%20280).png)
 <details> 
   <summary> Individual Work </summary>
   - HUD Sprites.<br>
@@ -75,3 +75,9 @@ You need to destroy the orbs placed around the map in order to gain access to th
 - Check the project wiki [HERE](https://github.com/ewmerton/CodeTroop/wiki).
 - Visit our GitHub repository [HERE](https://github.com/ewmerton/CodeTroop).
 - Visit our GitHub web [HERE](https://ewmerton.github.io/CodeTroop).
+
+
+
+## TEst
+
+<iframe width="740" heigth="590" src="https://www.youtube.com/watch?v=G27xBVIa7fs" frameborder="0" allowfullscreen></iframe>
