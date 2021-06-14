@@ -75,9 +75,3 @@ You need to destroy the orbs placed around the map in order to gain access to th
 - Check the project wiki [HERE](https://github.com/ewmerton/CodeTroop/wiki).
 - Visit our GitHub repository [HERE](https://github.com/ewmerton/CodeTroop).
 - Visit our GitHub web [HERE](https://ewmerton.github.io/CodeTroop).
-
-
-
-## TEst
-
-<iframe width="740" heigth="590" src="https://www.youtube.com/watch?v=G27xBVIa7fs" frameborder="0" allowfullscreen></iframe>
