@@ -10,7 +10,7 @@ Mega Bomberman is a video game in the Bomberman series. In the single-player mod
 
 ## Gameplay:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/G27xBVIa7fs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/G27xBVIa7fs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <br>
 
 ## How to play:
 You need to destroy the orbs placed around the map in order to gain access to the central monument and pick the earth shard. You may find some enemies. Once you have all the shards, you can dead with the Boss.
