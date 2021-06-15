@@ -1,4 +1,5 @@
-# CodeTroop
+# Mega Bomberman
+## CodeTroop
 
 ![](https://github.com/ewmerton/CodeTroop/blob/main/Project_7_Solution/Game/Assets/Mega_bomberman_logo.png?raw=true)
 
